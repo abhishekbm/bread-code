@@ -1,5 +1,8 @@
 package com.pixo.webServiceImpl;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+
 import javax.ws.rs.core.Response;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,11 +23,17 @@ public class FileWebServiceImpl implements FilesWebService{
 	@Autowired
 	FIleListUtility log;
 	
-	public Response  getFileList(String nameofDrive) throws InterruptedException {
+	public Response  getFileList(String nameofDrive) throws  Exception {
 
-		readerServiceImpl.getDrive(nameofDrive);
+		String decodedURL= URLDecoder.decode(nameofDrive, "UTF-8");
+		
+		readerServiceImpl.getDrive(decodedURL);
 		Thread.sleep(5000);
-		return Response.ok(log.getLog()).build();
+		
+		String response = log.getLog();
+		
+		log.clear();
+		return Response.ok(response).build();
 	}
 
 	

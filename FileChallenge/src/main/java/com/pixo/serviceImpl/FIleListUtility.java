@@ -10,17 +10,25 @@ import org.springframework.stereotype.Component;
 /**
  * @author abhibm
  *
+ *
+ *Utility class to keep all file data for a rest call and clear it at the end of the call
  */
-@Component("logger")
+
+
+@Component("ListUtility")
 public class FIleListUtility {
 
-	public static List<JSONObject> abhi = new CopyOnWriteArrayList<JSONObject>();
+	public static List<JSONObject> listOfFiles = new CopyOnWriteArrayList<JSONObject>();
 
 	public void add(JSONObject name) {
-		abhi.add(name);
+		listOfFiles.add(name);
 	}
 
 	public String getLog() {
-		return abhi.toString();
+		return listOfFiles.toString();
+	}
+	
+	public void clear(){
+		listOfFiles.clear();
 	}
 }
