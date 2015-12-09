@@ -37,11 +37,12 @@ public class FolderReaderServiceImpl implements FolderReaderService {
 			for (int i = 0; i < files2.size(); i++) {
 				File directory1 = (File) files2.get(i);
 				if (directory1.isDirectory()) {
-					addJsonData(directory1);
 					parserServiceImpl.getDirectoryFiles(
 							directory1.getAbsolutePath());
 				}
+				else{
 				addJsonData(directory1);
+				}
 			}
 		}
 
