@@ -6,5 +6,5 @@ public interface FileParserService {
 	/**
 	 * @param absolutePath
 	 */
-	void  getDirectoryFiles(String absolutePath);
+	void  getDirectoryFiles(final String absolutePath);
 }
