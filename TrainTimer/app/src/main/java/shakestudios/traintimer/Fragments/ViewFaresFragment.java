@@ -72,7 +72,7 @@ public class ViewFaresFragment extends Fragment {
          View rootView=inflater.inflate(R.layout.fragment_view_fares, container, false);
 
 
-        TextView card,coin;
+        TextView card,coin,noOfStations,timeTaken;
 
         card = (TextView) rootView.findViewById(R.id.textView3);
         coin = (TextView) rootView.findViewById(R.id.textView4);
@@ -84,8 +84,14 @@ public class ViewFaresFragment extends Fragment {
         FaresVO vo = new FaresVO();
         List<String> list=vo.getFares(from,to,line);
 
-        card.setText("The coin cost from "+from+" to "+to+" is "+list.get(0));
-        coin.setText("The card cost from "+from+" to "+to+" is "+list.get(1));
+        card.setText("Token cost from  "+from+" to "+to+" is "+list.get(0));
+        coin.setText("Varshik Card Cost from "+from+" to "+to+" is "+list.get(1));
+
+        noOfStations  = (TextView) rootView.findViewById(R.id.noOfStations);
+        noOfStations.setText(list.get(2));
+
+        timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
+
 
         return rootView;
     }
