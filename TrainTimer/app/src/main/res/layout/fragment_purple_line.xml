@@ -1,0 +1,28 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shakestudios.traintimer.Fragments.PurpleLineFragment">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/westEast"
+        android:textAllCaps="false"
+        android:text="Towards Byappanhalli "
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/eastWest"
+        android:textAllCaps="false"
+        android:text="Towards Mysore Road "
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/westEast"
+        android:layout_marginTop="127dp"
+        android:layout_gravity="center" />
+
+</FrameLayout>
