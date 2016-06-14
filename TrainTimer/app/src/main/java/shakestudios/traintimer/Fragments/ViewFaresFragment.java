@@ -88,9 +88,11 @@ public class ViewFaresFragment extends Fragment {
         coin.setText("Varshik Card Cost from "+from+" to "+to+" is "+list.get(1));
 
         noOfStations  = (TextView) rootView.findViewById(R.id.noOfStations);
-        noOfStations.setText(list.get(2));
+        noOfStations.setText("Number of stops to reach destination"+ list.get(2)+"");
 
         timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
+
+        timeTaken.setText("Doors open on right");
 
 
         return rootView;
