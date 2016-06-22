@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="shakestudios.traintimer.main_fragment">
+    tools:context="shakestudios.traintimer.main_fragment"
+    android:background="#F5F5F7">
 
     <Button
         android:layout_width="wrap_content"
@@ -11,8 +12,8 @@
         android:id="@+id/FaresButton"
         android:layout_below="@+id/TimingButton"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="61dp"
-        android:layout_gravity="center" />
+        android:layout_marginTop="100dp"
+        android:layout_marginLeft="260dp" />
 
     <Button
         android:layout_width="wrap_content"
@@ -21,12 +22,21 @@
         android:id="@+id/TimingButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-50dp"
-        android:layout_gravity="center" />
+        android:layout_marginTop="100dp"
+        android:layout_gravity="left"
+        android:layout_marginLeft="30dp" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/About"/>
+        android:id="@+id/About"
+        android:layout_gravity="left|top" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Parking"
+        android:id="@+id/Parking"
+        android:layout_gravity="center" />
 
 </FrameLayout>

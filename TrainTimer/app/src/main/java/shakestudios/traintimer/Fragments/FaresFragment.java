@@ -8,15 +8,16 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.TextView;
 
 import shakestudios.traintimer.R;
 
@@ -30,10 +31,8 @@ import shakestudios.traintimer.R;
  */
 public class FaresFragment extends Fragment {
 
-    boolean fromSpinner1, toSpinner1;
-    boolean fromSpinner2, toSpinner2;
-    int positionSpinner, positionSpinner1;
-    String from, to,line;
+
+    String from, to, line;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -83,124 +82,211 @@ public class FaresFragment extends Fragment {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_fares, container, false);
 
-        RadioGroup timingGroup = (RadioGroup) rootView.findViewById(R.id.TimingGroup);
-        RadioButton greenRadio = (RadioButton) rootView.findViewById(R.id.GreenRadio);
+        getActivity().setTitle("Fares");
+        final AutoCompleteTextView origin = (AutoCompleteTextView) rootView.findViewById(R.id.textView5);
+        final AutoCompleteTextView desti = (AutoCompleteTextView) rootView.findViewById(R.id.textView6);
+
+        origin.setVisibility(View.VISIBLE);
+
+        final RadioGroup timingGroup = (RadioGroup) rootView.findViewById(R.id.TimingGroup);
+        final RadioButton greenRadio = (RadioButton) rootView.findViewById(R.id.GreenRadio);
         final RadioButton purpleRadio = (RadioButton) rootView.findViewById(R.id.PurpleRadio);
-
-       int checked= timingGroup.getCheckedRadioButtonId();
-
-       final Button getFares = (Button) rootView.findViewById(R.id.fare_button);
+        origin.setThreshold(1);
+        desti.setThreshold(1);
         timingGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+
+
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
 
 
-                if(checkedId==R.id.PurpleRadio) {
-                    TextView origin= (TextView) rootView.findViewById(R.id.textView5);
-                    origin.setVisibility(View.VISIBLE);
-                    TextView desti= (TextView) rootView.findViewById(R.id.textView6);
-                    desti.setVisibility(View.VISIBLE);
-                    getFares.setVisibility(View.VISIBLE);
-                    initiliazeSpinnerOne(savedInstanceState, rootView);
-                    initializeSpinnerTwo(savedInstanceState, rootView);
-                }else if(checkedId==R.id.GreenRadio) {
-                    TextView origin= (TextView) rootView.findViewById(R.id.textView5);
-                    origin.setVisibility(View.VISIBLE);
-                    TextView desti= (TextView) rootView.findViewById(R.id.textView6);
-                    desti.setVisibility(View.VISIBLE);
-                    getFares.setVisibility(View.VISIBLE);
-                    initiliazeSpinnerThree(savedInstanceState, rootView);
-                    initializeSpinnerFour(savedInstanceState, rootView);
-                }
-                else{
-                    fromSpinner1 = false;
-                    fromSpinner2 = true;
-                    if (savedInstanceState != null) {
-                        positionSpinner = savedInstanceState.getInt("posSpinner");
-                        if (positionSpinner != 0) fromSpinner2 = false;
-                    }
+                if (checkedId == R.id.PurpleRadio) {
+                    origin.setText("");
+                    desti.setText("");
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
+                    adapter.add("Byappanhalli");
+                    adapter.add("Swami Vivekananda Road");
+                    adapter.add("Indiranagar");
+                    adapter.add("Halasuru");
+                    adapter.add("Trinity");
+                    adapter.add("Mahatma Gandhi Road");
+                    adapter.add("Cubbon Park");
+                    adapter.add("Vidhana Soudha");
+                    adapter.add("Sir M. Visveshwaraya");
+                    adapter.add("Majestic");
+                    adapter.add("City Railway Station");
+                    adapter.add("Magadi Road");
+                    adapter.add("Hosahalli");
+                    adapter.add("Vijayanagar");
+                    adapter.add("Attiguppe");
+                    adapter.add("Deepanjali Nagar");
+                    adapter.add("Mysore Road");
+                    line = "purple";
+                    origin.setAdapter(adapter);
 
+                    desti.setAdapter(adapter);
 
-                    final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinner);
-                    spinner.setVisibility(View.VISIBLE);
-// Create an ArrayAdapter using the string array and a default spinner layout
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_spinner_item) {
+                } else if (checkedId == R.id.GreenRadio) {
 
-                        @Override
-                        public View getView(int position, View convertView, ViewGroup parent) {
+                    origin.setText("");
+                    desti.setText("");
+                    final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
+                    adapter1.add("Nagasandra");
+                    adapter1.add("Dasarahalli");
+                    adapter1.add("Jalahalli");
+                    adapter1.add("Peenya Industry");
+                    adapter1.add("Peenya");
+                    adapter1.add("Yeshwanthpur Industry");
+                    adapter1.add("Yeshwanthpur");
+                    adapter1.add("Sandal Soap Factory");
+                    adapter1.add("Mahalakshmi");
+                    adapter1.add("Rajajinagar");
+                    adapter1.add("Kuvempu Road");
+                    adapter1.add("Srirampura");
+                    adapter1.add("Sampige Road");
+                    line = "green";
+                    origin.setAdapter(adapter1);
 
-                            View v = super.getView(position, convertView, parent);
-                            if (position == getCount()) {
-                                ((TextView) v.findViewById(android.R.id.text1)).setText("Select Line");
-                                ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount())); //"Hint to be displayed"
-                            }
-
-                            return v;
-                        }
-
-                        @Override
-                        public int getCount() {
-                            return super.getCount() - 1; // you dont display last item. It is used as hint.
-                        }
-
-                    };
-
-                    adapter.add("Select Line");
-
-                    spinner.setAdapter(adapter);
-                    spinner.setSelection(adapter.getCount()); //set the hint the default selection so it appears on launch.
-// Specify the layout to use when the list of choices appears
-                    adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-                        public void onItemSelected(AdapterView<?> parent, View view,
-                                                   int pos, long id) {
-
-                            boolean spinnerUsable = (fromSpinner1 && fromSpinner2);
-                            if (!fromSpinner1) {
-                                fromSpinner1 = true;
-                            } else if (!fromSpinner2) {
-                                fromSpinner2 = true;
-                            }
-                            if (spinnerUsable) {
-
-                                from = spinner.getSelectedItem().toString();
-                                line="purple";
-                            }
-
-                        }
-
-                        public void onNothingSelected(AdapterView<?> parent) {
-                            // Another interface callback
-                        }
-                    });
-// Apply the adapter to the spinner
-
-
-                    toSpinner1 = false;
-                    toSpinner2 = true;
-                    if (savedInstanceState != null) {
-                        positionSpinner1 = savedInstanceState.getInt("posSpinner");
-                        if (positionSpinner1 != 0) toSpinner2 = false;
-                    }
-
+                    desti.setAdapter(adapter1);
                 }
             }
         });
 
+        /*origin.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                int check = timingGroup.getCheckedRadioButtonId();
+                if (check == -1) {
+
+                    Snackbar.make(v, "Please Choose a Line Above", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                }
+            }
+        });*/
+        desti.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (timingGroup.getCheckedRadioButtonId() == -1) {
+                    InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+                    Snackbar.make(v, "Please Choose a line", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    return true;
+                }
+                else{
+                    desti.showDropDown();
+
+                }
+                return false;
+            }
+        });
+
+        origin.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (timingGroup.getCheckedRadioButtonId() == -1) {
+                    InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                    in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+                    Snackbar.make(v, "Please Choose a line", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    return true;
+                }  else{
+                    origin.showDropDown();
+
+                }
+
+                return false;
+            }
+        });
+        origin.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+
+            }
+        });
+
+        desti.setOnDismissListener(new AutoCompleteTextView.OnDismissListener() {
+            @Override
+            public void onDismiss() {
+                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+            }
+        });
+        origin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+        desti.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+            }
+
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+        origin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+            }
+        });
+
+        desti.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
+            }
+        });
+
+
+       /* timingGroup.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                origin.setText("");
+                desti.setText("");
+            }
+        });*/
+
+        final Button getFares = (Button) rootView.findViewById(R.id.fare_button);
 
 
         getFares.setOnClickListener(new View.OnClickListener() {
-            boolean set = false;
+
 
             @Override
             public void onClick(View arg0) {
+                boolean set = false;
 
-                if (null==from ||null==to){
+                to = origin.getText().toString();
+                from = desti.getText().toString();
+                if (timingGroup.getCheckedRadioButtonId() == -1) {
+                    Snackbar.make(arg0, "Please Choose a Line", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                    set = true;
+                } else if (null == from || null == to || to.isEmpty() || from.isEmpty()) {
                     Snackbar.make(arg0, "Please Choose Stations", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
                     set = true;
-                }
-                else if(from.equalsIgnoreCase(to)){
+                } else if (from.equalsIgnoreCase(to)) {
                     Snackbar.make(arg0, "Origin and Destination can't be same", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
                     set = true;
@@ -210,7 +296,7 @@ public class FaresFragment extends Fragment {
                     Bundle bundle = new Bundle();
                     bundle.putString("from", from);
                     bundle.putString("to", to);
-                    bundle.putString("line",line);
+                    bundle.putString("line", line);
                     fragment.setArguments(bundle);
                     FragmentManager fragmentManager = getFragmentManager();
                     FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -229,6 +315,7 @@ public class FaresFragment extends Fragment {
             mListener.onFragmentInteraction(uri);
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -262,318 +349,5 @@ public class FaresFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void initiliazeSpinnerOne(Bundle savedInstanceState, final View view) {
 
-        fromSpinner1 = false;
-        fromSpinner2 = true;
-        if (savedInstanceState != null) {
-            positionSpinner = savedInstanceState.getInt("posSpinner");
-            if (positionSpinner != 0) fromSpinner2 = false;
-        }
-
-
-        final Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
-        spinner.setVisibility(View.VISIBLE);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item) {
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-
-                View v = super.getView(position, convertView, parent);
-                if (position == getCount()) {
-                    ((TextView) v.findViewById(android.R.id.text1)).setText("Select Station");
-                    ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount())); //"Hint to be displayed"
-                }
-
-                return v;
-            }
-
-            @Override
-            public int getCount() {
-                return super.getCount() - 1; // you dont display last item. It is used as hint.
-            }
-
-        };
-        adapter.add("Byappanhalli");
-        adapter.add("Swami Vivekananda Road");
-        adapter.add("Indiranagar");
-        adapter.add("Halasuru");
-        adapter.add("Trinity");
-        adapter.add("Mahatma Gandhi Road");
-        adapter.add("Cubbon Park");
-        adapter.add("Vidhana Soudha");
-        adapter.add("Sir M. Visveshwaraya");
-        adapter.add("Majestic");
-        adapter.add("City Railway Station");
-        adapter.add("Magadi Road");
-        adapter.add("Hosahalli");
-        adapter.add("Vijayanagar");
-        adapter.add("Attiguppe");
-        adapter.add("Deepanjali Nagar");
-        adapter.add("Mysore Road");
-        adapter.add("Select Station");
-
-        spinner.setAdapter(adapter);
-        spinner.setSelection(adapter.getCount()); //set the hint the default selection so it appears on launch.
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int pos, long id) {
-
-                boolean spinnerUsable = (fromSpinner1 && fromSpinner2);
-                if (!fromSpinner1) {
-                    fromSpinner1 = true;
-                } else if (!fromSpinner2) {
-                    fromSpinner2 = true;
-                }
-                if (spinnerUsable) {
-
-                    from = spinner.getSelectedItem().toString();
-                    line="purple";
-                }
-
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-// Apply the adapter to the spinner
-
-
-        toSpinner1 = false;
-        toSpinner2 = true;
-        if (savedInstanceState != null) {
-            positionSpinner1 = savedInstanceState.getInt("posSpinner");
-            if (positionSpinner1 != 0) toSpinner2 = false;
-        }
-
-
-    }
-
-
-    private void initializeSpinnerTwo(Bundle savedInstanceState, final View view) {
-        Spinner spinner1 = (Spinner) view.findViewById(R.id.spinner2);
-        spinner1.setVisibility(View.VISIBLE);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-
-                View v = super.getView(position, convertView, parent);
-                if (position == getCount()) {
-                    ((TextView) v.findViewById(android.R.id.text1)).setText("Select Station");
-                    ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount())); //"Hint to be displayed"
-                }
-
-                return v;
-            }
-
-            @Override
-            public int getCount() {
-                return super.getCount() - 1; // you dont display last item. It is used as hint.
-            }
-
-        };
-        adapter1.add("Byappanhalli");
-        adapter1.add("Swami Vivekananda Road");
-        adapter1.add("Indiranagar");
-        adapter1.add("Halasuru");
-        adapter1.add("Trinity");
-        adapter1.add("Mahatma Gandhi Road");
-        adapter1.add("Cubbon Park");
-        adapter1.add("Vidhana Soudha");
-        adapter1.add("Sir M. Visveshwaraya");
-        adapter1.add("Majestic");
-        adapter1.add("City Railway Station");
-        adapter1.add("Magadi Road");
-        adapter1.add("Hosahalli");
-        adapter1.add("Vijayanagar");
-        adapter1.add("Attiguppe");
-        adapter1.add("Deepanjali Nagar");
-        adapter1.add("Mysore Road");
-        adapter1.add("Select Station");
-
-        spinner1.setAdapter(adapter1);
-        spinner1.setSelection(adapter1.getCount()); //set the hint the default selection so it appears on launch.
-// Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int pos, long id) {
-              /*  adapter1.add("Select Station");*/
-                boolean spinnerUsable6 = (toSpinner1 && toSpinner2);
-                if (!toSpinner1) {
-                    toSpinner1 = true;
-                } else if (!toSpinner2) {
-                    toSpinner2 = true;
-                }
-                if (spinnerUsable6) {
-                    to = parent.getItemAtPosition(pos).toString();
-                }
-
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-    }
-
-
-
-    private void initiliazeSpinnerThree(Bundle savedInstanceState, final View view) {
-
-        fromSpinner1 = false;
-        fromSpinner2 = true;
-        if (savedInstanceState != null) {
-            positionSpinner = savedInstanceState.getInt("posSpinner");
-            if (positionSpinner != 0) fromSpinner2 = false;
-        }
-
-
-        final Spinner spinner = (Spinner) view.findViewById(R.id.spinner);
-        spinner.setVisibility(View.VISIBLE);
-// Create an ArrayAdapter using the string array and a default spinner layout
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item) {
-
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-
-                View v = super.getView(position, convertView, parent);
-                if (position == getCount()) {
-                    ((TextView) v.findViewById(android.R.id.text1)).setText("Select Station");
-                    ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount())); //"Hint to be displayed"
-                }
-
-                return v;
-            }
-
-            @Override
-            public int getCount() {
-                return super.getCount() - 1; // you dont display last item. It is used as hint.
-            }
-
-        };
-        adapter.add("Nagasandra");
-        adapter.add("Dasarahalli");
-        adapter.add("Jalahalli");
-        adapter.add("Peenya Industry");
-        adapter.add("Peenya");
-        adapter.add("Yeshwanthpur Industry");
-        adapter.add("Yeshwanthpur");
-        adapter.add("Yesvantpur railway station");
-        adapter.add("Sandal Soap Factory");
-        adapter.add("Mahalakshmi");
-        adapter.add("Rajajinagar");
-        adapter.add("Kuvempu Road");
-        adapter.add("Srirampura");
-        adapter.add("Sampige Road");
-        adapter.add("Select Station");
-
-        spinner.setAdapter(adapter);
-        spinner.setSelection(adapter.getCount()); //set the hint the default selection so it appears on launch.
-// Specify the layout to use when the list of choices appears
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int pos, long id) {
-
-                boolean spinnerUsable = (fromSpinner1 && fromSpinner2);
-                if (!fromSpinner1) {
-                    fromSpinner1 = true;
-                } else if (!fromSpinner2) {
-                    fromSpinner2 = true;
-                }
-                if (spinnerUsable) {
-
-                    from = spinner.getSelectedItem().toString();
-                    line="green";
-                }
-
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-// Apply the adapter to the spinner
-
-
-        toSpinner1 = false;
-        toSpinner2 = true;
-        if (savedInstanceState != null) {
-            positionSpinner1 = savedInstanceState.getInt("posSpinner");
-            if (positionSpinner1 != 0) toSpinner2 = false;
-        }
-
-
-    }
-
-    private void initializeSpinnerFour(Bundle savedInstanceState, final View view) {
-        Spinner spinner1 = (Spinner) view.findViewById(R.id.spinner2);
-        spinner1.setVisibility(View.VISIBLE);
-        // Create an ArrayAdapter using the string array and a default spinner layout
-        final ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(view.getContext(), android.R.layout.simple_spinner_item) {
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
-
-                View v = super.getView(position, convertView, parent);
-                if (position == getCount()) {
-                    ((TextView) v.findViewById(android.R.id.text1)).setText("Select Station");
-                    ((TextView) v.findViewById(android.R.id.text1)).setHint(getItem(getCount())); //"Hint to be displayed"
-                }
-
-                return v;
-            }
-
-            @Override
-            public int getCount() {
-                return super.getCount() - 1; // you dont display last item. It is used as hint.
-            }
-
-        };
-        adapter1.add("Nagasandra");
-        adapter1.add("Dasarahalli");
-        adapter1.add("Jalahalli");
-        adapter1.add("Peenya Industry");
-        adapter1.add("Peenya");
-        adapter1.add("Yeshwanthpur Industry");
-        adapter1.add("Yeshwanthpur");
-        adapter1.add("Yesvantpur railway station");
-        adapter1.add("Sandal Soap Factory");
-        adapter1.add("Mahalakshmi");
-        adapter1.add("Rajajinagar");
-        adapter1.add("Kuvempu Road");
-        adapter1.add("Srirampura");
-        adapter1.add("Sampige Road");
-        adapter1.add("Select Station");
-
-        spinner1.setAdapter(adapter1);
-        spinner1.setSelection(adapter1.getCount()); //set the hint the default selection so it appears on launch.
-// Specify the layout to use when the list of choices appears
-        adapter1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            public void onItemSelected(AdapterView<?> parent, View view,
-                                       int pos, long id) {
-              /*  adapter1.add("Select Station");*/
-                boolean spinnerUsable6 = (toSpinner1 && toSpinner2);
-                if (!toSpinner1) {
-                    toSpinner1 = true;
-                } else if (!toSpinner2) {
-                    toSpinner2 = true;
-                }
-                if (spinnerUsable6) {
-                    to = parent.getItemAtPosition(pos).toString();
-                }
-
-            }
-
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Another interface callback
-            }
-        });
-    }
 }

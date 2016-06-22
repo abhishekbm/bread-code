@@ -70,7 +70,7 @@ public class PurpleLineFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView= inflater.inflate(R.layout.fragment_purple_line, container, false);
-
+        getActivity().setTitle("Timings");
         Button eastToWest,westToEast;
 
 
@@ -152,4 +152,6 @@ public class PurpleLineFragment extends Fragment {
         // TODO: Update argument type and name
         void onFragmentInteraction(Uri uri);
     }
+
+
 }

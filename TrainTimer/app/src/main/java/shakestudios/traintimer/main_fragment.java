@@ -14,6 +14,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import shakestudios.traintimer.Fragments.FaresFragment;
+import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Util.About;
 
@@ -87,18 +88,22 @@ public class main_fragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_main_fragment, container, false);
         final Context context = rootView.getContext();
-        Button Timing, Fares;
-
+        Button Timing, Fares,parking;
+        getActivity().setTitle("My Metro");
 
         Timing = (Button) rootView.findViewById(R.id.TimingButton);
 
         Fares = (Button) rootView.findViewById(R.id.FaresButton);
 
+        parking = (Button)rootView.findViewById(R.id.Parking);
+
+
+
         Timing.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View arg0) {
-
+                getActivity().setTitle("Timings");
                 TimingsFragment fragment = new TimingsFragment();
                 FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -114,6 +119,7 @@ public class main_fragment extends Fragment {
             @Override
             public void onClick(View arg0) {
 
+                getActivity().setTitle("Fares");
 
                 FaresFragment fragment = new FaresFragment();
                 FragmentManager fragmentManager = getFragmentManager();
@@ -125,7 +131,24 @@ public class main_fragment extends Fragment {
             }
 
         });
+
+        parking.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View arg0) {
+
+                getActivity().setTitle("Parking");
+                ParkingFragment fragment = new ParkingFragment();
+                FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.event_frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            }
+
+        });
         return rootView;
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

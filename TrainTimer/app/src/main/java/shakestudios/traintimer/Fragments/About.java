@@ -7,7 +7,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 
 import shakestudios.traintimer.R;
 
@@ -30,6 +34,9 @@ public class About extends Fragment {
     private String mParam2;
 
     private OnFragmentInteractionListener mListener;
+    private ArrayAdapter<String> adapter;
+
+    private AdView mAdView;
 
     public About() {
         // Required empty public constructor
@@ -66,9 +73,37 @@ public class About extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootViw= inflater.inflate(R.layout.fragment_about, container, false);
-        TextView text = (TextView)rootViw.findViewById(R.id.About);
-        text.setText("This is the about Page");
+        View rootViw = inflater.inflate(R.layout.fragment_about, container, false);
+
+
+// Here you'll append the new AdView
+        final AdView adView = (AdView) rootViw.findViewById(R.id.adView);
+        final AdRequest.Builder adReq = new AdRequest.Builder();
+// You should include a line like this for testing purposes,
+// but only after you've tested whether your AdView works!
+// This will prevent your ad being loaded each time you test
+// your ad, so it will prevent you being blocked from AdMob.
+// You'll find your device_id in the LogCat.
+        adReq.addTestDevice("D856599299D1B987A5902D9FC9B85641");
+
+        final AdRequest adRequest = adReq.build();
+        adView.loadAd(adRequest);
+
+
+
+        /*mAdView = (AdView) rootViw.findViewById(R.id.adView);
+        AdRequest adRequest = new AdRequest.Builder().addTestDevice("D856599299D1B987A5902D9FC9B85641")
+                .build();
+
+        mAdView.loadAd(adRequest);*/
+
+        getActivity().setTitle("About");
+        ListView text = (ListView) rootViw.findViewById(R.id.About);
+        adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
+        adapter.add("Version 1.0.0");
+        adapter.add("All data provided by this application is subject to change and the developer is not responsible for any damage of any sort.");
+        adapter.add("Suggestions are welcome email us at abhishek_bm@yahoo.com");
+        text.setAdapter(adapter);
         return rootViw;
     }
 

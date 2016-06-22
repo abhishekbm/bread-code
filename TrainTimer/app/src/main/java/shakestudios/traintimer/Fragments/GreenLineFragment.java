@@ -70,7 +70,7 @@ public class GreenLineFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_green_line, container, false);
-
+        getActivity().setTitle("Timings");
         Button northSouth, southNorth;
 
         northSouth = (Button) rootView.findViewById(R.id.northSouth);

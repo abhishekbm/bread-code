@@ -1,6 +1,8 @@
 package shakestudios.traintimer;
 
+import android.app.SearchManager;
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -15,6 +17,7 @@ import android.view.MenuItem;
 import shakestudios.traintimer.Fragments.About;
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.GreenLineFragment;
+import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.PurpleLineFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
@@ -24,10 +27,14 @@ import shakestudios.traintimer.Stations.PurpleStationFragments;
 public class navigationAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GreenLineFragment.OnFragmentInteractionListener, GreenStationFragment.OnFragmentInteractionListener
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
-        , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener {
+        , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
+        , ParkingFragment.OnFragmentInteractionListener {
+
     NavigationView navigationView = null;
     Toolbar toolbar = null;
 
+  /*  private AdView mAdView;
+*/
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,15 +43,13 @@ public class navigationAcivity extends AppCompatActivity
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-       /* FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
+
+        Intent intent = getIntent();
+        if (Intent.ACTION_SEARCH.equals(intent.getAction())) {
+            String query = intent.getStringExtra(SearchManager.QUERY);
+            // doMySearch(query);
+        }
         main_fragment fragment = new main_fragment();
         android.support.v4.app.FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
@@ -60,37 +65,10 @@ public class navigationAcivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       /* View view = navigationView.getHeaderView(0);
-      View view = navigationView.inflateHeaderView(R.layout.nav_header_navigation_acivity);
-       TextView name = (TextView) view.findViewById(R.id.username);
-        TextView email = (TextView) view.findViewById(R.id.email);
-        name.setText("abhi");
-        email.setText(getUsername());
 
-        Cursor c = getApplication().getContentResolver().query(ContactsContract.Profile.CONTENT_URI, null, null, null, null);
-        c.moveToFirst();
-        name.setText(c.getString(c.getColumnIndex("display_name")));
-        c.close();
+
     }
 
-    public String getUsername() {
-        AccountManager manager = AccountManager.get(this);
-        Account[] accounts = manager.getAccountsByType("com.google");
-        List<String> possibleEmails = new LinkedList<String>();
-
-        for (Account account : accounts) {
-            // TODO: Check possibleEmail against an email regex or treat
-            // account.name as an email address only for certain account.type values.
-            possibleEmails.add(account.name);
-        }
-
-        if (!possibleEmails.isEmpty() && possibleEmails.get(0) != null) {
-            String email = possibleEmails.get(0);
-           return email;
-        }
-        return "test";
-    }*/
-    }
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -105,7 +83,6 @@ public class navigationAcivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.navigation_acivity, menu);
-
 
 
         return true;
@@ -140,7 +117,6 @@ public class navigationAcivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Timings) {
-
             TimingsFragment fragment = new TimingsFragment();
             android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
@@ -155,14 +131,44 @@ public class navigationAcivity extends AppCompatActivity
             fragmentTransaction.replace(R.id.event_frame, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+
+        } else if (id == R.id.Parking) {
+            ParkingFragment fragment = new ParkingFragment();
+            android.support.v4.app.FragmentTransaction fragmentTransaction =
+                    getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.replace(R.id.event_frame, fragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+   /* @Override
+    public void onPause() {
+        if (mAdView != null) {
+            mAdView.pause();
+        }
+        super.onPause();
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (mAdView != null) {
+            mAdView.resume();
+        }
+    }
 
+    @Override
+    public void onDestroy() {
+        if (mAdView != null) {
+            mAdView.destroy();
+        }
+        super.onDestroy();
+    }*/
     @Override
     public void onFragmentInteraction(Uri uri) {
 
     }
+
 }

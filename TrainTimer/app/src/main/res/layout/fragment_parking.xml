@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="shakestudios.traintimer.Stations.GreenStationFragment"
+    tools:context="shakestudios.traintimer.Fragments.ParkingFragment"
     android:background="#F5F5F7">
 
     <ExpandableListView
@@ -10,4 +10,5 @@
         android:layout_height="match_parent"
         android:layout_width="match_parent"
         android:layout_marginTop="112px"/>
+
 </FrameLayout>

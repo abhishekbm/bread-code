@@ -76,7 +76,7 @@ public class TimingsFragment extends Fragment {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_timings, container, false);
 
-
+        getActivity().setTitle("Timings");
         final Context context = rootView.getContext();
 
         RadioGroup timingGroup = (RadioGroup) rootView.findViewById(R.id.TimingGroup);

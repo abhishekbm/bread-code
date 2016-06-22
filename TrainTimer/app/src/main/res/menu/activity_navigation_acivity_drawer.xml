@@ -4,12 +4,17 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/Timings"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@mipmap/ic_action_action_schedule"
             android:title="@string/TimingsBeta" />
         <item
             android:id="@+id/Fares"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@mipmap/ic_action_maps_local_atm"
             android:title="Get Fares" />
+
+        <item
+            android:id="@+id/Parking"
+            android:icon="@mipmap/ic_action_maps_local_parking"
+            android:title="Parking" />
 
     </group>
 
