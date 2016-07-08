@@ -5,9 +5,35 @@
     tools:context="shakestudios.traintimer.Stations.GreenStationFragment"
     android:background="#F5F5F7">
 
-    <ExpandableListView
+  <!--  <ExpandableListView
         android:id="@+id/lvExp1"
         android:layout_height="match_parent"
         android:layout_width="match_parent"
-        android:layout_marginTop="112px"/>
+        android:layout_marginTop="112px"/>-->
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerGreen"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="90dp" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Please choose your Boarding Station"
+      android:id="@+id/boarding"
+      android:layout_gravity="left|top"
+      android:layout_marginTop="100dp"
+      android:textSize="@dimen/abc_text_size_headline_material" />
+
+  <TextView
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:textAppearance="?android:attr/textAppearanceSmall"
+      android:text="Small Text"
+      android:id="@+id/timer"
+      android:layout_gravity="left|center_vertical"
+      android:layout_marginBottom="50dp"
+      android:textSize="@dimen/abc_text_size_large_material" />
 </FrameLayout>

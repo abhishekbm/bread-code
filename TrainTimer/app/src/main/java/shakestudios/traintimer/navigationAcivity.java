@@ -5,7 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import shakestudios.traintimer.Fragments.About;
 import shakestudios.traintimer.Fragments.FaresFragment;
@@ -33,8 +38,11 @@ public class navigationAcivity extends AppCompatActivity
     NavigationView navigationView = null;
     Toolbar toolbar = null;
 
-  /*  private AdView mAdView;
-*/
+    /*  private AdView mAdView;
+  */
+
+    private boolean doubleBackToExitPressedOnce = false;
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +50,6 @@ public class navigationAcivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation_acivity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
 
         Intent intent = getIntent();
@@ -65,8 +72,21 @@ public class navigationAcivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
+        getSupportFragmentManager().addOnBackStackChangedListener(getListener());
 
+    }
 
+    private FragmentManager.OnBackStackChangedListener getListener() {
+        FragmentManager.OnBackStackChangedListener result = new FragmentManager.OnBackStackChangedListener() {
+            public void onBackStackChanged() {
+                Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.timingfrag);
+                if (currentFragment instanceof TimingsFragment) {
+                    currentFragment.onResume();
+                }
+            }
+        };
+
+        return result;
     }
 
     @Override
@@ -75,7 +95,24 @@ public class navigationAcivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //Checking for fragment count on backstack
+            if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+                getSupportFragmentManager().popBackStack();
+            } else if (!doubleBackToExitPressedOnce) {
+                this.doubleBackToExitPressedOnce = true;
+                Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+
+                new Handler().postDelayed(new Runnable() {
+
+                    @Override
+                    public void run() {
+                        doubleBackToExitPressedOnce = false;
+                    }
+                }, 2000);
+            } else {
+                super.onBackPressed();
+                return;
+            }
         }
     }
 
@@ -118,54 +155,74 @@ public class navigationAcivity extends AppCompatActivity
 
         if (id == R.id.Timings) {
             TimingsFragment fragment = new TimingsFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
+            replaceFragment(fragment);
+          /*  android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.event_frame, fragment);
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
 
         } else if (id == R.id.Fares) {
             FaresFragment fragment = new FaresFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
+            replaceFragment(fragment);
+           /* android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.event_frame, fragment);
             fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
+            fragmentTransaction.commit();*/
 
         } else if (id == R.id.Parking) {
             ParkingFragment fragment = new ParkingFragment();
-            android.support.v4.app.FragmentTransaction fragmentTransaction =
+            replaceFragment(fragment);
+         /*   android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.event_frame, fragment);
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
+        }*/
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
-   /* @Override
-    public void onPause() {
-        if (mAdView != null) {
-            mAdView.pause();
-        }
-        super.onPause();
-    }
-    @Override
-    public void onResume() {
-        super.onResume();
-        if (mAdView != null) {
-            mAdView.resume();
+
+    private void replaceFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.event_frame, fragment, fragmentTag);
+            ft.addToBackStack(backStateName);
+            ft.commit();
         }
     }
 
-    @Override
-    public void onDestroy() {
-        if (mAdView != null) {
-            mAdView.destroy();
-        }
-        super.onDestroy();
-    }*/
+    /* @Override
+     public void onPause() {
+         if (mAdView != null) {
+             mAdView.pause();
+         }
+         super.onPause();
+     }
+     @Override
+     public void onResume() {
+         super.onResume();
+         if (mAdView != null) {
+             mAdView.resume();
+         }
+     }
+
+     @Override
+     public void onDestroy() {
+         if (mAdView != null) {
+             mAdView.destroy();
+         }
+         super.onDestroy();
+     }*/
     @Override
     public void onFragmentInteraction(Uri uri) {
 

@@ -1,6 +1,7 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -69,31 +70,53 @@ public class ViewFaresFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-         View rootView=inflater.inflate(R.layout.fragment_view_fares, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_view_fares, container, false);
 
         getActivity().setTitle("Fares");
-        TextView card,coin,noOfStations,timeTaken;
+        TextView card, coin, noOfStations, timeTaken, origin, desti;
 
         card = (TextView) rootView.findViewById(R.id.textView3);
         coin = (TextView) rootView.findViewById(R.id.textView4);
 
+
+        TextView cardfare = (TextView) rootView.findViewById(R.id.cardfare);
+        TextView coinfare = (TextView) rootView.findViewById(R.id.coinfare);
+
+
+        origin = (TextView) rootView.findViewById(R.id.origin);
+
         Bundle bundle = this.getArguments();
         String from = bundle.getString("from");
         String to = bundle.getString("to");
-        String line =bundle.getString("line");
+        String line = bundle.getString("line");
         FaresVO vo = new FaresVO();
-        List<String> list=vo.getFares(from,to,line);
+        origin.setText(from+" - "+to);
+        origin.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
 
-        card.setText("Token cost from  "+from+" to "+to+" is "+list.get(0));
-        coin.setText("Varshik Card Cost from "+from+" to "+to+" is "+list.get(1));
+        origin.setTypeface(Typeface.DEFAULT_BOLD);
+        List<String> list = vo.getFares(from, to, line);
+        card.setTypeface(Typeface.DEFAULT_BOLD);
+        coin.setTypeface(Typeface.DEFAULT_BOLD);
+        card.setTextSize(30);
+        coin.setTextSize(30);
+        card.setText("Token cost " );
+        coin.setText("Varshik Card " );
 
-        noOfStations  = (TextView) rootView.findViewById(R.id.noOfStations);
-        noOfStations.setText("Number of stops to reach destination "+ list.get(2)+"");
+        cardfare.setText(getResources().getString(R.string.rs)+" "+list.get(0));
+        coinfare.setText( getResources().getString(R.string.rs)+" "+ list.get(1));
+
+        cardfare.setTypeface(Typeface.DEFAULT_BOLD);
+        coinfare.setTypeface(Typeface.DEFAULT_BOLD);
+        cardfare.setTextSize(30);
+        coinfare.setTextSize(30);
+        noOfStations = (TextView) rootView.findViewById(R.id.noOfStations);
+        noOfStations.setText("you need to get down at the " + list.get(2) + " station");
+        noOfStations.setTextSize(15);
 
         timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
 
         timeTaken.setText("Doors open on right");
-
+        noOfStations.setTextSize(15);
 
         return rootView;
     }

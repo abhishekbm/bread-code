@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F7"
+    android:id="@+id/farefrag"
     tools:context="shakestudios.traintimer.Fragments.FaresFragment">
 
     <AutoCompleteTextView
@@ -30,6 +31,8 @@
         android:hint="Destination"
         android:dropDownHeight="500px"
         android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColorHighlight="@color/Black"
+        android:textCursorDrawable="@null"
         android:textSize="18sp"
         android:focusableInTouchMode="true" >
     </AutoCompleteTextView>

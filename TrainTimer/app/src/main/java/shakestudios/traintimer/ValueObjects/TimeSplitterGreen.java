@@ -25,7 +25,7 @@ public class TimeSplitterGreen {
         Timestamp Rajajinagar = new Timestamp(calulateTime(startTime, 13, 20));
         Timestamp Kuvempu_Road = new Timestamp(calulateTime(startTime, 11, 00));
         Timestamp Srirampura = new Timestamp(calulateTime(startTime, 8, 0));
-        Timestamp Sampige_Road = new Timestamp(calulateTime(startTime, 5, 20));
+        Timestamp Sampige_Road = new Timestamp(calulateTime(startTime, 0, 0));
 
         timings.put("1", Nagasandra.getTime());
         timings.put("2", Dasarahalli.getTime());

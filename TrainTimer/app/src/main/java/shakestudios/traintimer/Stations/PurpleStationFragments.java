@@ -3,11 +3,17 @@ package shakestudios.traintimer.Stations;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ExpandableListView;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,6 +21,7 @@ import org.json.JSONObject;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -35,9 +42,9 @@ public class PurpleStationFragments extends Fragment {
 
     TimingListViewAdpter listAdapter;
     ExpandableListView expListView;
-
+    Handler handler;
     List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
+    HashMap<String, List<Calendar>> listDataChild;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,7 +54,7 @@ public class PurpleStationFragments extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    View rootView;
     private OnFragmentInteractionListener mListener;
 
     public PurpleStationFragments() {
@@ -85,14 +92,66 @@ public class PurpleStationFragments extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_purple_station_fragments, container, false);
+        rootView = inflater.inflate(R.layout.fragment_purple_station_fragments, container, false);
 
-        // get the listview
+        final TextView timer = (TextView) rootView.findViewById(R.id.timerpurple);
+        final Spinner spinner = (Spinner) rootView.findViewById(R.id.spinnerpurple);
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        adapter.add("Byappanhalli");
+        adapter.add("Swami Vivekananda Road");
+        adapter.add("Indiranagar");
+        adapter.add("Halasuru");
+        adapter.add("Trinity");
+        adapter.add("Mahatma Gandhi Road");
+        adapter.add("Cubbon Park");
+        adapter.add("Vidhana Soudha");
+        adapter.add("Sir M. Visveshwaraya");
+        adapter.add("Majestic");
+        adapter.add("City Railway Station");
+        adapter.add("Magadi Road");
+        adapter.add("Hosahalli");
+        adapter.add("Vijayanagar");
+        adapter.add("Attiguppe");
+        adapter.add("Deepanjali Nagar");
+        adapter.add("Mysore Road");
+        spinner.setAdapter(adapter);
+      /*  handler = new Handler();*/
+        // Define the code block to be executed
+
+       /* listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, listDataChild);*/
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                prepareListData("first");
+                String selected = spinner.getSelectedItem().toString();
+                if (listDataChild.containsKey(selected)) {
+                    List<Calendar> list = listDataChild.get(selected);
+
+                    Calendar cal = list.get(0);
+                    String hour = String.valueOf(cal.get(Calendar.HOUR_OF_DAY));
+                    String minute = String.valueOf(cal.get(Calendar.MINUTE));
+                    StringBuilder builder = new StringBuilder();
+                    builder.append(hour).append(" : ").append(minute);
+
+                    timer.setText(builder.toString());
+                } else {
+                    Snackbar.make(rootView, "Please Choose a line", Snackbar.LENGTH_SHORT)
+                            .setAction("Action", null).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+       /* // get the listview
         expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp1);
 
         // preparing list data
 
-        prepareListData();
+        prepareListData("");
 
         listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, listDataChild);
 
@@ -138,19 +197,59 @@ public class PurpleStationFragments extends Fragment {
             @Override
             public boolean onChildClick(ExpandableListView parent, View v,
                                         int groupPosition, int childPosition, long id) {
-              /*  Toast.makeText(
+              *//*  Toast.makeText(
                         getApplicationContext(),
                         listDataHeader.get(groupPosition)
                                 + " : "
                                 + listDataChild.get(
                                 listDataHeader.get(groupPosition)).get(
                                 childPosition), Toast.LENGTH_SHORT)
-                        .show();*/
+                        .show();*//*
                 return false;
             }
-        });
+        });*/
 
         return rootView;
+    }
+
+  /*  private Runnable runnableCode = new Runnable() {
+        @Override
+        public void run() {
+            // Do something here on the main thread
+            Calendar cal = Calendar.getInstance();
+            Calendar first = Calendar.getInstance();
+            first.set(Calendar.HOUR_OF_DAY, 8);
+            if (cal.after(first)) {
+
+                prepareListData("first");
+                HashMap<String, List<Calendar>> newdata = method(listDataChild);
+                listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, newdata);
+
+                // setting list adapter
+                expListView.setAdapter(listAdapter);
+            }
+            // Repeat this the same runnable code block again another 2 seconds
+            handler.postDelayed(runnableCode, 20000);
+        }
+    };*/
+
+    private HashMap<String, List<Calendar>> method(HashMap<String, List<Calendar>> listDataChild) {
+
+        ArrayList<List<Calendar>> lisIterator = (ArrayList<List<Calendar>>) listDataChild.values();
+        Calendar cal = Calendar.getInstance();
+        for (int i = 0; i < lisIterator.size(); i++) {
+            ArrayList<Calendar> timings = (ArrayList<Calendar>) lisIterator.get(i);
+            if (timings.get(0).after(cal)) {
+
+                Calendar current = timings.get(0);
+                current.add(Calendar.MINUTE, 7);
+                timings.add(current);
+            }
+
+            listDataChild.put(listDataHeader.get(i), timings);
+        }
+
+        return listDataChild;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -193,46 +292,74 @@ public class PurpleStationFragments extends Fragment {
     }
 
 
-    /*
-    * Preparing the list data
-    */
-    private void prepareListData() {
+    private void prepareListData(String flag) {
         listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataChild = new HashMap<String, List<Calendar>>();
 
-        JSONObject response = getJSON();
+        JSONObject response = getJSON(flag);
         Iterator it = response.keys();
         while (it.hasNext()) {
             String station = (String) it.next();
             listDataHeader.add(station);
         }
 
-
-        Calendar cal = Calendar.getInstance();
+/*        Calendar cal = Calendar.getInstance();*/
         for (int i = 0; i < listDataHeader.size(); i++) {
 
             try {
-                cal.setTimeInMillis(response.getLong(listDataHeader.get(i)));
+
+                Date date = new Date();
+                date.setTime(response.getLong(listDataHeader.get(i)));
+                Calendar cal = DateToCalendar(date);
+                List<Calendar> timings = new ArrayList<Calendar>();
+                timings.add(cal);
+                listDataChild.put(listDataHeader.get(i), timings);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            int hour = cal.get(Calendar.HOUR);
-            int minute = cal.get(Calendar.MINUTE);
-            StringBuilder build = new StringBuilder();
-            build.append(hour).append(":").append(minute);
-            List<String> timings = new ArrayList<String>();
-            timings.add(build.toString());
-            listDataChild.put(listDataHeader.get(i), timings);
+
+
         }
     }
 
-    private JSONObject getJSON() {
+    // Create the Handler object (on the main thread by default)
+    public static Calendar DateToCalendar(Date date) {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        return cal;
+    }
+
+    private JSONObject getJSON(String flag) {
+
 
         JSONObject json = new JSONObject();
         List<String> list = new ArrayList<String>();
         Calendar cal = Calendar.getInstance();
         TimeSplitterPurple purple = new TimeSplitterPurple();
-        HashMap<String, Long> timings = purple.TimeSplitterPurple(new Timestamp(cal.getTimeInMillis()));
+        HashMap<String, Long> timings;
+        if ("first".equalsIgnoreCase(flag)) {
+            Calendar first = Calendar.getInstance();
+            first.set(Calendar.HOUR_OF_DAY, 8);
+            first.set(Calendar.MINUTE, 00);
+            int diff = (int) ((cal.getTimeInMillis() / 60000) - (first.getTimeInMillis() / 60000));
+
+            int number = diff / 7;
+
+            int minutes = (int) (7 * (Math.ceil(Math.abs(diff / 7))));
+
+            first.add(Calendar.MINUTE, minutes);
+            if (first.before(cal)) {
+                int diff1 = (int) ((cal.getTimeInMillis() / 60000) - (first.getTimeInMillis() / 60000));
+                cal.add(Calendar.MINUTE, diff1);
+                timings = purple.TimeSplitterPurple(new Timestamp(cal.getTimeInMillis()));
+            } else {
+
+                timings = purple.TimeSplitterPurple(new Timestamp(first.getTimeInMillis()));
+            }
+        } else {
+            timings = purple.TimeSplitterPurple(new Timestamp(cal.getTimeInMillis()));
+        }
+
         List<String> stations = new ArrayList<String>();
         stations.add("Byappanhalli");
         stations.add("Swami Vivekananda Road");
@@ -251,9 +378,9 @@ public class PurpleStationFragments extends Fragment {
         stations.add("Attiguppe");
         stations.add("Deepanjali Nagar");
         stations.add("Mysore Road");
-        /*Intent intent = getIntent();
+      /*  Intent intent = getIntent();
         String key = intent.getStringExtra("key");
-        if("eastToWest".equalsIgnoreCase(key)){
+        if ("southNorth".equalsIgnoreCase(key)) {
             Collections.reverse(stations);
         }*/
         try {

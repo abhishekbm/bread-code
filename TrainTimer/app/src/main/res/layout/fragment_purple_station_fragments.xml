@@ -3,11 +3,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="shakestudios.traintimer.Stations.PurpleStationFragments">
-    <ExpandableListView
-        android:id="@+id/lvExp1"
-        android:layout_height="match_parent"
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerpurple"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginBottom="90dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/timerpurple"
+        android:layout_gravity="center_vertical|left"
+        android:layout_marginBottom="50dp"
+        android:textSize="@dimen/abc_text_size_large_material" />
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_marginTop="112px"
-        />
+        android:layout_height="66dp"
+        android:text="Please choose your Boarding Station"
+        android:id="@+id/boarding"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="100dp"
+        android:textSize="@dimen/abc_text_size_headline_material" />
 
 </FrameLayout>

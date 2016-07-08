@@ -71,11 +71,11 @@ public class main_fragment extends Fragment {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem items){
+    public boolean onOptionsItemSelected(MenuItem items) {
         int id = items.getItemId();
 
-   if (id == R.id.action_settings) {
-            Intent intent = new Intent(getContext(),About.class);
+        if (id == R.id.action_settings) {
+            Intent intent = new Intent(getContext(), About.class);
             startActivity(intent);
             return true;
         }
@@ -88,15 +88,14 @@ public class main_fragment extends Fragment {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_main_fragment, container, false);
         final Context context = rootView.getContext();
-        Button Timing, Fares,parking;
+        Button Timing, Fares, parking;
         getActivity().setTitle("My Metro");
 
         Timing = (Button) rootView.findViewById(R.id.TimingButton);
 
         Fares = (Button) rootView.findViewById(R.id.FaresButton);
 
-        parking = (Button)rootView.findViewById(R.id.Parking);
-
+        parking = (Button) rootView.findViewById(R.id.Parking);
 
 
         Timing.setOnClickListener(new View.OnClickListener() {
@@ -105,11 +104,12 @@ public class main_fragment extends Fragment {
             public void onClick(View arg0) {
                 getActivity().setTitle("Timings");
                 TimingsFragment fragment = new TimingsFragment();
-                FragmentManager fragmentManager = getFragmentManager();
+                replaceFragment(fragment);
+               /* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
             }
 
         });
@@ -122,11 +122,12 @@ public class main_fragment extends Fragment {
                 getActivity().setTitle("Fares");
 
                 FaresFragment fragment = new FaresFragment();
-                FragmentManager fragmentManager = getFragmentManager();
+                replaceFragment(fragment);
+               /* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
 
             }
 
@@ -139,11 +140,12 @@ public class main_fragment extends Fragment {
 
                 getActivity().setTitle("Parking");
                 ParkingFragment fragment = new ParkingFragment();
-                FragmentManager fragmentManager = getFragmentManager();
+                replaceFragment(fragment);
+               /* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+                fragmentTransaction.commit();*/
             }
 
         });
@@ -151,7 +153,23 @@ public class main_fragment extends Fragment {
 
     }
 
+    private void replaceFragment(Fragment fragment) {
+        String backStateName =  fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null){ //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.event_frame, fragment, fragmentTag);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+
+    }
     // TODO: Rename method, update argument and hook method into UI event
+
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
