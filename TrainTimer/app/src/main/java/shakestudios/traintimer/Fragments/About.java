@@ -10,7 +10,6 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.AdView;
 
 import shakestudios.traintimer.R;
@@ -76,6 +75,7 @@ public class About extends Fragment {
         View rootViw = inflater.inflate(R.layout.fragment_about, container, false);
 
 
+/*
 // Here you'll append the new AdView
         final AdView adView = (AdView) rootViw.findViewById(R.id.adView);
         final AdRequest.Builder adReq = new AdRequest.Builder();
@@ -88,6 +88,7 @@ public class About extends Fragment {
 
         final AdRequest adRequest = adReq.build();
         adView.loadAd(adRequest);
+*/
 
 
 
@@ -100,9 +101,12 @@ public class About extends Fragment {
         getActivity().setTitle("About");
         ListView text = (ListView) rootViw.findViewById(R.id.About);
         adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
+
+        adapter.add("All data provided by this application is subject to change.");
+        adapter.add("The developer is not responsible for any loss or damage of any sort.");
+        adapter.add("Suggestions are welcome.");
+        adapter.add("Mail us at: abhishek_bm@yahoo.com");
         adapter.add("Version 1.0.0");
-        adapter.add("All data provided by this application is subject to change and the developer is not responsible for any damage of any sort.");
-        adapter.add("Suggestions are welcome email us at abhishek_bm@yahoo.com");
         text.setAdapter(adapter);
         return rootViw;
     }

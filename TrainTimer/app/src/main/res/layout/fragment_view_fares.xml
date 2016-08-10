@@ -97,19 +97,25 @@
         android:layout_marginTop="2dp"
         android:layout_gravity="center_vertical|bottom|right"
         android:layout_marginBottom="210dp" />
-    <!--
-        <EditText
-            android:id="@+id/desti"
-            android:layout_width="196dp"
-            android:layout_height="66dp"
-            android:background="@android:color/transparent"
-            android:layout_gravity="right|top"
-            android:layout_marginTop="65dp"
-            android:clickable="false"
-            android:inputType="none"
-            android:enabled="false"
-            android:focusable="false"
-            android:focusableInTouchMode="false"
-            android:gravity="center">
-        </EditText>-->
+
+    <TextView
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/staioninfo"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="right|top"
+        android:gravity="left"
+        android:layout_marginTop="170dp" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Get TImings for this journey"
+        android:id="@+id/timefareButton"
+        android:layout_gravity="right|bottom"
+        android:layout_marginBottom="50dp" />
+
 </FrameLayout>

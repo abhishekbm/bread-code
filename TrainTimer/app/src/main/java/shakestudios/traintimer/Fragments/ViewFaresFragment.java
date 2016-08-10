@@ -5,14 +5,19 @@ import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import java.util.List;
 
 import shakestudios.traintimer.R;
+import shakestudios.traintimer.Stations.GreenStationFragment;
+import shakestudios.traintimer.Stations.PurpleStationFragments;
 import shakestudios.traintimer.ValueObjects.FaresVO;
 
 /**
@@ -73,7 +78,7 @@ public class ViewFaresFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_view_fares, container, false);
 
         getActivity().setTitle("Fares");
-        TextView card, coin, noOfStations, timeTaken, origin, desti;
+        TextView card, coin, noOfStations, timeTaken, origin;
 
         card = (TextView) rootView.findViewById(R.id.textView3);
         coin = (TextView) rootView.findViewById(R.id.textView4);
@@ -82,15 +87,17 @@ public class ViewFaresFragment extends Fragment {
         TextView cardfare = (TextView) rootView.findViewById(R.id.cardfare);
         TextView coinfare = (TextView) rootView.findViewById(R.id.coinfare);
 
+        TextView stationInfo = (TextView) rootView.findViewById(R.id.staioninfo);
+
 
         origin = (TextView) rootView.findViewById(R.id.origin);
 
-        Bundle bundle = this.getArguments();
+        final Bundle bundle = this.getArguments();
         String from = bundle.getString("from");
         String to = bundle.getString("to");
         String line = bundle.getString("line");
         FaresVO vo = new FaresVO();
-        origin.setText(from+" - "+to);
+        origin.setText(from + " - " + to);
         origin.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
 
         origin.setTypeface(Typeface.DEFAULT_BOLD);
@@ -99,26 +106,78 @@ public class ViewFaresFragment extends Fragment {
         coin.setTypeface(Typeface.DEFAULT_BOLD);
         card.setTextSize(30);
         coin.setTextSize(30);
-        card.setText("Token cost " );
-        coin.setText("Varshik Card " );
+        card.setText("Token cost ");
+        coin.setText("Varshik Card ");
 
-        cardfare.setText(getResources().getString(R.string.rs)+" "+list.get(0));
-        coinfare.setText( getResources().getString(R.string.rs)+" "+ list.get(1));
+        cardfare.setText(getResources().getString(R.string.rs) + " " + list.get(0));
+        coinfare.setText(getResources().getString(R.string.rs) + " " + list.get(1));
 
         cardfare.setTypeface(Typeface.DEFAULT_BOLD);
         coinfare.setTypeface(Typeface.DEFAULT_BOLD);
         cardfare.setTextSize(30);
         coinfare.setTextSize(30);
         noOfStations = (TextView) rootView.findViewById(R.id.noOfStations);
-        noOfStations.setText("you need to get down at the " + list.get(2) + " station");
-        noOfStations.setTextSize(15);
+
+        noOfStations.setTextSize(18);
+        noOfStations.setText("Number of stations to Destination ");
+        noOfStations.setTypeface(Typeface.DEFAULT_BOLD);
+        stationInfo.setText(":           " + list.get(2));
+        stationInfo.setTypeface(Typeface.DEFAULT_BOLD);
+        stationInfo.setTextSize(18);
 
         timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
 
         timeTaken.setText("Doors open on right");
-        noOfStations.setTextSize(15);
+
+
+        Button timingButton = (Button) rootView.findViewById(R.id.timefareButton);
+
+        timingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (bundle != null) {
+                    String from = bundle.getString("from");
+                    String to = bundle.getString("to");
+                    String line = bundle.getString("line");
+
+                    if ("green".equalsIgnoreCase(line)) {
+                        GreenStationFragment fragment = new GreenStationFragment();
+                        fragment.setArguments(bundle);
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.event_frame, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    } else {
+                        PurpleStationFragments fragment = new PurpleStationFragments();
+                        fragment.setArguments(bundle);
+                        FragmentManager fragmentManager = getFragmentManager();
+                        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                        fragmentTransaction.replace(R.id.event_frame, fragment);
+                        fragmentTransaction.addToBackStack(null);
+                        fragmentTransaction.commit();
+                    }
+                }
+            }
+        });
 
         return rootView;
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getActivity().getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.event_frame, fragment, fragmentTag);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

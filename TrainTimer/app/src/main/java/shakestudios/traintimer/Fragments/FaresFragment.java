@@ -276,8 +276,8 @@ public class FaresFragment extends Fragment {
             public void onClick(View arg0) {
                 boolean set = false;
 
-                to = origin.getText().toString();
-                from = desti.getText().toString();
+                from = origin.getText().toString();
+                to = desti.getText().toString();
                 if (timingGroup.getCheckedRadioButtonId() == -1) {
                     Snackbar.make(arg0, "Please Choose a Line", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();

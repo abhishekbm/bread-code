@@ -4,29 +4,59 @@
     android:layout_height="match_parent"
     tools:context="shakestudios.traintimer.Stations.PurpleStationFragments">
     <Spinner
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/spinnerpurple"
         android:layout_gravity="left|center_vertical"
         android:layout_marginBottom="90dp" />
 
     <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:text="Small Text"
-        android:id="@+id/timerpurple"
-        android:layout_gravity="center_vertical|left"
-        android:layout_marginBottom="50dp"
-        android:textSize="@dimen/abc_text_size_large_material" />
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@color/Black"
+        android:text="Choose your Boarding Station"
+        android:id="@+id/boarding"
+        android:layout_gravity="center_horizontal|top"
+        android:layout_marginTop="80dp"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:gravity="center"
+        android:background="#f90606" />
+
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="66dp"
-        android:text="Please choose your Boarding Station"
-        android:id="@+id/boarding"
-        android:layout_gravity="center_horizontal|top"
-        android:layout_marginTop="100dp"
-        android:textSize="@dimen/abc_text_size_headline_material" />
+        android:textAppearance="?android:attr/textAppearance"
+        android:textColor="@color/Black"
+        android:text="Next Train arrives at "
+        android:visibility="gone"
+        android:id="@+id/timingView"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:textSize="@dimen/abc_text_size_headline_material"
+        android:gravity="center" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Button"
+        android:id="@+id/home"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="100dp" />
+
+    <TextView
+        android:layout_width="77dp"
+
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text=""
+        android:id="@+id/timerpurple"
+        android:layout_gravity="left|bottom"
+        android:layout_marginBottom="180dp"
+        android:textColor="@color/Black"
+        android:textSize="@dimen/abc_text_size_large_material"
+        android:textStyle="bold"
+        android:layout_marginLeft="20dp" />
 
 </FrameLayout>

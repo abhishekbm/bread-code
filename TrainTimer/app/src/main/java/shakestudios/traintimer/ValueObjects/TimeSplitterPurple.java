@@ -1,7 +1,7 @@
 package shakestudios.traintimer.ValueObjects;
 
 import java.sql.Timestamp;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 /**
  * Created by abbm on 5/28/2016.
@@ -9,9 +9,9 @@ import java.util.HashMap;
 public class TimeSplitterPurple {
 
 
-    public HashMap<String, Long> TimeSplitterPurple(Timestamp startTime) {
+    public LinkedHashMap<String, Long> TimeSplitterPurple(Timestamp startTime) {
 
-        HashMap<String, Long> timings = new HashMap<String, Long>();
+        LinkedHashMap<String, Long> timings = new LinkedHashMap<String, Long>();
         Timestamp byappanhalli = new Timestamp(calulateTime(startTime, 38, 00));
         Timestamp swami_vivekananda_road = new Timestamp(calulateTime(startTime, 25, 30));
         Timestamp indiranagar = new Timestamp(calulateTime(startTime, 31, 0));
