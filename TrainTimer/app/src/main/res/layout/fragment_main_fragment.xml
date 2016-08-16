@@ -8,7 +8,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Fares"
+        android:text=" Fares "
         android:id="@+id/FaresButton"
         android:layout_below="@+id/TimingButton"
         android:layout_centerHorizontal="true"
@@ -18,7 +18,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Get Timings"
+        android:text=" Timings "
         android:id="@+id/TimingButton"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"

@@ -121,13 +121,13 @@ public class ViewFaresFragment extends Fragment {
         noOfStations.setTextSize(18);
         noOfStations.setText("Number of stations to Destination ");
         noOfStations.setTypeface(Typeface.DEFAULT_BOLD);
-        stationInfo.setText(":           " + list.get(2));
+        stationInfo.setText(":           " + list.get(3));
         stationInfo.setTypeface(Typeface.DEFAULT_BOLD);
         stationInfo.setTextSize(18);
 
         timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
 
-        timeTaken.setText("Doors open on right");
+        timeTaken.setText("Doors open on "+list.get(2));
 
 
         Button timingButton = (Button) rootView.findViewById(R.id.timefareButton);

@@ -106,7 +106,7 @@ public class About extends Fragment {
         adapter.add("The developer is not responsible for any loss or damage of any sort.");
         adapter.add("Suggestions are welcome.");
         adapter.add("Mail us at: abhishek_bm@yahoo.com");
-        adapter.add("Version 1.0.0");
+        adapter.add("Version: 1.0.0");
         text.setAdapter(adapter);
         return rootViw;
     }

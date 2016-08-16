@@ -51,8 +51,10 @@ public class PurpleStationFragments extends Fragment {
     ExpandableListView expListView;
     Handler handler;
     List<String> listDataHeader;
+    Runnable runnableCode = null;
     HashMap<String, List<Calendar>> listDataChild;
-
+    Calendar cal = Calendar.getInstance();
+    int handlecount=0;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -62,6 +64,7 @@ public class PurpleStationFragments extends Fragment {
     private String mParam1;
     private String mParam2;
     View rootView;
+    static String handleFlag="true";
     private OnFragmentInteractionListener mListener;
 
     public PurpleStationFragments() {
@@ -109,10 +112,9 @@ public class PurpleStationFragments extends Fragment {
 
         final TextView timingsView = (TextView) rootView.findViewById(R.id.timingView);
 
+       // handler = new Handler();
 
-      /*  handler = new Handler();*/
         // Define the code block to be executed
-
        /* listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, listDataChild);*/
         Bundle bundle = this.getArguments();
         final Button home = (Button) rootView.findViewById(R.id.home);
@@ -147,7 +149,7 @@ public class PurpleStationFragments extends Fragment {
             timingsView.setText("Next train arrives at " + from + " at ");
             timingsView.setTextSize(30);
             boarding.setVisibility(View.GONE);
-            long response = prepareListData("first", "");
+            long response = prepareListData("first", "",handleFlag);
 
             Date date = new Date(response);
 
@@ -198,6 +200,7 @@ public class PurpleStationFragments extends Fragment {
         spinner.setAdapter(adapter);
 
 
+
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             int count = 0;
 
@@ -220,7 +223,7 @@ public class PurpleStationFragments extends Fragment {
                     timer.setTextSize(45);
 
                     String selected = spinner.getSelectedItem().toString();
-                    long time = prepareListData("first", selected);
+                    long time = prepareListData("first", selected, handleFlag);
                 /*    if (listDataChild.containsKey(selected)) {
                         List<Calendar> list = listDataChild.get(selected);
 */
@@ -243,14 +246,49 @@ public class PurpleStationFragments extends Fragment {
                     }*/
                 }
                 count++;
+            /*    runnableCode = new Runnable() {
 
+                    @Override
+                    public void run() {
+                        // Do something here on the main thread
+
+
+                      if(handlecount>1)
+                      {
+                          String selected = spinner.getSelectedItem().toString();
+                          handleFlag = "false";
+                          long time = prepareListData("first", selected,handleFlag);
+
+                          Date date = new Date(time);
+
+                          String hour = String.valueOf(date.getHours());
+                          String minute = String.valueOf(date.getMinutes());
+                          if (Integer.parseInt(minute) < 10) {
+                              minute = "0" + minute;
+                          }
+                          StringBuilder builder = new StringBuilder();
+                          builder.append(hour).append(" : ").append(minute);
+                          timer.setVisibility(View.VISIBLE);
+                          timer.setText(builder.toString());
+
+                      }
+                        handlecount++;
+                        // Repeat this the same runnable code block again another 2 seconds
+                        handler.postDelayed(runnableCode, 20000);
+                    }
+                };
+                handler.postDelayed(runnableCode, 20000);
+            }*/
             }
-
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
 
             }
         });
+
+
+
+
        /* // get the listview
         expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp1);
 
@@ -317,27 +355,7 @@ public class PurpleStationFragments extends Fragment {
         return rootView;
     }
 
-  /*  private Runnable runnableCode = new Runnable() {
-        @Override
-        public void run() {
-            // Do something here on the main thread
-            Calendar cal = Calendar.getInstance();
-            Calendar first = Calendar.getInstance();
-            first.set(Calendar.HOUR_OF_DAY, 8);
-            if (cal.after(first)) {
-
-                prepareListData("first");
-                HashMap<String, List<Calendar>> newdata = method(listDataChild);
-                listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, newdata);
-
-                // setting list adapter
-                expListView.setAdapter(listAdapter);
-            }
-            // Repeat this the same runnable code block again another 2 seconds
-            handler.postDelayed(runnableCode, 20000);
-        }
-    };*/
-
+/*
     private HashMap<String, List<Calendar>> method(HashMap<String, List<Calendar>> listDataChild) {
 
         ArrayList<List<Calendar>> lisIterator = (ArrayList<List<Calendar>>) listDataChild.values();
@@ -355,7 +373,7 @@ public class PurpleStationFragments extends Fragment {
         }
 
         return listDataChild;
-    }
+    }*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -397,11 +415,11 @@ public class PurpleStationFragments extends Fragment {
     }
 
 
-    private long prepareListData(String flag, String selectedStation) {
+    private long prepareListData(String flag, String selectedStation, String handler) {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<Calendar>>();
 
-        long response = getJSON(flag, selectedStation);
+        long response = getJSON(flag, selectedStation,handler);
 /*
 
 
@@ -441,12 +459,14 @@ public class PurpleStationFragments extends Fragment {
         return cal;
     }
 
-    private long getJSON(String flag, String selectedStation) {
+    private long getJSON(String flag, String selectedStation, String handler) {
 
 
         JSONObject json = new JSONObject();
         List<String> list = new ArrayList<String>();
-        Calendar cal = Calendar.getInstance();
+        if (!"false".equalsIgnoreCase(handler)) {
+            cal = Calendar.getInstance();
+        }
         TimeSplitterPurple purple = new TimeSplitterPurple();
         LinkedHashMap<Integer, LinkedHashMap<String, Long>> ultimate = new LinkedHashMap<>();
         LinkedHashMap<String, Long> timings;

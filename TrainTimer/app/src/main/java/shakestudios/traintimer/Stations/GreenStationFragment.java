@@ -53,6 +53,10 @@ public class GreenStationFragment extends Fragment {
     Handler handler;
     List<String> listDataHeader;
     HashMap<String, List<Calendar>> listDataChild;
+    Runnable runnableCode = null;
+    Calendar cal = Calendar.getInstance();
+    int handlecount=0;
+    String handleFlag="true";
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -145,7 +149,7 @@ public class GreenStationFragment extends Fragment {
             timingsView.setText("Next train arrives at " + from + " at ");
             timingsView.setTextSize(30);
             boarding.setVisibility(View.GONE);
-            long response = prepareListData("first", "");
+            long response = prepareListData("first", "",handleFlag);
 
             Date date = new Date(response);
 
@@ -190,10 +194,35 @@ public class GreenStationFragment extends Fragment {
         adapter1.add("Srirampura");
         adapter1.add("Sampige Road");
         spinner.setAdapter(adapter1);
-      /*  handler = new Handler();*/
-        // Define the code block to be executed
+        handler = new Handler();
 
-       /* listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, listDataChild);*/
+        runnableCode = new Runnable() {
+
+            @Override
+            public void run() {
+                // Do something here on the main thread
+
+
+                String selected = spinner.getSelectedItem().toString();
+                handleFlag="false";
+                long time = prepareListData("first", selected,handleFlag);
+
+                Date date = new Date(time);
+
+                String hour = String.valueOf(date.getHours());
+                String minute = String.valueOf(date.getMinutes());
+                if (Integer.parseInt(minute) < 10) {
+                    minute = "0" + minute;
+                }
+                StringBuilder builder = new StringBuilder();
+                builder.append(hour).append(" : ").append(minute);
+                timer.setVisibility(View.VISIBLE);
+                timer.setText(builder.toString());
+
+                handler.postDelayed(runnableCode, 20000);
+            }
+        };
+        handler.postDelayed(runnableCode, 20000);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             int count = 0;
@@ -216,7 +245,7 @@ public class GreenStationFragment extends Fragment {
                     timer.setTextColor(getResources().getColor(android.R.color.black));
                     timer.setTextSize(45);
                     String selected = spinner.getSelectedItem().toString();
-                    long time = prepareListData("first", selected);
+                    long time = prepareListData("first", selected,handleFlag);
 
                     Date date = new Date(time);
 
@@ -324,7 +353,7 @@ public class GreenStationFragment extends Fragment {
         }
     };*/
 
-    private HashMap<String, List<Calendar>> method(HashMap<String, List<Calendar>> listDataChild) {
+/*    private HashMap<String, List<Calendar>> method(HashMap<String, List<Calendar>> listDataChild) {
 
         ArrayList<List<Calendar>> lisIterator = new ArrayList<List<Calendar>>(listDataChild.values());
         Calendar cal = Calendar.getInstance();
@@ -342,7 +371,7 @@ public class GreenStationFragment extends Fragment {
         }
 
         return listDataChild;
-    }
+    }*/
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -383,11 +412,11 @@ public class GreenStationFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private long prepareListData(String flag, String selectedStation) {
+    private long prepareListData(String flag, String selectedStation, String handler) {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<Calendar>>();
 
-        long response = getJSON(flag, selectedStation);
+        long response = getJSON(flag, selectedStation,handler);
        /* Iterator it = response.keys();
         while (it.hasNext()) {
             String station = (String) it.next();
@@ -420,12 +449,14 @@ public class GreenStationFragment extends Fragment {
         return cal;
     }
 
-    private long getJSON(String flag, String selectedStation) {
+    private long getJSON(String flag, String selectedStation, String handler) {
 
 
         JSONObject json = new JSONObject();
         List<String> list = new ArrayList<String>();
-        Calendar cal = Calendar.getInstance();
+        if (!"false".equalsIgnoreCase(handler)) {
+            cal = Calendar.getInstance();
+        }
         TimeSplitterGreen purple = new TimeSplitterGreen();
         LinkedHashMap<Integer, LinkedHashMap<String, Long>> ultimate = new LinkedHashMap<>();
         LinkedHashMap<String, Long> timings;
