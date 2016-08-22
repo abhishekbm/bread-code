@@ -1,7 +1,6 @@
 package shakestudios.traintimer;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,8 +14,7 @@ import android.widget.Button;
 
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
-import shakestudios.traintimer.Fragments.TimingsFragment;
-import shakestudios.traintimer.Util.About;
+import shakestudios.traintimer.Stations.RouteFragment;
 
 
 /**
@@ -75,8 +73,7 @@ public class main_fragment extends Fragment {
         int id = items.getItemId();
 
         if (id == R.id.action_settings) {
-            Intent intent = new Intent(getContext(), About.class);
-            startActivity(intent);
+
             return true;
         }
         return super.onOptionsItemSelected(items);
@@ -103,7 +100,7 @@ public class main_fragment extends Fragment {
             @Override
             public void onClick(View arg0) {
                 getActivity().setTitle("Timings");
-                TimingsFragment fragment = new TimingsFragment();
+                RouteFragment fragment = new RouteFragment();
                 replaceFragment(fragment);
                /* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();

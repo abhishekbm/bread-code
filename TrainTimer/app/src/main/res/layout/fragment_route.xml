@@ -1,0 +1,61 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".navigationAcivity">
+
+    <!-- TODO: Update blank fragment layout -->
+    <AutoCompleteTextView
+        android:id="@+id/textView5"
+        android:layout_width="230dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|top"
+        android:dropDownHeight="500px"
+        android:inputType="textPhonetic"
+        android:hint="Origin"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="18sp"
+        android:focusableInTouchMode="true"
+        android:layout_marginTop="80dp"
+        android:elevation="5dp">
+    </AutoCompleteTextView>
+
+
+    <Button
+        android:layout_width="131dp"
+        android:layout_height="82dp"
+        android:text="Route It"
+        android:id="@+id/routeButton"
+        android:layout_gravity="right|top"
+        android:layout_marginTop="100dp"
+        />
+
+    <ListView
+        android:id="@+id/routeStation"
+        android:layout_width="match_parent"
+        android:layout_height="383dp"
+        android:layout_gravity="left|bottom"
+        android:layout_marginTop="65dp"
+        android:text="This is the about page" />
+
+    <AutoCompleteTextView
+        android:id="@+id/textView6"
+        android:layout_width="230dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="120dp"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|top"
+        android:inputType="textPhonetic"
+        android:hint="Destination"
+        android:dropDownHeight="500px"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textColorHighlight="@color/Black"
+        android:textCursorDrawable="@null"
+        android:textSize="18sp"
+        android:focusableInTouchMode="true"
+        android:layout_marginBottom="90dp"
+        android:elevation="5dp" >
+    </AutoCompleteTextView>
+
+</FrameLayout>

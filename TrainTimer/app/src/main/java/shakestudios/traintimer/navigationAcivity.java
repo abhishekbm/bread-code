@@ -28,12 +28,13 @@ import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
 import shakestudios.traintimer.Stations.GreenStationFragment;
 import shakestudios.traintimer.Stations.PurpleStationFragments;
+import shakestudios.traintimer.Stations.RouteFragment;
 
 public class navigationAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GreenLineFragment.OnFragmentInteractionListener, GreenStationFragment.OnFragmentInteractionListener
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
-        , ParkingFragment.OnFragmentInteractionListener {
+        , ParkingFragment.OnFragmentInteractionListener,RouteFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -100,7 +101,7 @@ public class navigationAcivity extends AppCompatActivity
                 getSupportFragmentManager().popBackStack();
             } else if (!doubleBackToExitPressedOnce) {
                 this.doubleBackToExitPressedOnce = true;
-                Toast.makeText(this, "Please click BACK again to exit.", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Press BACK again to exit.", Toast.LENGTH_SHORT).show();
 
                 new Handler().postDelayed(new Runnable() {
 
@@ -154,7 +155,7 @@ public class navigationAcivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.Timings) {
-            TimingsFragment fragment = new TimingsFragment();
+            RouteFragment fragment = new RouteFragment();
             replaceFragment(fragment);
           /*  android.support.v4.app.FragmentTransaction fragmentTransaction =
                     getSupportFragmentManager().beginTransaction();
