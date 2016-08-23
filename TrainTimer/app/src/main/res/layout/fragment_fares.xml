@@ -58,19 +58,22 @@
             android:layout_height="wrap_content"
             android:buttonTint="@color/Purple"
             android:text="Purple Line"
+            android:textColor="@color/Purple"
             android:layout_marginRight="50dp"
-            android:layout_marginLeft="40dp"
+            android:layout_marginLeft="25dp"
             android:layout_marginBottom="80dp"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="80dp"
+            android:textSize="20dp" />
 
         <RadioButton
             android:id="@+id/GreenRadio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
             android:buttonTint="@color/Green"
+            android:textColor="@color/Green"
             android:text="Green Line"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="80dp"
+            android:textSize="20dp" />
 
 
     </RadioGroup>

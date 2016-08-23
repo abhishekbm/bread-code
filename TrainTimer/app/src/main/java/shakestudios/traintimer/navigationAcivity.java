@@ -34,7 +34,7 @@ public class navigationAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GreenLineFragment.OnFragmentInteractionListener, GreenStationFragment.OnFragmentInteractionListener
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
-        , ParkingFragment.OnFragmentInteractionListener,RouteFragment.OnFragmentInteractionListener {
+        , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -73,7 +73,7 @@ public class navigationAcivity extends AppCompatActivity
         navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-       // getSupportFragmentManager().addOnBackStackChangedListener(getListener());
+        // getSupportFragmentManager().addOnBackStackChangedListener(getListener());
 
     }
 
@@ -181,7 +181,31 @@ public class navigationAcivity extends AppCompatActivity
             fragmentTransaction.addToBackStack(null);
             fragmentTransaction.commit();
         }*/
+        } else if (id == R.id.HelpLine) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:1800-425-12345"));
+            startActivity(intent);
         }
+        else if (id == R.id.HelpLine) {
+            Intent intent = new Intent(Intent.ACTION_DIAL);
+            intent.setData(Uri.parse("tel:1800-425-12345"));
+            startActivity(intent);
+        }else if (id == R.id.EmailBMRCL) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setType("message/rfc822");
+            Uri data = Uri.parse("mailto:travelhelp@bmrc.co.in?subject=" + "Suggestion for Better Travel" + "&body=" + "");
+            intent.setData(data);
+            startActivity(intent);
+        }
+        else if (id == R.id.emailDev) {
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setType("message/rfc822");
+            Uri data = Uri.parse("mailto:abhishek_bm@yahoo.com?subject=" + "Suggestions for My Metro" + "&body=" + "");
+            intent.setData(data);
+            startActivity(intent);
+        }
+
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

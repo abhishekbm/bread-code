@@ -6,14 +6,16 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.CardView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import shakestudios.traintimer.Fragments.FaresFragment;
-import shakestudios.traintimer.Fragments.ParkingFragment;
+import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Stations.RouteFragment;
 
 
@@ -86,8 +88,9 @@ public class main_fragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main_fragment, container, false);
         final Context context = rootView.getContext();
         Button Timing, Fares, parking;
-        getActivity().setTitle("My Metro");
 
+        getActivity().setTitle("My Metro");
+/*
         Timing = (Button) rootView.findViewById(R.id.TimingButton);
 
         Fares = (Button) rootView.findViewById(R.id.FaresButton);
@@ -102,11 +105,11 @@ public class main_fragment extends Fragment {
                 getActivity().setTitle("Timings");
                 RouteFragment fragment = new RouteFragment();
                 replaceFragment(fragment);
-               /* FragmentManager fragmentManager = getFragmentManager();
+               *//* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
+                fragmentTransaction.commit();*//*
             }
 
         });
@@ -120,11 +123,11 @@ public class main_fragment extends Fragment {
 
                 FaresFragment fragment = new FaresFragment();
                 replaceFragment(fragment);
-               /* FragmentManager fragmentManager = getFragmentManager();
+               *//* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
+                fragmentTransaction.commit();*//*
 
             }
 
@@ -138,26 +141,80 @@ public class main_fragment extends Fragment {
                 getActivity().setTitle("Parking");
                 ParkingFragment fragment = new ParkingFragment();
                 replaceFragment(fragment);
-               /* FragmentManager fragmentManager = getFragmentManager();
+               *//* FragmentManager fragmentManager = getFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
                 fragmentTransaction.replace(R.id.event_frame, fragment);
                 fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
+                fragmentTransaction.commit();*//*
             }
 
-        });
+        });*/
+
+        CardView TimingsCard = (CardView) rootView.findViewById(R.id.TimingsCard);
+        CardView RouteCard = (CardView) rootView.findViewById(R.id.RouteCard);
+        CardView FareCard = (CardView) rootView.findViewById(R.id.FareCard);
+
+        TextView route = (TextView) rootView.findViewById(R.id.routeView);
+        TextView timing = (TextView) rootView.findViewById(R.id.timingsView);
+        TextView fares = (TextView) rootView.findViewById(R.id.faresView);
+
+        route.setText("route");
+        timing.setText("timing");
+        fares.setText("fares");
+
+        TimingsCard.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View arg0) {
+
+                                         getActivity().setTitle("Timings");
+                                         TimingsFragment fragment = new TimingsFragment();
+                                         replaceFragment(fragment);
+
+                                     }
+                                 }
+
+        );
+
+        RouteCard.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View arg0) {
+
+                                         getActivity().setTitle("Route");
+                                         RouteFragment fragment = new RouteFragment();
+                                         replaceFragment(fragment);
+
+                                     }
+                                 }
+
+        );
+
+        FareCard.setOnClickListener(new View.OnClickListener() {
+                                     @Override
+                                     public void onClick(View arg0) {
+
+                                         getActivity().setTitle("Fares");
+                                         FaresFragment fragment = new FaresFragment();
+                                         replaceFragment(fragment);
+
+                                     }
+                                 }
+
+        );
+
+
+
         return rootView;
 
     }
 
     private void replaceFragment(Fragment fragment) {
-        String backStateName =  fragment.getClass().getName();
+        String backStateName = fragment.getClass().getName();
         String fragmentTag = backStateName;
 
         FragmentManager manager = getActivity().getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate (backStateName, 0);
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
 
-        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null){ //fragment not in back stack, create it.
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
             FragmentTransaction ft = manager.beginTransaction();
             ft.replace(R.id.event_frame, fragment, fragmentTag);
             ft.addToBackStack(backStateName);
