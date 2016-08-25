@@ -1,0 +1,1159 @@
+{
+  "fares": [{
+    "station": "Mysore Road",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Majestic"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Trinity"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "38",
+      "card_price": "32.30",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "40",
+      "card_price": "34",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Deepanjali Nagar",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Majestic"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Trinity"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "38",
+      "card_price": "32.30",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Attiguppe",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "	8.50",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "	8.50",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Majestic"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Trinity"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Vijayanagar",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Majestic"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Trinity"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Hosahalli",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Majestic"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Trinity"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Magadi Road",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Majestic"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Trinity"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "City Railway Station",
+    "doors":"right",
+    "cost": [{
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Majestic"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Trinity"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Majestic",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Trinity"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Sir M. Visveshwaraya",
+    "doors":"right",
+    "cost": [{
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Majestic"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Trinity"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Vidhana Soudha",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Majestic"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50	",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50	",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Trinity"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Cubbon Park",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Majestic"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Trinity"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Mahatma Gandhi Road",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Majestic"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Trinity"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Trinity",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Majestic"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Halasuru",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Majestic"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Trinity"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Indiranagar",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Majestic"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Trinity"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Swami Vivekananda Road",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Majestic"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Trinity"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "38",
+      "card_price": "32.30",
+      "station": "Mysore Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Byappanhalli"
+    }]
+  }, {
+    "station": "Byappanhalli",
+    "doors":"left",
+    "cost": [{
+      "coin_price": "38",
+      "card_price": "32.30",
+      "station": "Deepanjali Nagar"
+    }, {
+      "coin_price": "36",
+      "card_price": "30.60",
+      "station": "Attiguppe"
+    }, {
+      "coin_price": "34",
+      "card_price": "28.90",
+      "station": "Vijayanagar"
+    }, {
+      "coin_price": "32",
+      "card_price": "27.20",
+      "station": "Hosahalli"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Magadi Road"
+    }, {
+      "coin_price": "28",
+      "card_price": "23.80",
+      "station": "City Railway Station"
+    }, {
+      "coin_price": "26",
+      "card_price": "22.10",
+      "station": "Majestic"
+    }, {
+      "coin_price": "24",
+      "card_price": "20.40",
+      "station": "Sir M. Visveshwaraya"
+    }, {
+      "coin_price": "22",
+      "card_price": "18.70",
+      "station": "Vidhana Soudha"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Cubbon Park"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Mahatma Gandhi Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Trinity"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Halasuru"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Indiranagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Swami Vivekananda Road"
+    }, {
+      "coin_price": "40",
+      "card_price": "34",
+      "station": "Mysore Road"
+    }]
+  }]
+}

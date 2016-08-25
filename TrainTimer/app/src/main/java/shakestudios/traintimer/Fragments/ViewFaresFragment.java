@@ -101,7 +101,7 @@ public class ViewFaresFragment extends Fragment {
         origin.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
 
         origin.setTypeface(Typeface.DEFAULT_BOLD);
-        List<String> list = vo.getFares(from, to, line);
+        List<String> list = vo.getFares(from, to, line,getActivity().getApplicationContext());
         card.setTypeface(Typeface.DEFAULT_BOLD);
         coin.setTypeface(Typeface.DEFAULT_BOLD);
         card.setTextSize(30);

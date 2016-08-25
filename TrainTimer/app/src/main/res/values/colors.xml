@@ -5,8 +5,8 @@
     <color name="Green">#008b00</color>
     <color name="Black">#000000</color>
 
-    <color name="colorPrimary">#125688</color>
-    <color name="colorPrimaryDark">#125688</color><!--
+    <color name="colorPrimary">#7e1164</color>
+    <color name="colorPrimaryDark">#870471</color><!--
     <color name="textColorPrimary">#FFFFFF</color>-->
     <color name="windowBackground">#FFFFFF</color>
     <color name="navigationBarColor">#000000</color>

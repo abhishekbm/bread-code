@@ -6,17 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.widget.CardView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 
-import shakestudios.traintimer.Fragments.FaresFragment;
-import shakestudios.traintimer.Fragments.TimingsFragment;
-import shakestudios.traintimer.Stations.RouteFragment;
+import shakestudios.traintimer.Util.RecyclerAdapter;
 
 
 /**
@@ -60,6 +58,10 @@ public class main_fragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
+
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -149,6 +151,7 @@ public class main_fragment extends Fragment {
             }
 
         });*/
+/*
 
         CardView TimingsCard = (CardView) rootView.findViewById(R.id.TimingsCard);
         CardView RouteCard = (CardView) rootView.findViewById(R.id.RouteCard);
@@ -200,7 +203,17 @@ public class main_fragment extends Fragment {
                                  }
 
         );
+*/
 
+
+        String[] dataArray = new String[]{"Fares","Trip Planner","Timings","Parking"};
+        String[] dataDescription = new String[]{"Find the fare between 2 stations","Plan a Journey and get the details","Know when the next train arrives","Know which stations have parking facility"};
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new RecyclerAdapter(dataArray,this.getActivity(),dataDescription);
+        recyclerView.setAdapter(adapter);
 
 
         return rootView;
