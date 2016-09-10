@@ -43,9 +43,7 @@
         android:layout_marginLeft="10dp" />
 
 
-
-
-    <EditText
+    <AutoCompleteTextView
         android:id="@+id/origin"
         android:layout_width="match_parent"
         android:layout_height="66dp"
@@ -59,7 +57,7 @@
         android:gravity="center"
         android:textColor="@color/Black"
         >
-    </EditText>
+    </AutoCompleteTextView>
 
     <TextView
         android:layout_width="wrap_content"
@@ -110,12 +108,20 @@
         android:gravity="left"
         android:layout_marginTop="170dp" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Get TImings for this journey"
-        android:id="@+id/timefareButton"
-        android:layout_gravity="right|bottom"
-        android:layout_marginBottom="50dp" />
+    <AutoCompleteTextView
+        android:id="@+id/desti"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="65dp"
+        android:clickable="false"
+        android:inputType="none"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textColor="@color/Black"
+        android:layout_gravity="left|bottom">
+    </AutoCompleteTextView>
 
 </FrameLayout>

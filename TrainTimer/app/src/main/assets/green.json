@@ -50,6 +50,10 @@
       "coin_price": "30",
       "card_price": "25.50",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Dasarahalli",
@@ -102,6 +106,10 @@
       "coin_price": "27",
       "card_price": "22.95",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Jalahalli",
@@ -154,6 +162,10 @@
       "coin_price": "25",
       "card_price": "21.25",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Peenya Industry",
@@ -206,6 +218,10 @@
       "coin_price": "23",
       "card_price": "19.55",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Peenya",
@@ -258,6 +274,10 @@
       "coin_price": "23",
       "card_price": "19.55",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Yeshwanthpur Industry",
@@ -310,6 +330,10 @@
       "coin_price": "21",
       "card_price": "17.85",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Yeshwanthpur",
@@ -362,6 +386,10 @@
       "coin_price": "19",
       "card_price": "16.15",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Sandal Soap Factory",
@@ -414,6 +442,10 @@
       "coin_price": "17",
       "card_price": "14.45",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Mahalakshmi",
@@ -466,6 +498,10 @@
       "coin_price": "16",
       "card_price": "13.60",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Rajajinagar",
@@ -518,6 +554,10 @@
       "coin_price": "14",
       "card_price": "11.90",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Kuvempu Road",
@@ -570,6 +610,10 @@
       "coin_price": "13",
       "card_price": "11.05",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Srirampura",
@@ -622,6 +666,10 @@
       "coin_price": "10",
       "card_price": "8.50",
       "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }, {
     "station": "Sampige Road",
@@ -675,6 +723,70 @@
       "coin_price": "30",
       "card_price": "25.50",
       "station": "Nagasandra"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
+    }]
+  },{
+    "station": "Majestic",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Nagasandra"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Peenya"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "1",
+      "card_price": "11",
+      "station": "Sandal Soap Factory"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Sampige Road"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic"
     }]
   }]
 }

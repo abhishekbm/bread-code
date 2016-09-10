@@ -1,6 +1,7 @@
 package shakestudios.traintimer.Stations;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -20,6 +21,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
+import shakestudios.traintimer.Activities.Station_Detail;
 import shakestudios.traintimer.R;
 
 /**
@@ -246,7 +248,26 @@ public class RouteFragment extends Fragment {
 
         );
 
-
+        stationsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                LinkedHashMap<String, String> map  = ( LinkedHashMap<String, String>) parent.getItemAtPosition(position);
+                String station = map.get("name");
+                //StationDetail fragment = new StationDetail();
+                Bundle bundle = new Bundle();
+                bundle.putString("station", station);
+             //   fragment.setArguments(bundle);
+                //
+                Intent i = new Intent(getActivity(), Station_Detail.class);
+                i.putExtras(bundle);
+                startActivity(i);
+               /* FragmentManager fragmentManager = getFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.replace(R.id.event_frame, fragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();*/
+            }
+        });
         return rootView;
     }
 

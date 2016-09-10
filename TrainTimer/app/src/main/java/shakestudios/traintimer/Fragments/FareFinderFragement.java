@@ -1,21 +1,16 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 
+import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -26,12 +21,12 @@ import shakestudios.traintimer.ValueObjects.FaresVO;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link ViewFaresFragment.OnFragmentInteractionListener} interface
+ * {@link FareFinderFragement.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link ViewFaresFragment#newInstance} factory method to
+ * Use the {@link FareFinderFragement#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class ViewFaresFragment extends Fragment {
+public class FareFinderFragement extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -41,19 +36,15 @@ public class ViewFaresFragment extends Fragment {
     private static LinkedHashMap<String, String> greenLine = new LinkedHashMap<String, String>();
     private LinkedHashMap<Integer, String> stationsPurple = new LinkedHashMap<Integer, String>();
     private LinkedHashMap<Integer, String> stationsGreen = new LinkedHashMap<Integer, String>();
-    String from, to, line;
+
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
 
-
-    TextView card, coin, noOfStations, timeTaken, coinfare, cardfare, stationInfo;
-
-
-    FaresVO fares = new FaresVO();
+    String to, from;
     private OnFragmentInteractionListener mListener;
 
-    public ViewFaresFragment() {
+    public FareFinderFragement() {
         // Required empty public constructor
     }
 
@@ -63,11 +54,11 @@ public class ViewFaresFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment ViewFaresFragment.
+     * @return A new instance of fragment FareFinderFragement.
      */
     // TODO: Rename and change types and number of parameters
-    public static ViewFaresFragment newInstance(String param1, String param2) {
-        ViewFaresFragment fragment = new ViewFaresFragment();
+    public static FareFinderFragement newInstance(String param1, String param2) {
+        FareFinderFragement fragment = new FareFinderFragement();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -88,114 +79,123 @@ public class ViewFaresFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-
-
-        View rootView = inflater.inflate(R.layout.fragment_view_fares, container, false);
-
-        AutoCompleteTextView origin = (AutoCompleteTextView) rootView.findViewById(R.id.origin);
-        AutoCompleteTextView desti = (AutoCompleteTextView) rootView.findViewById(R.id.desti);
-
-        origin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
-            }
-        });
-
-        desti.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                InputMethodManager in = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
-                in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
-            }
-        });
-        card = (TextView) rootView.findViewById(R.id.textView3);
-        coin = (TextView) rootView.findViewById(R.id.textView4);
-
-
-        cardfare = (TextView) rootView.findViewById(R.id.cardfare);
-        coinfare = (TextView) rootView.findViewById(R.id.coinfare);
-
-        stationInfo = (TextView) rootView.findViewById(R.id.staioninfo);
-
-
-        origin = (AutoCompleteTextView) rootView.findViewById(R.id.origin);
-        List<String> finalFare;
+        View rootView = inflater.inflate(R.layout.fragment_fare_finder_fragement, container, false);
         Bundle bundle = this.getArguments();
         to = bundle.getString("to");
         from = bundle.getString("from");
 
-        initilizeList(origin, desti, rootView);
+        // initilizeList(origin, desti, rootView);
 
         initializeStationList(greenLine, purpleLine);
 
+        int indexFrom, indexTo;
         if (purpleLine.containsKey(from)) {
+            indexFrom = Integer.valueOf(purpleLine.get(from));
             if (purpleLine.containsKey(to)) {
 
-                finalFare = fares.getFares(from, to, "purple", this.getContext());
+                indexTo = Integer.valueOf(purpleLine.get(to));
+                if (indexFrom < indexTo) {
+                    for (int i = indexFrom; i <= indexTo; i++) {
 
-                displayFinalFares(finalFare, rootView);
+                        FaresVO fares = new FaresVO();
+                        fares.getFares(from, to, "", this.getContext());
+                    }
 
-            } else {
 
-
-                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "gre-+" +
-                        "aZ4en", this.getContext());
-                List<String> farefromMajestic = null;
-                if (purpleLine.containsKey(to)) {
-                    farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
                 } else {
-                    farefromMajestic =fares.getFares("Majestic", to, "green", this.getContext());
-                }
-                finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i <= indexFrom; i++) {
+                        list.add(stationsPurple.get(i));
 
-                displayFinalFares(finalFare, rootView);
+
+                    }
+
+
+                }
+            } else {
+                int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                if (indexFrom < tillMajesticPurple) {
+                    for (int i = indexFrom; i <= tillMajesticPurple; i++) {
+
+                    }
+                } else {
+                    for (int i = indexFrom; i >= tillMajesticPurple; i--) {
+
+                    }
+                }
+
+                indexTo = Integer.valueOf(greenLine.get(to));
+                if (indexTo < tillMajesticGreen) {
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i < tillMajesticGreen; i++) {
+                        list.add(stationsGreen.get(i));
+
+                    }
+                } else {
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i > tillMajesticGreen; i--) {
+                        list.add(stationsGreen.get(i));
+
+                    }
+                    Collections.reverse(list);
+
+                }
+
+
             }
 
         } else {
-
+            indexFrom = Integer.valueOf(greenLine.get(from));
             if (greenLine.containsKey(to)) {
-                finalFare = fares.getFares(from, to, "green", this.getContext());
-                displayFinalFares(finalFare, rootView);
+                indexTo = Integer.valueOf(greenLine.get(to));
+                if (indexFrom < indexTo) {
+                    for (int i = indexFrom; i <= indexTo; i++) {
 
-            } else {
 
-                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
-                List<String> farefromMajestic = null;
-                if (purpleLine.containsKey(to)) {
-                    farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
+                    }
+
                 } else {
-                    farefromMajestic =fares.getFares("Majestic", to, "green", this.getContext());
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i <= indexFrom; i++) {
+                        list.add(stationsPurple.get(i));
+
+
+                    }
+
+
+                }
+            } else {
+                int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                if (indexFrom < tillMajesticGreen) {
+                    for (int i = indexFrom; i <= tillMajesticGreen; i++) {
+                    }
+                } else {
+                    for (int i = indexFrom; i >= tillMajesticGreen; i--) {
+
+                    }
+                }
+
+                indexTo = Integer.valueOf(purpleLine.get(to));
+                if (indexTo < tillMajesticPurple) {
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i < tillMajesticPurple; i++) {
+                        list.add(stationsPurple.get(i));
+
+                    }
+
+                } else {
+                    List<String> list = new LinkedList<String>();
+                    for (int i = indexTo; i > tillMajesticPurple; i--) {
+                        list.add(stationsPurple.get(i));
+
+                    }
+
                 }
 
 
-                finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
-
-                displayFinalFares(finalFare, rootView);
-
             }
-
-
         }
-
         return rootView;
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        String backStateName = fragment.getClass().getName();
-        String fragmentTag = backStateName;
-
-        FragmentManager manager = getActivity().getSupportFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
-
-        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
-            FragmentTransaction ft = manager.beginTransaction();
-            ft.replace(R.id.event_frame, fragment, fragmentTag);
-            ft.addToBackStack(backStateName);
-            ft.commit();
-        }
-
     }
 
     // TODO: Rename method, update argument and hook method into UI event
@@ -237,6 +237,7 @@ public class ViewFaresFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
+
     private void initilizeList(AutoCompleteTextView origin, AutoCompleteTextView desti, View rootView) {
 
 
@@ -252,7 +253,7 @@ public class ViewFaresFragment extends Fragment {
         adapter.add("Cubbon Park");
         adapter.add("Vidhana Soudha");
         adapter.add("Sir M. Visveshwaraya");
-        adapter.add("Majestic");
+        adapter.add("Majestic (Inter Change)");
         adapter.add("City Railway Station");
         adapter.add("Magadi Road");
         adapter.add("Hosahalli");
@@ -274,7 +275,7 @@ public class ViewFaresFragment extends Fragment {
         adapter.add("Kuvempu Road");
         adapter.add("Srirampura");
         adapter.add("Sampige Road");
-        adapter.add("Majestic");
+        adapter.add("Majestic (Inter Change)");
         adapter.add("Chickpet");
         adapter.add("Krishna Rajendra Market");
         adapter.add("National College");
@@ -299,7 +300,7 @@ public class ViewFaresFragment extends Fragment {
         stationsPurple.put(10, "Cubbon Park");
         stationsPurple.put(9, "Vidhana Soudha");
         stationsPurple.put(8, "Sir M. Visveshwaraya");
-        stationsPurple.put(7, "Majestic");
+        stationsPurple.put(7, "Majestic (Inter Change)");
         stationsPurple.put(6, "City Railway Station");
         stationsPurple.put(5, "Magadi Road");
         stationsPurple.put(4, "Hosahalli");
@@ -322,7 +323,7 @@ public class ViewFaresFragment extends Fragment {
         stationsGreen.put(13, "Kuvempu Road");
         stationsGreen.put(12, "Srirampura");
         stationsGreen.put(11, "Sampige Road");
-        stationsGreen.put(10, "Majestic");
+        stationsGreen.put(10, "Majestic (Inter Change)");
         stationsGreen.put(9, "Chickpet");
         stationsGreen.put(8, "Krishna Rajendra Market");
         stationsGreen.put(7, "National College");
@@ -348,7 +349,7 @@ public class ViewFaresFragment extends Fragment {
         purpleLine.put("Cubbon Park", "10");
         purpleLine.put("Vidhana Soudha", "9");
         purpleLine.put("Sir M. Visveshwaraya", "8");
-        purpleLine.put("Majestic", "7");
+        purpleLine.put("Majestic (Inter Change)", "7");
         purpleLine.put("City Railway Station", "6");
         purpleLine.put("Magadi Road", "5");
         purpleLine.put("Hosahalli", "4");
@@ -371,7 +372,7 @@ public class ViewFaresFragment extends Fragment {
         greenLine.put("Kuvempu Road", "13");
         greenLine.put("Srirampura", "12");
         greenLine.put("Sampige Road", "11");
-        greenLine.put("Majestic", "10");
+        greenLine.put("Majestic (Inter Change)", "10");
         greenLine.put("Chickpet", "9");
         greenLine.put("Krishna Rajendra Market", "8");
         greenLine.put("National College", "7");
@@ -383,55 +384,4 @@ public class ViewFaresFragment extends Fragment {
         greenLine.put("Jayaprakash Nagar", "1");
         greenLine.put("Puttenahalli", "0");
     }
-
-
-    private void displayFinalFares(List<String> finalFare, View rootView) {
-
-       /* origin.setText(from + " - " + to);
-        origin.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-
-        origin.setTypeface(Typeface.DEFAULT_BOLD);*/
-        card.setTypeface(Typeface.DEFAULT_BOLD);
-        coin.setTypeface(Typeface.DEFAULT_BOLD);
-        card.setTextSize(30);
-        coin.setTextSize(30);
-        card.setText("Token cost ");
-        coin.setText("Varshik Card ");
-
-        cardfare.setText(getResources().getString(R.string.rs) + " " + finalFare.get(0));
-        coinfare.setText(getResources().getString(R.string.rs) + " " + finalFare.get(1));
-
-        cardfare.setTypeface(Typeface.DEFAULT_BOLD);
-        coinfare.setTypeface(Typeface.DEFAULT_BOLD);
-        cardfare.setTextSize(30);
-        coinfare.setTextSize(30);
-        noOfStations = (TextView) rootView.findViewById(R.id.noOfStations);
-
-        noOfStations.setTextSize(18);
-        noOfStations.setText("Number of stations to Destination ");
-        noOfStations.setTypeface(Typeface.DEFAULT_BOLD);
-        stationInfo.setText(":           " + finalFare.get(3));
-        stationInfo.setTypeface(Typeface.DEFAULT_BOLD);
-        stationInfo.setTextSize(18);
-
-        timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
-
-        timeTaken.setText("Doors open on " + finalFare.get(2));
-    }
-
-    private List<String> getFinalFare(List<String> fareTillMajestic, List<String> farefromMajestic) {
-
-        List<String> finalList = new LinkedList<String>();
-        //adding fares
-        Double card_price = Double.valueOf(fareTillMajestic.get(0)) + Double.valueOf(farefromMajestic.get(0));
-        Double coin_price = Double.valueOf(fareTillMajestic.get(1)) + Double.valueOf(farefromMajestic.get(1));
-        finalList.add(String.valueOf(card_price));
-        finalList.add(String.valueOf(coin_price));
-        finalList.add("this");
-        finalList.add("this");
-        finalList.add("this");
-        finalList.add("this");
-        return finalList;
-    }
-
 }

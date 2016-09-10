@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.res.AssetManager;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
@@ -12,6 +13,7 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
@@ -34,7 +36,7 @@ public class FaresVO {
     public static List<String> getFares(String from, String to, String line, Context context) {
 
 
-        List<String> price = new ArrayList<String>();
+        List<String> price = new LinkedList<String>();
         JSONObject json = null;
         try {
             boolean stop = false;
@@ -182,11 +184,46 @@ public class FaresVO {
         return price;
     }
 
-   /* public static void main(String args[]) {
+    /* public static void main(String args[]) {
 
-        String from = "Hosahalli";
-        String to = "Deepanjali Nagar";
-        System.out.print(getFares(from, to, "purple"));
+         String from = "Hosahalli";
+         String to = "Deepanjali Nagar";
+         System.out.print(getFares(from, to, "purple"));
+     }
+ */
+    public List<String> getStationDetails(Context context) {
+        String station =null;
+        try {
+             station = AssetJSONFile("stationDetail.json", context);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // station = "{\n\t\"stations\": [{\n\t\t\"station\": \"baiyappanahalli\",\n\t\t\"elevated\": \"yes\",\n\t\t\"platforms\": [{\n\t\t\t\"platform_1\": \"Towards Mysore Road\",\n\t\t\t\"platform_2\": \"Towards baiyappanahalli\"\n\t\t}],\n\t\t\"line\": \"purple\",\n\t\t\"lift_escalator\": \"yes\",\n\t\t\"Parking\": \"Paid\",\n\t\t\"Origin\": \"Baiyappanahalli\",\n\t\t\"Destination\": \"Mysore Road\"\n\n\t}]\n}";
+                List<String> details = new ArrayList<String>();
+        try {
+            JSONObject jsonobject = new JSONObject(station);
+            JSONArray stationArray = jsonobject.getJSONArray("stations");
+            for (int i = 0; i < stationArray.length(); i++) {
+                JSONObject stationObject = stationArray.getJSONObject(i);
+                String stationDetail = stationObject.getString("station");
+
+                JSONArray platform = stationObject.getJSONArray("platforms");
+                details.add(platform.getJSONObject(0).getString("platform_1"));
+                details.add(platform.getJSONObject(0).getString("platform_2"));
+                details.add(stationObject.getString("station"));
+                details.add(stationObject.getString("elevated"));
+                details.add(stationObject.getString("line"));
+                details.add(stationObject.getString("lift_escalator"));
+                details.add(stationObject.getString("Parking"));
+                details.add(stationObject.getString("Origin"));
+                details.add(stationObject.getString("Destination"));
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return details;
     }
-*/
+
+
 }

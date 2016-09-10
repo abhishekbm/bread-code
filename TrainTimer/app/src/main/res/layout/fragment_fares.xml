@@ -1,9 +1,9 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/farefrag"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F5F5F7"
-    android:id="@+id/farefrag"
     tools:context="shakestudios.traintimer.Fragments.FaresFragment">
 
     <AutoCompleteTextView
@@ -12,13 +12,12 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_gravity="left|top"
-        android:layout_marginTop="150dp"
-        android:dropDownHeight="500px"
+        android:layout_marginTop="75dp"
+        android:dropDownHeight="wrap_content"
+        android:focusableInTouchMode="true"
         android:hint="Origin"
         android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="18sp"
-        android:focusableInTouchMode="true" >
-    </AutoCompleteTextView>
+        android:textSize="18sp"></AutoCompleteTextView>
 
 
     <AutoCompleteTextView
@@ -27,15 +26,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_gravity="right|top"
-        android:layout_marginTop="150dp"
+        android:layout_marginTop="75dp"
+        android:dropDownHeight="wrap_content"
+        android:focusableInTouchMode="true"
         android:hint="Destination"
-        android:dropDownHeight="500px"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColorHighlight="@color/Black"
         android:textCursorDrawable="@null"
-        android:textSize="18sp"
-        android:focusableInTouchMode="true" >
-    </AutoCompleteTextView>
+        android:textSize="18sp"></AutoCompleteTextView>
 
     <Button
         android:id="@+id/fare_button"
@@ -44,38 +42,6 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_gravity="center"
-        android:text="Get Fares" />
-    <RadioGroup
-        android:id="@+id/TimingGroup"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_gravity="top">
-
-        <RadioButton
-            android:id="@+id/PurpleRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/Purple"
-            android:text="Purple Line"
-            android:textColor="@color/Purple"
-            android:layout_marginRight="50dp"
-            android:layout_marginLeft="25dp"
-            android:layout_marginBottom="80dp"
-            android:layout_marginTop="80dp"
-            android:textSize="20dp" />
-
-        <RadioButton
-            android:id="@+id/GreenRadio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/Green"
-            android:textColor="@color/Green"
-            android:text="Green Line"
-            android:layout_marginTop="80dp"
-            android:textSize="20dp" />
-
-
-    </RadioGroup>
-
+        android:text="Get Fares"
+        android:layout_marginTop="-80dp" />
 </FrameLayout>

@@ -37,7 +37,7 @@ public class navigationAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GreenLineFragment.OnFragmentInteractionListener, GreenStationFragment.OnFragmentInteractionListener
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
-        , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener {
+        , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -86,7 +86,7 @@ public class navigationAcivity extends AppCompatActivity
             // Do every x times
             int RunEvery = 10;
             if (counter != 0 && counter % RunEvery == 0) {
-                Toast.makeText(this, "This app has been started " + counter + " times.", Toast.LENGTH_SHORT).show();
+             //   Toast.makeText(this, "This app has been started " + counter + " times.", Toast.LENGTH_SHORT).show();
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(
                         navigationAcivity.this);
