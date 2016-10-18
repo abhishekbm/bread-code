@@ -3,6 +3,7 @@ package shakestudios.traintimer.Activities;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.NavUtils;
@@ -18,11 +19,12 @@ import android.widget.TextView;
 import java.util.List;
 
 import shakestudios.traintimer.Fragments.ParkingFragment;
+import shakestudios.traintimer.Fragments.PlatformFragment;
 import shakestudios.traintimer.ListAdapter.ImageAdapter;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.ValueObjects.FaresVO;
 
-public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener {
+public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +40,9 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
 
         final Bundle bundle = intent.getExtras();
         String station = bundle.getString("station");
-
+        this.setTitle(station);
         FaresVO vo = new FaresVO();
-        List<String> details = vo.getStationDetails(getApplicationContext());
+        final List<String> details = vo.getStationDetails(getApplicationContext());
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
         for (int i = 0; i < details.size(); i++) {
             //  adapter1.add(details.get(i));
@@ -56,6 +58,10 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
         }
 
         boolean[] dflags = {true, true, true};
+        TextView fromTo = (TextView) findViewById(R.id.fromTo);
+        TextView elevation = (TextView) findViewById(R.id.elevation);
+        elevation.setText(details.get(3));
+        fromTo.setText(details.get(9));
 
         //  detailList.setAdapter(adapter1);
         detailList.setAdapter(new ImageAdapter(this, R.layout.image_adapter, R.id.text1, R.id.image1, strings, dflags));
@@ -63,18 +69,40 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
         detailList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String string = ((TextView) view).getText().toString();
+
+                String string = ((TextView) view.findViewById(R.id.text1)).getText().toString();
                 if (string.equalsIgnoreCase("Parking")) {
                     ParkingFragment fragment = new ParkingFragment();
-                    FragmentManager fragmentManager = getSupportFragmentManager();
-                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                    fragmentTransaction.add(ParkingFragment.newInstance("", ""), null);
-                    fragmentTransaction.replace(R.id.relLayout, fragment);
-                    fragmentTransaction.commit();
+                    replaceFragment(fragment);
+                } else if (string.equalsIgnoreCase("Platforms")) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("platform_1", "Platform 1:           " + details.get(0).toString());
+                    bundle.putString("platform_2", "Platform 2:           " + details.get(1).toString());
+                    PlatformFragment fragment = new PlatformFragment();
+                    fragment.setArguments(bundle);
+                    replaceFragment(fragment);
+                    //  Toast.makeText(getApplicationContext(), details.get(0).toString()+details.get(1).toString(), Toast.LENGTH_SHORT).show();
+
                 }
             }
         });
         //stationName.setText(station);
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getSupportFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.relLayout, fragment, fragmentTag);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
     }
 
     @Override

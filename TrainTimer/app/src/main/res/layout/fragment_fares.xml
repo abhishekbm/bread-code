@@ -16,6 +16,7 @@
         android:dropDownHeight="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="Origin"
+        android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textSize="18sp"></AutoCompleteTextView>
 
@@ -30,6 +31,7 @@
         android:dropDownHeight="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="Destination"
+        android:maxLines="1"
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColorHighlight="@color/Black"
         android:textCursorDrawable="@null"

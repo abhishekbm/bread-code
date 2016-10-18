@@ -23,12 +23,16 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import shakestudios.traintimer.Fragments.About;
+import shakestudios.traintimer.Fragments.CarParkingFragment;
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.GreenLineFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
+import shakestudios.traintimer.Fragments.ParkingManagerFragment;
 import shakestudios.traintimer.Fragments.PurpleLineFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
+import shakestudios.traintimer.Fragments.TwoWheelParkingFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
+import shakestudios.traintimer.Fragments.newsFragment;
 import shakestudios.traintimer.Stations.GreenStationFragment;
 import shakestudios.traintimer.Stations.PurpleStationFragments;
 import shakestudios.traintimer.Stations.RouteFragment;
@@ -37,7 +41,8 @@ public class navigationAcivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, GreenLineFragment.OnFragmentInteractionListener, GreenStationFragment.OnFragmentInteractionListener
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
-        , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener{
+        , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener, newsFragment.OnFragmentInteractionListener, CarParkingFragment.OnFragmentInteractionListener
+        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -86,7 +91,7 @@ public class navigationAcivity extends AppCompatActivity
             // Do every x times
             int RunEvery = 10;
             if (counter != 0 && counter % RunEvery == 0) {
-             //   Toast.makeText(this, "This app has been started " + counter + " times.", Toast.LENGTH_SHORT).show();
+                //   Toast.makeText(this, "This app has been started " + counter + " times.", Toast.LENGTH_SHORT).show();
 
                 AlertDialog.Builder alert = new AlertDialog.Builder(
                         navigationAcivity.this);

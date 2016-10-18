@@ -206,13 +206,13 @@ public class main_fragment extends Fragment {
 */
 
 
-        String[] dataArray = new String[]{"Fares","Trip Planner","Timings","Parking"};
-        String[] dataDescription = new String[]{"Find the fare between 2 stations","Plan a Journey and get the details","Know when the next train arrives","Know which stations have parking facility"};
+        String[] dataArray = new String[]{"Fares", "Trip Planner", "Stations", "Parking", "News"};
+        String[] dataDescription = new String[]{"Find the fare between 2 stations", "Plan a Journey and get the details", "Know what facilities are there in each station", "Know which stations have parking facility", "Get all the latest news about Namma Metro"};
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
         recyclerView.setLayoutManager(layoutManager);
-        adapter = new RecyclerAdapter(dataArray,this.getActivity(),dataDescription);
+        adapter = new RecyclerAdapter(dataArray, this.getActivity(), dataDescription);
         recyclerView.setAdapter(adapter);
 
 

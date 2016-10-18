@@ -2,15 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F5F7"
-    android:id="@+id/parkfrag"
-    tools:context="shakestudios.traintimer.Fragments.ParkingFragment">
+    tools:context="shakestudios.traintimer.Fragments.CarParkingFragment">
 
-    <ListView
-        android:id="@+id/lvExp1"
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="112px" />
-
+        android:text="@string/hello_blank_fragment" />
 
 </FrameLayout>

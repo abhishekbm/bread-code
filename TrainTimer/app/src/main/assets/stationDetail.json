@@ -1,16 +1,17 @@
 {
   "stations": [{
     "station": "baiyappanahalli",
-    "elevated": "yes",
+    "station_elevation":"Elevated",
     "platforms": [{
       "platform_1": "Towards Mysore Road",
-      "platform_2": "Towards baiyappanahalli"
+      "platform_2": "Towards Baiyappanahalli"
     }],
     "line": "purple",
     "lift_escalator": "yes",
     "Parking": "Paid",
     "Origin": "Baiyappanahalli",
-    "Destination": "Mysore Road"
+    "Destination": "Mysore Road",
+    "Line_detail":"Mysore Road - Baiyappanahalli"
 
   }]
 }

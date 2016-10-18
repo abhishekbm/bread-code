@@ -14,6 +14,7 @@ import android.widget.TextView;
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
+import shakestudios.traintimer.Fragments.newsFragment;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.Stations.RouteFragment;
 
@@ -65,6 +66,10 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
             replaceFragment(fragment);
         } else if ("Parking".equalsIgnoreCase(text)) {
             ParkingFragment fragment = new ParkingFragment();
+            replaceFragment(fragment);
+        }
+        else if("News".equalsIgnoreCase(text)){
+            newsFragment fragment= new newsFragment();
             replaceFragment(fragment);
         }
 

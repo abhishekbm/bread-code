@@ -15,6 +15,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -124,139 +125,144 @@ public class RouteFragment extends Fragment {
                                          routeStations.clear();
                                          String from = origin.getText().toString();
                                          String to = desti.getText().toString();
-                                         int indexFrom, indexTo;
-                                         if (purpleLine.containsKey(from)) {
-                                             indexFrom = Integer.valueOf(purpleLine.get(from));
-                                             if (purpleLine.containsKey(to)) {
 
-                                                 indexTo = Integer.valueOf(purpleLine.get(to));
-                                                 if (indexFrom < indexTo) {
-                                                     for (int i = indexFrom; i <= indexTo; i++) {
-                                                         routeStations.add(stationsPurple.get(i));
-
-                                                     }
-                                                     adapter = setlineFLag(routeStations);
-                                                     stationsView.setAdapter(adapter);
-                                                 } else {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i <= indexFrom; i++) {
-                                                         list.add(stationsPurple.get(i));
-
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-                                                     adapter = setlineFLag(routeStations);
-                                                     stationsView.setAdapter(adapter);
-
-                                                 }
-                                             } else {
-                                                 int tillMajesticPurple = 7, tillMajesticGreen = 10;
-                                                 if (indexFrom < tillMajesticPurple) {
-                                                     for (int i = indexFrom; i <= tillMajesticPurple; i++) {
-                                                         routeStations.add(stationsPurple.get(i));
-                                                     }
-                                                 } else {
-                                                     for (int i = indexFrom; i >= tillMajesticPurple; i--) {
-                                                         routeStations.add(stationsPurple.get(i));
-                                                     }
-                                                 }
-
-                                                 indexTo = Integer.valueOf(greenLine.get(to));
-                                                 if (indexTo < tillMajesticGreen) {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i < tillMajesticGreen; i++) {
-                                                         list.add(stationsGreen.get(i));
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-                                                 } else {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i > tillMajesticGreen; i--) {
-                                                         list.add(stationsGreen.get(i));
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-                                                 }
-
-                                                 adapter = setlineFLag(routeStations);
-                                                 stationsView.setAdapter(adapter);
-                                             }
+                                         if (from.equalsIgnoreCase(to)) {
+                                             Toast.makeText(getContext(), "Origin and Destination can't be same", Toast.LENGTH_SHORT).show();
 
                                          } else {
-                                             indexFrom = Integer.valueOf(greenLine.get(from));
-                                             if (greenLine.containsKey(to)) {
-                                                 indexTo = Integer.valueOf(greenLine.get(to));
-                                                 if (indexFrom < indexTo) {
-                                                     for (int i = indexFrom; i <= indexTo; i++) {
-                                                         routeStations.add(stationsPurple.get(i));
+                                             int indexFrom, indexTo;
+                                             if (purpleLine.containsKey(from)) {
+                                                 indexFrom = Integer.valueOf(purpleLine.get(from));
+                                                 if (purpleLine.containsKey(to)) {
+
+                                                     indexTo = Integer.valueOf(purpleLine.get(to));
+                                                     if (indexFrom < indexTo) {
+                                                         for (int i = indexFrom; i <= indexTo; i++) {
+                                                             routeStations.add(stationsPurple.get(i));
+
+                                                         }
+                                                         adapter = setlineFLag(routeStations);
+                                                         stationsView.setAdapter(adapter);
+                                                     } else {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i <= indexFrom; i++) {
+                                                             list.add(stationsPurple.get(i));
+
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+                                                         adapter = setlineFLag(routeStations);
+                                                         stationsView.setAdapter(adapter);
 
                                                      }
+                                                 } else {
+                                                     int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                                                     if (indexFrom < tillMajesticPurple) {
+                                                         for (int i = indexFrom; i <= tillMajesticPurple; i++) {
+                                                             routeStations.add(stationsPurple.get(i));
+                                                         }
+                                                     } else {
+                                                         for (int i = indexFrom; i >= tillMajesticPurple; i--) {
+                                                             routeStations.add(stationsPurple.get(i));
+                                                         }
+                                                     }
+
+                                                     indexTo = Integer.valueOf(greenLine.get(to));
+                                                     if (indexTo < tillMajesticGreen) {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i < tillMajesticGreen; i++) {
+                                                             list.add(stationsGreen.get(i));
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+                                                     } else {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i > tillMajesticGreen; i--) {
+                                                             list.add(stationsGreen.get(i));
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+                                                     }
+
                                                      adapter = setlineFLag(routeStations);
                                                      stationsView.setAdapter(adapter);
-                                                 } else {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i <= indexFrom; i++) {
-                                                         list.add(stationsPurple.get(i));
-
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-
-
                                                  }
+
                                              } else {
-                                                 int tillMajesticPurple = 7, tillMajesticGreen = 10;
-                                                 if (indexFrom < tillMajesticGreen) {
-                                                     for (int i = indexFrom; i <= tillMajesticGreen; i++) {
-                                                         routeStations.add(stationsGreen.get(i));
+                                                 indexFrom = Integer.valueOf(greenLine.get(from));
+                                                 if (greenLine.containsKey(to)) {
+                                                     indexTo = Integer.valueOf(greenLine.get(to));
+                                                     if (indexFrom < indexTo) {
+                                                         for (int i = indexFrom; i <= indexTo; i++) {
+                                                             routeStations.add(stationsPurple.get(i));
+
+                                                         }
+                                                         adapter = setlineFLag(routeStations);
+                                                         stationsView.setAdapter(adapter);
+                                                     } else {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i <= indexFrom; i++) {
+                                                             list.add(stationsPurple.get(i));
+
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+
+
                                                      }
                                                  } else {
-                                                     for (int i = indexFrom; i >= tillMajesticGreen; i--) {
-                                                         routeStations.add(stationsGreen.get(i));
+                                                     int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                                                     if (indexFrom < tillMajesticGreen) {
+                                                         for (int i = indexFrom; i <= tillMajesticGreen; i++) {
+                                                             routeStations.add(stationsGreen.get(i));
+                                                         }
+                                                     } else {
+                                                         for (int i = indexFrom; i >= tillMajesticGreen; i--) {
+                                                             routeStations.add(stationsGreen.get(i));
+                                                         }
                                                      }
+
+                                                     indexTo = Integer.valueOf(purpleLine.get(to));
+                                                     if (indexTo < tillMajesticPurple) {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i < tillMajesticPurple; i++) {
+                                                             list.add(stationsPurple.get(i));
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+                                                     } else {
+                                                         List<String> list = new LinkedList<String>();
+                                                         for (int i = indexTo; i > tillMajesticPurple; i--) {
+                                                             list.add(stationsPurple.get(i));
+
+                                                         }
+                                                         Collections.reverse(list);
+                                                         routeStations.addAll(list);
+                                                     }
+
+                                                     adapter = setlineFLag(routeStations);
+                                                     stationsView.setAdapter(adapter);
                                                  }
-
-                                                 indexTo = Integer.valueOf(purpleLine.get(to));
-                                                 if (indexTo < tillMajesticPurple) {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i < tillMajesticPurple; i++) {
-                                                         list.add(stationsPurple.get(i));
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-                                                 } else {
-                                                     List<String> list = new LinkedList<String>();
-                                                     for (int i = indexTo; i > tillMajesticPurple; i--) {
-                                                         list.add(stationsPurple.get(i));
-
-                                                     }
-                                                     Collections.reverse(list);
-                                                     routeStations.addAll(list);
-                                                 }
-
-                                                 adapter = setlineFLag(routeStations);
-                                                 stationsView.setAdapter(adapter);
                                              }
                                          }
                                      }
                                  }
-
         );
 
         stationsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LinkedHashMap<String, String> map  = ( LinkedHashMap<String, String>) parent.getItemAtPosition(position);
+                LinkedHashMap<String, String> map = (LinkedHashMap<String, String>) parent.getItemAtPosition(position);
                 String station = map.get("name");
                 //StationDetail fragment = new StationDetail();
                 Bundle bundle = new Bundle();
                 bundle.putString("station", station);
-             //   fragment.setArguments(bundle);
+                //   fragment.setArguments(bundle);
                 //
                 Intent i = new Intent(getActivity(), Station_Detail.class);
                 i.putExtras(bundle);
@@ -268,6 +274,8 @@ public class RouteFragment extends Fragment {
                 fragmentTransaction.commit();*/
             }
         });
+
+
         return rootView;
     }
 

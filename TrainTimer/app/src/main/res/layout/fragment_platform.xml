@@ -1,0 +1,17 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shakestudios.traintimer.Fragments.PlatformFragment"
+    android:id="@+id/platformFrag"
+    android:background="@android:color/white">
+
+   <ListView
+       android:layout_width="match_parent"
+       android:layout_height="510dp"
+       android:id="@+id/platformList"
+       android:layout_gravity="bottom">
+
+   </ListView>
+
+</FrameLayout>

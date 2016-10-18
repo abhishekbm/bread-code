@@ -4,20 +4,15 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ExpandableListView;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-
-import shakestudios.traintimer.ListAdapter.TimingListViewAdpter;
 import shakestudios.traintimer.R;
 
 /**
@@ -30,12 +25,8 @@ import shakestudios.traintimer.R;
  */
 public class ParkingFragment extends Fragment {
 
+    ListView expListView;
 
-    TimingListViewAdpter listAdapter;
-    ExpandableListView expListView;
-
-    List<String> listDataHeader;
-    HashMap<String, List<String>> listDataChild;
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -81,80 +72,61 @@ public class ParkingFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.fragment_parking, container, false);
+        final View rootView = inflater.inflate(R.layout.fragment_parking, container, false);
         getActivity().setTitle("Parking");
-        expListView = (ExpandableListView) rootView.findViewById(R.id.lvExp1);
+        expListView = (ListView) rootView.findViewById(R.id.lvExp1);
 
         // preparing list data
 
-        prepareListData();
 
-        listAdapter = new TimingListViewAdpter(rootView.getContext(), listDataHeader, listDataChild);
-
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
+        adapter.add("Byappanhalli");
+        adapter.add("Swami Vivekananda Road");
+        adapter.add("Indiranagar");
+        adapter.add("Halasuru");
+        adapter.add("Trinity");
+        adapter.add("Mahatma Gandhi Road");
+        adapter.add("Cubbon Park");
+        adapter.add("Vidhana Soudha");
+        adapter.add("Sir M. Visveshwaraya");
         // setting list adapter
-        expListView.setAdapter(listAdapter);
-
-
-        // Listview Group click listener
-        expListView.setOnGroupClickListener(new ExpandableListView.OnGroupClickListener() {
-
+        expListView.setAdapter(adapter);
+        expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onGroupClick(ExpandableListView parent, View v,
-                                        int groupPosition, long id) {
-                // Toast.makeText(getApplicationContext(),
-                // "Group Clicked " + listDataHeader.get(groupPosition),
-                // Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
-
-        // Listview Group expanded listener
-        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
-
-            @Override
-            public void onGroupExpand(int groupPosition) {
-
-            }
-        });
-
-        // Listview Group collasped listener
-        expListView.setOnGroupCollapseListener(new ExpandableListView.OnGroupCollapseListener() {
-
-            @Override
-            public void onGroupCollapse(int groupPosition) {
-
-
-            }
-        });
-
-        // Listview on child click listener
-        expListView.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-
-            @Override
-            public boolean onChildClick(ExpandableListView parent, View v,
-                                        int groupPosition, int childPosition, long id) {
-              /*  Toast.makeText(
-                        getApplicationContext(),
-                        listDataHeader.get(groupPosition)
-                                + " : "
-                                + listDataChild.get(
-                                listDataHeader.get(groupPosition)).get(
-                                childPosition), Toast.LENGTH_SHORT)
-                        .show();*/
-                return false;
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                ParkingManagerFragment fragment = new ParkingManagerFragment();
+                String station = (String) expListView.getItemAtPosition(position);
+                expListView.setVisibility(View.GONE);
+                Bundle bundle = new Bundle();
+                bundle.putString("station",station);
+                fragment.setArguments(bundle);
+                replaceFragment(fragment);
             }
         });
 
         return rootView;
     }
 
+    private void replaceFragment(Fragment fragment) {
+        String backStateName = fragment.getClass().getName();
+        String fragmentTag = backStateName;
+
+        FragmentManager manager = getFragmentManager();
+        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
+
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
+            FragmentTransaction ft = manager.beginTransaction();
+            ft.replace(R.id.parkfrag, fragment, fragmentTag);
+            ft.addToBackStack(backStateName);
+            ft.commit();
+        }
+    }
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -187,7 +159,7 @@ public class ParkingFragment extends Fragment {
         void onFragmentInteraction(Uri uri);
     }
 
-    private void prepareListData() {
+    /*private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
         String station = null;
@@ -224,22 +196,22 @@ public class ParkingFragment extends Fragment {
     private JSONArray getJSON() {
 
 
-        String input ="{\n\t\"parking\": [{\n\t\t\"Station\": \"Byappanhalli\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Swami Vivekananda Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Mysore Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Magadi Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}]\n}";
+        String input = "{\n\t\"parking\": [{\n\t\t\"Station\": \"Byappanhalli\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Swami Vivekananda Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Mysore Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}, {\n\t\t\"Station\": \"Magadi Road\",\n\t\t\"Parking\": \"Yes\",\n\t\t\"Covered\": \"No\",\n\t\t\"Paid\": \"Yes\"\n\t}]\n}";
         JSONObject json = null;
-        JSONArray array=null;
+        JSONArray array = null;
         try {
             json = new JSONObject(input);
-            array =json.getJSONArray("parking");
+            array = json.getJSONArray("parking");
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-      /*  Intent intent = getIntent();
+      *//*  Intent intent = getIntent();
         String key = intent.getStringExtra("key");
         if ("southNorth".equalsIgnoreCase(key)) {
             Collections.reverse(stations);
-        }*/
+        }*//*
 
         return array;
-    }
+    }*/
 }

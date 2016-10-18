@@ -10,7 +10,6 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.LinkedList;
@@ -199,7 +198,7 @@ public class FaresVO {
             e.printStackTrace();
         }
         // station = "{\n\t\"stations\": [{\n\t\t\"station\": \"baiyappanahalli\",\n\t\t\"elevated\": \"yes\",\n\t\t\"platforms\": [{\n\t\t\t\"platform_1\": \"Towards Mysore Road\",\n\t\t\t\"platform_2\": \"Towards baiyappanahalli\"\n\t\t}],\n\t\t\"line\": \"purple\",\n\t\t\"lift_escalator\": \"yes\",\n\t\t\"Parking\": \"Paid\",\n\t\t\"Origin\": \"Baiyappanahalli\",\n\t\t\"Destination\": \"Mysore Road\"\n\n\t}]\n}";
-                List<String> details = new ArrayList<String>();
+                List<String> details = new LinkedList<String>();
         try {
             JSONObject jsonobject = new JSONObject(station);
             JSONArray stationArray = jsonobject.getJSONArray("stations");
@@ -211,12 +210,14 @@ public class FaresVO {
                 details.add(platform.getJSONObject(0).getString("platform_1"));
                 details.add(platform.getJSONObject(0).getString("platform_2"));
                 details.add(stationObject.getString("station"));
-                details.add(stationObject.getString("elevated"));
+                details.add(stationObject.getString("station_elevation"));
                 details.add(stationObject.getString("line"));
                 details.add(stationObject.getString("lift_escalator"));
                 details.add(stationObject.getString("Parking"));
                 details.add(stationObject.getString("Origin"));
                 details.add(stationObject.getString("Destination"));
+                details.add(stationObject.getString("Line_detail"));
+
             }
 
         } catch (JSONException e) {
