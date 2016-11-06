@@ -18,13 +18,16 @@ import android.widget.TextView;
 
 import java.util.List;
 
+import shakestudios.traintimer.Fragments.CarParkingFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
+import shakestudios.traintimer.Fragments.ParkingManagerFragment;
 import shakestudios.traintimer.Fragments.PlatformFragment;
+import shakestudios.traintimer.Fragments.TwoWheelParkingFragment;
 import shakestudios.traintimer.ListAdapter.ImageAdapter;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.ValueObjects.FaresVO;
 
-public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener {
+public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, TwoWheelParkingFragment.OnFragmentInteractionListener,CarParkingFragment.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener,ParkingManagerFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,7 +75,8 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
 
                 String string = ((TextView) view.findViewById(R.id.text1)).getText().toString();
                 if (string.equalsIgnoreCase("Parking")) {
-                    ParkingFragment fragment = new ParkingFragment();
+                    ParkingManagerFragment fragment = new ParkingManagerFragment();
+                    fragment.setArguments(bundle);
                     replaceFragment(fragment);
                 } else if (string.equalsIgnoreCase("Platforms")) {
 

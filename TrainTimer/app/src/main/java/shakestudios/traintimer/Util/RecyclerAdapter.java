@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
+import shakestudios.traintimer.Fragments.StationListFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.newsFragment;
 import shakestudios.traintimer.R;
@@ -36,7 +37,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // create a new view
 
-        View view = LayoutInflater.from(parent.getContext())
+        final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.list, parent, false);
         RelativeLayout layout = (RelativeLayout) view.findViewById(R.id.layoutlinear);
         layout.setOnClickListener(new View.OnClickListener() {
@@ -45,7 +46,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
                 heading = (TextView) v.findViewById(R.id.heading);
                 description = (TextView) v.findViewById(R.id.description);
-                handleClickEvent(heading.getText().toString());
+                handleClickEvent(heading.getText().toString(), view);
             }
         });
         ViewHolder viewHolder = new ViewHolder(view);
@@ -54,7 +55,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
-    private void handleClickEvent(String text) {
+    private void handleClickEvent(String text, View view) {
         if ("Fares".equalsIgnoreCase(text)) {
             FaresFragment fragment = new FaresFragment();
             replaceFragment(fragment);
@@ -67,9 +68,14 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         } else if ("Parking".equalsIgnoreCase(text)) {
             ParkingFragment fragment = new ParkingFragment();
             replaceFragment(fragment);
-        }
-        else if("News".equalsIgnoreCase(text)){
-            newsFragment fragment= new newsFragment();
+        } else if ("Stations".equalsIgnoreCase(text)) {
+
+            StationListFragment fragment = new StationListFragment();
+            replaceFragment(fragment);
+
+
+        } else if ("News".equalsIgnoreCase(text)) {
+            newsFragment fragment = new newsFragment();
             replaceFragment(fragment);
         }
 

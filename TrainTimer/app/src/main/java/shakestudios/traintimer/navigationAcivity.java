@@ -29,6 +29,7 @@ import shakestudios.traintimer.Fragments.GreenLineFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.ParkingManagerFragment;
 import shakestudios.traintimer.Fragments.PurpleLineFragment;
+import shakestudios.traintimer.Fragments.StationListFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.TwoWheelParkingFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
@@ -42,7 +43,7 @@ public class navigationAcivity extends AppCompatActivity
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
         , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener, newsFragment.OnFragmentInteractionListener, CarParkingFragment.OnFragmentInteractionListener
-        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener {
+        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener, StationListFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
