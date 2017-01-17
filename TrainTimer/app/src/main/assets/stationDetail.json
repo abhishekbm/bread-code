@@ -1,17 +1,276 @@
 {
-  "stations": [{
-    "station": "baiyappanahalli",
-    "station_elevation":"Elevated",
-    "platforms": [{
-      "platform_1": "Towards Mysore Road",
-      "platform_2": "Towards Baiyappanahalli"
-    }],
-    "line": "purple",
-    "lift_escalator": "yes",
-    "Parking": "Paid",
-    "Origin": "Baiyappanahalli",
-    "Destination": "Mysore Road",
-    "Line_detail":"Mysore Road - Baiyappanahalli"
-
-  }]
+  "stations":[
+    {
+      "station":"Byappanhalli",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Swami Vivekananda Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Indiranagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Halasuru",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Trinity",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Mahatma Gandhi Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Cubbon Park",
+      "station_elevation":"Under Ground",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Vidhana Soudha",
+      "station_elevation":"Under Ground",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Sir M. Visveshwaraya",
+      "station_elevation":"Under Ground",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Majestic (Inter Change)",
+      "station_elevation":"Under Ground",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"City Railway Station",
+      "station_elevation":"Under Ground",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Magadi Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Hosahalli",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Vijayanagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Attiguppe",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Deepanjali Nagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Mysore Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Mysore Road",
+          "platform_2":"Towards Byappanhalli"
+        }
+      ],
+      "line":"purple",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Byappanhalli",
+      "Destination":"Mysore Road",
+      "Line_detail":"Mysore Road - Byappanhalli"
+    }
+  ]
 }

@@ -48,19 +48,20 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
         final List<String> details = vo.getStationDetails(getApplicationContext());
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
         for (int i = 0; i < details.size(); i++) {
-            //  adapter1.add(details.get(i));
+              //adapter1.add(details.get(i));
         }
 
         adapter1.add("Platforms");
         adapter1.add("Parking");
         adapter1.add("Lifts and escalators");
-        String[] strings = new String[3];
+        adapter1.add("ATM");
+        String[] strings = new String[4];
         for (int j = 0; j < adapter1.getCount(); j++) {
             String obj = adapter1.getItem(j);
             strings[j] = obj;
         }
 
-        boolean[] dflags = {true, true, true};
+        boolean[] dflags = {true, true, true,false};
         TextView fromTo = (TextView) findViewById(R.id.fromTo);
         TextView elevation = (TextView) findViewById(R.id.elevation);
         elevation.setText(details.get(3));

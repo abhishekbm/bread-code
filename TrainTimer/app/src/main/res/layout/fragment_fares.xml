@@ -8,11 +8,11 @@
 
     <AutoCompleteTextView
         android:id="@+id/textView5"
-        android:layout_width="141dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_gravity="left|top"
-        android:layout_marginTop="75dp"
+        android:layout_marginTop="80dp"
         android:dropDownHeight="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="Origin"
@@ -23,11 +23,11 @@
 
     <AutoCompleteTextView
         android:id="@+id/textView6"
-        android:layout_width="170dp"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
-        android:layout_gravity="right|top"
-        android:layout_marginTop="75dp"
+        android:layout_gravity="left|top"
+        android:layout_marginTop="120dp"
         android:dropDownHeight="wrap_content"
         android:focusableInTouchMode="true"
         android:hint="Destination"
@@ -35,15 +35,19 @@
         android:textAppearance="?android:attr/textAppearanceMedium"
         android:textColorHighlight="@color/Black"
         android:textCursorDrawable="@null"
-        android:textSize="18sp"></AutoCompleteTextView>
+        android:textSize="18sp"
+        android:layout_marginBottom="90dp"></AutoCompleteTextView>
 
     <Button
         android:id="@+id/fare_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="30dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_gravity="center"
+        android:background="@color/colorPrimary"
+        android:textColor="@color/windowBackground"
+        android:layout_gravity="center|right|top"
         android:text="Get Fares"
-        android:layout_marginTop="-80dp" />
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="10dp" />
 </FrameLayout>

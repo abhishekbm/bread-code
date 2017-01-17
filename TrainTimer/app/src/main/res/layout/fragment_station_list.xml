@@ -7,7 +7,7 @@
     <!-- TODO: Update blank fragment layout -->
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="452dp"
+        android:layout_height="498dp"
         android:text="@string/hello_blank_fragment"
         android:id="@+id/stationList"
         android:layout_gravity="bottom"/>

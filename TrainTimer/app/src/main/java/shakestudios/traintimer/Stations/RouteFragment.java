@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,7 +16,6 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
@@ -47,7 +47,7 @@ public class RouteFragment extends Fragment {
     private LinkedHashMap<Integer, String> stationsPurple = new LinkedHashMap<Integer, String>();
     SimpleAdapter adapter;
     private LinkedHashMap<Integer, String> stationsGreen = new LinkedHashMap<Integer, String>();
-
+    boolean line_change = false;
 
     private ArrayAdapter<String> routeStations;
     private OnFragmentInteractionListener mListener;
@@ -93,7 +93,7 @@ public class RouteFragment extends Fragment {
         final AutoCompleteTextView desti = (AutoCompleteTextView) rootView.findViewById(R.id.textView6);
 
         final Button route = (Button) rootView.findViewById(R.id.routeButton);
-
+        getActivity().setTitle("Trip Planner");
         final ListView stationsView = (ListView) rootView.findViewById(R.id.routeStation);
         routeStations = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
 
@@ -127,8 +127,8 @@ public class RouteFragment extends Fragment {
                                          String to = desti.getText().toString();
 
                                          if (from.equalsIgnoreCase(to)) {
-                                             Toast.makeText(getContext(), "Origin and Destination can't be same", Toast.LENGTH_SHORT).show();
-
+                                             Snackbar.make(v, "Origin and Destination can't be same", Snackbar.LENGTH_SHORT)
+                                                     .setAction("Action", null).show();
                                          } else {
                                              int indexFrom, indexTo;
                                              if (purpleLine.containsKey(from)) {
@@ -141,7 +141,7 @@ public class RouteFragment extends Fragment {
                                                              routeStations.add(stationsPurple.get(i));
 
                                                          }
-                                                         adapter = setlineFLag(routeStations);
+                                                         adapter = setlineFLag(routeStations, line_change);
                                                          stationsView.setAdapter(adapter);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
@@ -152,12 +152,13 @@ public class RouteFragment extends Fragment {
                                                          }
                                                          Collections.reverse(list);
                                                          routeStations.addAll(list);
-                                                         adapter = setlineFLag(routeStations);
+                                                         adapter = setlineFLag(routeStations, line_change);
                                                          stationsView.setAdapter(adapter);
 
                                                      }
                                                  } else {
                                                      int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                                                     line_change = true;
                                                      if (indexFrom < tillMajesticPurple) {
                                                          for (int i = indexFrom; i <= tillMajesticPurple; i++) {
                                                              routeStations.add(stationsPurple.get(i));
@@ -187,7 +188,7 @@ public class RouteFragment extends Fragment {
                                                          routeStations.addAll(list);
                                                      }
 
-                                                     adapter = setlineFLag(routeStations);
+                                                     adapter = setlineFLag(routeStations, line_change);
                                                      stationsView.setAdapter(adapter);
                                                  }
 
@@ -200,7 +201,7 @@ public class RouteFragment extends Fragment {
                                                              routeStations.add(stationsPurple.get(i));
 
                                                          }
-                                                         adapter = setlineFLag(routeStations);
+                                                         adapter = setlineFLag(routeStations, line_change);
                                                          stationsView.setAdapter(adapter);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
@@ -216,6 +217,7 @@ public class RouteFragment extends Fragment {
                                                      }
                                                  } else {
                                                      int tillMajesticPurple = 7, tillMajesticGreen = 10;
+                                                     line_change = true;
                                                      if (indexFrom < tillMajesticGreen) {
                                                          for (int i = indexFrom; i <= tillMajesticGreen; i++) {
                                                              routeStations.add(stationsGreen.get(i));
@@ -245,7 +247,7 @@ public class RouteFragment extends Fragment {
                                                          routeStations.addAll(list);
                                                      }
 
-                                                     adapter = setlineFLag(routeStations);
+                                                     adapter = setlineFLag(routeStations, line_change);
                                                      stationsView.setAdapter(adapter);
                                                  }
                                              }
@@ -279,7 +281,7 @@ public class RouteFragment extends Fragment {
         return rootView;
     }
 
-    private SimpleAdapter setlineFLag(ArrayAdapter<String> routeStations) {
+    private SimpleAdapter setlineFLag(ArrayAdapter<String> routeStations, boolean lineChange) {
         String[] from = {"name", "image"};
         int[] to = {R.id.textView, R.id.imageView};
         LinkedList<LinkedHashMap<String, String>> aList = new LinkedList<LinkedHashMap<String, String>>();
@@ -288,18 +290,25 @@ public class RouteFragment extends Fragment {
         for (int i = 0; i < routeStations.getCount(); i++) {
 
             String station = routeStations.getItem(i);
-
             if (purpleLine.containsKey(station)) {
-                LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
-                map.put("name", station);
-                map.put("image", Integer.toString(R.drawable.purple));
-                aList.add(map);
+                if (lineChange && station.equalsIgnoreCase("Majestic (Inter Change)")) {
+                    LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
+                    map.put("name", station);
+                    map.put("image", Integer.toString(R.drawable.purple_green));
+                    aList.add(map);
+                } else {
+                    LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
+                    map.put("name", station);
+                    map.put("image", Integer.toString(R.drawable.purple));
+                    aList.add(map);
+                }
             } else {
                 LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
                 map.put("name", station);
                 map.put("image", Integer.toString(R.drawable.green));
                 aList.add(map);
             }
+
         }
 
         SimpleAdapter adapter = new SimpleAdapter(getActivity().getBaseContext(), aList, R.layout.route_image_layout, from, to);
