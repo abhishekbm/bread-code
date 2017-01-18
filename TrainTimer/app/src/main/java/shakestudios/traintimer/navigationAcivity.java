@@ -34,6 +34,7 @@ import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.TwoWheelParkingFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
 import shakestudios.traintimer.Fragments.newsFragment;
+import shakestudios.traintimer.Fragments.rechargeFragment;
 import shakestudios.traintimer.Stations.GreenStationFragment;
 import shakestudios.traintimer.Stations.PurpleStationFragments;
 import shakestudios.traintimer.Stations.RouteFragment;
@@ -43,7 +44,7 @@ public class navigationAcivity extends AppCompatActivity
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
         , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener, newsFragment.OnFragmentInteractionListener, CarParkingFragment.OnFragmentInteractionListener
-        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener, StationListFragment.OnFragmentInteractionListener {
+        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener, StationListFragment.OnFragmentInteractionListener, rechargeFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -156,6 +157,7 @@ public class navigationAcivity extends AppCompatActivity
 
     @Override
     public void onBackPressed() {
+
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);

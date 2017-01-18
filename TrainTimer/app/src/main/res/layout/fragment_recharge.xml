@@ -1,0 +1,22 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/recharge"
+    tools:context="shakestudios.traintimer.Fragments.rechargeFragment">
+
+    <WebView  xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/webview"
+        android:layout_width="match_parent"
+        android:layout_height="510dp"
+        android:layout_gravity="bottom"
+        />
+
+    <ProgressBar android:id="@+id/pB1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:layout_centerVertical="true"
+        android:padding="2dip"
+        android:layout_gravity="center">
+    </ProgressBar>
+
+</FrameLayout>

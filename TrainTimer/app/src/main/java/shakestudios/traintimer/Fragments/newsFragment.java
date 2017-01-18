@@ -194,4 +194,5 @@ class myWebViewClient extends WebViewClient {
         super.onPageFinished(view, url);
         progressBar.setVisibility(View.GONE);
     }
+
 }

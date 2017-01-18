@@ -16,6 +16,7 @@ import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.StationListFragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.newsFragment;
+import shakestudios.traintimer.Fragments.rechargeFragment;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.Stations.RouteFragment;
 
@@ -76,6 +77,11 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
         } else if ("News".equalsIgnoreCase(text)) {
             newsFragment fragment = new newsFragment();
+            replaceFragment(fragment);
+        }
+
+        else if ("Recharge".equalsIgnoreCase(text)){
+            rechargeFragment fragment = new rechargeFragment();
             replaceFragment(fragment);
         }
 
