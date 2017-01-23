@@ -223,34 +223,19 @@ public class navigationAcivity extends AppCompatActivity
         if (id == R.id.Timings) {
             RouteFragment fragment = new RouteFragment();
             replaceFragment(fragment);
-          /*  android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.event_frame, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();*/
 
         } else if (id == R.id.Fares) {
             FaresFragment fragment = new FaresFragment();
             replaceFragment(fragment);
-           /* android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.event_frame, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();*/
 
         } else if (id == R.id.Parking) {
             ParkingFragment fragment = new ParkingFragment();
             replaceFragment(fragment);
-         /*   android.support.v4.app.FragmentTransaction fragmentTransaction =
-                    getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.event_frame, fragment);
-            fragmentTransaction.addToBackStack(null);
-            fragmentTransaction.commit();
-        }*/
-        } else if (id == R.id.HelpLine) {
-            Intent intent = new Intent(Intent.ACTION_DIAL);
-            intent.setData(Uri.parse("tel:1800-425-12345"));
-            startActivity(intent);
+
+        } else if (id == R.id.Home) {
+            main_fragment fragment = new main_fragment();
+            replaceFragment(fragment);
+
         } else if (id == R.id.HelpLine) {
             Intent intent = new Intent(Intent.ACTION_DIAL);
             intent.setData(Uri.parse("tel:1800-425-12345"));
@@ -268,7 +253,10 @@ public class navigationAcivity extends AppCompatActivity
             intent.setData(data);
             startActivity(intent);
         }
-
+        else if (id == R.id.faq) {
+            ParkingFragment fragment = new ParkingFragment();
+            replaceFragment(fragment);
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

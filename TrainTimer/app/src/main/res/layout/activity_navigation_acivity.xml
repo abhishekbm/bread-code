@@ -62,10 +62,9 @@
             android:layout_below="@id/toolbar"
             android:layout_gravity="left"
             android:layout_marginStart="10dp"
-            android:layout_marginTop="55dp"
+            android:layout_marginTop="45dp"
             android:maxWidth="220dp"
             app:elevation="@dimen/abc_action_bar_stacked_tab_max_width"
-            app:headerLayout="@layout/nav_header_navigation_acivity"
             app:menu="@menu/activity_navigation_acivity_drawer" />
 
     </android.support.v4.widget.DrawerLayout>

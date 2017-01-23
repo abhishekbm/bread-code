@@ -101,8 +101,8 @@ public class rechargeFragment extends Fragment {
         final CheckBox check = (CheckBox) eulaLayout.findViewById(R.id.skip);
         final ProgressBar bar = (ProgressBar) rootview.findViewById(R.id.pB1);
         adb.setView(eulaLayout);
-        adb.setTitle("Example:");
-        adb.setMessage(Html.fromHtml("This is a test"));
+        adb.setTitle("Warning");
+        adb.setMessage(Html.fromHtml("You are leaving the app and are being directed to a Government site for recharge. Please Read FAQ's before proceeding"));
         adb.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String checkBoxResult = "NOT checked";
