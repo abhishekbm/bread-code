@@ -1,12 +1,13 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,13 +15,13 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
-import android.widget.TextView;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
 import shakestudios.traintimer.R;
+import shakestudios.traintimer.Util.FareRecyclerAdapter;
 import shakestudios.traintimer.ValueObjects.FaresVO;
 
 /**
@@ -45,10 +46,10 @@ public class ViewFaresFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
-
-    TextView card, coin, noOfStations, timeTaken, coinfare, cardfare, stationInfo;
-
+    String[] headings,dataDescription;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter;
+    private RecyclerView.LayoutManager layoutManager;
 
     FaresVO fares = new FaresVO();
     private OnFragmentInteractionListener mListener;
@@ -110,14 +111,19 @@ public class ViewFaresFragment extends Fragment {
                 in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
             }
         });
-        card = (TextView) rootView.findViewById(R.id.textView3);
-        coin = (TextView) rootView.findViewById(R.id.textView4);
+        //   card = (TextView) rootView.findViewById(R.id.textView3);
+        //  coin = (TextView) rootView.findViewById(R.id.textView4);
 
 
-        cardfare = (TextView) rootView.findViewById(R.id.cardfare);
-        coinfare = (TextView) rootView.findViewById(R.id.coinfare);
+        // cardfare = (TextView) rootView.findViewById(R.id.cardfare);
+        //   coinfare = (TextView) rootView.findViewById(R.id.coinfare);
 
-        stationInfo = (TextView) rootView.findViewById(R.id.staioninfo);
+        // stationInfo = (TextView) rootView.findViewById(R.id.staioninfo);
+
+        recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+        recyclerView.setHasFixedSize(true);
+        layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+        recyclerView.setLayoutManager(layoutManager);
 
 
         origin = (AutoCompleteTextView) rootView.findViewById(R.id.origin);
@@ -140,13 +146,12 @@ public class ViewFaresFragment extends Fragment {
             } else {
 
 
-                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "gre-+" +
-                        "aZ4en", this.getContext());
+                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
                 List<String> farefromMajestic = null;
                 if (purpleLine.containsKey(to)) {
                     farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
                 } else {
-                    farefromMajestic =fares.getFares("Majestic", to, "green", this.getContext());
+                    farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
                 }
                 finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
 
@@ -166,7 +171,7 @@ public class ViewFaresFragment extends Fragment {
                 if (purpleLine.containsKey(to)) {
                     farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
                 } else {
-                    farefromMajestic =fares.getFares("Majestic", to, "green", this.getContext());
+                    farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
                 }
 
 
@@ -178,7 +183,10 @@ public class ViewFaresFragment extends Fragment {
 
 
         }
-
+        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription);
+        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(mLayoutManager);
+        recyclerView.setAdapter(adapter);
         return rootView;
     }
 
@@ -386,39 +394,13 @@ public class ViewFaresFragment extends Fragment {
 
 
     private void displayFinalFares(List<String> finalFare, View rootView) {
-
-       /* origin.setText(from + " - " + to);
-        origin.setBackgroundColor(getResources().getColor(android.R.color.holo_green_light));
-
-        origin.setTypeface(Typeface.DEFAULT_BOLD);*/
-        card.setTypeface(Typeface.DEFAULT_BOLD);
-        coin.setTypeface(Typeface.DEFAULT_BOLD);
-        card.setTextSize(30);
-        coin.setTextSize(30);
-        card.setText("Token cost ");
-        coin.setText("Varshik Card ");
-
-        cardfare.setText(getResources().getString(R.string.rs) + " " + finalFare.get(0));
-        coinfare.setText(getResources().getString(R.string.rs) + " " + finalFare.get(1));
-
-        cardfare.setTypeface(Typeface.DEFAULT_BOLD);
-        coinfare.setTypeface(Typeface.DEFAULT_BOLD);
-        cardfare.setTextSize(30);
-        coinfare.setTextSize(30);
-        noOfStations = (TextView) rootView.findViewById(R.id.noOfStations);
-
-        noOfStations.setTextSize(18);
-        noOfStations.setText("Number of stations to Destination ");
-        noOfStations.setTypeface(Typeface.DEFAULT_BOLD);
-        stationInfo.setText(":           " + finalFare.get(3));
-        stationInfo.setTypeface(Typeface.DEFAULT_BOLD);
-        stationInfo.setTextSize(18);
-
-        timeTaken = (TextView) rootView.findViewById(R.id.timeTaken);
-
-        timeTaken.setText("Doors open on " + finalFare.get(2));
+        headings= new String[]{"Card Fare","Coin Fare"};//,"Number of stations to Destination ","Doors open towards"};
+        dataDescription = new String[]{finalFare.get(0),finalFare.get(1)};//,finalFare.get(3),finalFare.get(2)};
     }
-
+    private void displayFinalFares1(List<String> finalFare, View rootView) {
+        headings= new String[]{"Coin Fare"};//,"Coin Fare","Number of stations to Destination ","Doors open towards"};
+        dataDescription = new String[]{finalFare.get(1)};//,finalFare.get(1),finalFare.get(3),finalFare.get(2)};
+    }
     private List<String> getFinalFare(List<String> fareTillMajestic, List<String> farefromMajestic) {
 
         List<String> finalList = new LinkedList<String>();
@@ -427,10 +409,6 @@ public class ViewFaresFragment extends Fragment {
         Double coin_price = Double.valueOf(fareTillMajestic.get(1)) + Double.valueOf(farefromMajestic.get(1));
         finalList.add(String.valueOf(card_price));
         finalList.add(String.valueOf(coin_price));
-        finalList.add("this");
-        finalList.add("this");
-        finalList.add("this");
-        finalList.add("this");
         return finalList;
     }
 

@@ -1,0 +1,116 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="120dp"
+    android:layout_height="150dp"
+    android:id="@+id/farelinear"
+    android:orientation="horizontal">
+<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/tools"
+    android:id="@+id/FareCard"
+    android:layout_width="120dp"
+    android:layout_height="100dp"
+    android:layout_gravity="left"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardElevation="4dp"
+    card_view:cardUseCompatPadding="true"
+    android:layout_marginLeft="10dp"
+    android:layout_marginRight="10dp"
+    android:layout_marginBottom="0dp"
+    android:layout_marginTop="10dp"
+    android:background="?android:selectableItemBackground">
+    <View
+        android:layout_width="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:background="@android:color/darker_gray"
+        android:layout_height="1dp"
+        android:layout_marginTop="40dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:id="@+id/layoutlinear"
+        android:background="?android:selectableItemBackground"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/heading"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:text="this is a color"
+            android:gravity="center_vertical|center_horizontal"
+            android:textColor="@color/colorPrimary"
+            android:layout_alignParentEnd="true" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15dp"
+            android:text="1234"
+            android:textColor="@color/Black"
+            android:gravity="center_vertical|center_horizontal"
+            android:layout_below="@+id/heading"
+            android:layout_centerHorizontal="true" />
+            android:layout_marginTop="45dp" />
+
+
+    </RelativeLayout>
+</android.support.v7.widget.CardView>
+
+    <!--
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/tools"
+            android:id="@+id/FareCard1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_gravity="left"
+            card_view:cardCornerRadius="4dp"
+            card_view:cardElevation="4dp"
+            card_view:cardUseCompatPadding="true"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="200dp"
+            android:background="?android:selectableItemBackground">
+            <View
+                android:layout_width="100dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@android:color/darker_gray"
+                android:layout_height="1dp"
+                android:layout_marginTop="40dp"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="true"
+                android:id="@+id/layoutlinear1"
+                android:background="?android:selectableItemBackground"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/heading1"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:text="this is a color"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:textColor="@color/colorPrimary"/>
+
+                <TextView
+                    android:id="@+id/description1"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"
+                    android:textSize="15dp"
+                    android:textColor="@color/Black"
+                    android:gravity="center_vertical|center_horizontal"
+                    android:layout_marginTop="45dp" />
+
+
+            </RelativeLayout>
+        </android.support.v7.widget.CardView>-->
+    </LinearLayout>

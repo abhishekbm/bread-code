@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     tools:context="shakestudios.traintimer.Fragments.ViewFaresFragment">
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearance"
@@ -40,7 +40,7 @@
         android:layout_gravity="left|top"
         android:layout_marginBottom="50dp"
         android:layout_marginTop="170dp"
-        android:layout_marginLeft="10dp" />
+        android:layout_marginLeft="10dp" />-->
 
 
     <AutoCompleteTextView
@@ -59,7 +59,7 @@
         >
     </AutoCompleteTextView>
 
-    <TextView
+    <!--<TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textAppearance="?android:attr/textAppearance"
@@ -106,7 +106,7 @@
         android:layout_alignParentStart="true"
         android:layout_gravity="right|top"
         android:gravity="left"
-        android:layout_marginTop="170dp" />
+        android:layout_marginTop="170dp" />-->
 
     <AutoCompleteTextView
         android:id="@+id/desti"
@@ -124,4 +124,12 @@
         android:layout_gravity="left|bottom">
     </AutoCompleteTextView>
 
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="56dp"
+        android:id="@+id/recycler_view"
+        android:scrollbars="horizontal">
+
+    </android.support.v7.widget.RecyclerView>
 </FrameLayout>

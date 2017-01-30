@@ -22,6 +22,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import java.util.List;
+
 import shakestudios.traintimer.Fragments.About;
 import shakestudios.traintimer.Fragments.CarParkingFragment;
 import shakestudios.traintimer.Fragments.FaresFragment;
@@ -64,9 +66,11 @@ public class navigationAcivity extends AppCompatActivity
 
         askforRating();
         main_fragment fragment = new main_fragment();
-        android.support.v4.app.FragmentTransaction fragmentTransaction =
+        String backStateName= fragment.getClass().getName();
+        FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.event_frame, fragment);
+      //  fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -233,6 +237,8 @@ public class navigationAcivity extends AppCompatActivity
             replaceFragment(fragment);
 
         } else if (id == R.id.Home) {
+
+            removebackStackFragments();
             main_fragment fragment = new main_fragment();
             replaceFragment(fragment);
 
@@ -252,8 +258,7 @@ public class navigationAcivity extends AppCompatActivity
             Uri data = Uri.parse("mailto:abhishek_bm@yahoo.com?subject=" + "Suggestions for My Metro" + "&body=" + "");
             intent.setData(data);
             startActivity(intent);
-        }
-        else if (id == R.id.faq) {
+        } else if (id == R.id.faq) {
             ParkingFragment fragment = new ParkingFragment();
             replaceFragment(fragment);
         }
@@ -261,6 +266,20 @@ public class navigationAcivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    private void removebackStackFragments() {
+
+        FragmentManager fm = getSupportFragmentManager();
+        List<Fragment> listfrag = fm.getFragments();
+
+        for (int i = 0; i < listfrag.size(); i++) {
+            if (listfrag.get(i) instanceof main_fragment) {
+
+            } else {
+                fm.popBackStack();
+            }
+        }
     }
 
     private void replaceFragment(Fragment fragment) {
