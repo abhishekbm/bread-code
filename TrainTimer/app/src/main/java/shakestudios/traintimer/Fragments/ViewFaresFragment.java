@@ -111,14 +111,7 @@ public class ViewFaresFragment extends Fragment {
                 in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
             }
         });
-        //   card = (TextView) rootView.findViewById(R.id.textView3);
-        //  coin = (TextView) rootView.findViewById(R.id.textView4);
 
-
-        // cardfare = (TextView) rootView.findViewById(R.id.cardfare);
-        //   coinfare = (TextView) rootView.findViewById(R.id.coinfare);
-
-        // stationInfo = (TextView) rootView.findViewById(R.id.staioninfo);
 
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -248,8 +241,8 @@ public class ViewFaresFragment extends Fragment {
     private void initilizeList(AutoCompleteTextView origin, AutoCompleteTextView desti, View rootView) {
 
 
-        origin.setText("");
-        desti.setText("");
+        origin.setText("Origin: "+from);
+        desti.setText("Destination: "+to);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
         adapter.add("Byappanhalli");
         adapter.add("Swami Vivekananda Road");

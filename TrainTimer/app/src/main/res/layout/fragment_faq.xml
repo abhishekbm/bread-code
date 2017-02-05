@@ -4,9 +4,11 @@
     android:layout_height="match_parent"
     tools:context="shakestudios.traintimer.Fragments.faqFragment">
 
-  <ExpandableListView
-      android:layout_width="match_parent"
-      android:layout_height="wrap_content">
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="326dp"
+        android:id="@+id/listView"
+        android:layout_gravity="center_horizontal|bottom">
 
-  </ExpandableListView>
+    </ListView>
 </FrameLayout>

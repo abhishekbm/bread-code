@@ -80,8 +80,8 @@ public class TwoWheelParkingFragment extends Fragment {
 
         textView1.setText("First four Hours: ");
         textView2.setText(" 15");
-        textView3.setText("For every subsequent hour");
-        textView4.setText(" 5");
+        textView3.setText("For every subsequent hour after 4 hours: ");
+        textView4.setText(" +5");
         textView5.setText("All day");
         textView6.setText(" 30");
 

@@ -33,6 +33,7 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_station__detail);
+
         Toolbar appbar = (Toolbar) findViewById(R.id.toolbar1);
         setSupportActionBar(appbar);
 

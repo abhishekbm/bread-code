@@ -26,15 +26,20 @@ import java.util.List;
 
 import shakestudios.traintimer.Fragments.About;
 import shakestudios.traintimer.Fragments.CarParkingFragment;
+import shakestudios.traintimer.Fragments.Faq_category;
 import shakestudios.traintimer.Fragments.FaresFragment;
 import shakestudios.traintimer.Fragments.GreenLineFragment;
 import shakestudios.traintimer.Fragments.ParkingFragment;
 import shakestudios.traintimer.Fragments.ParkingManagerFragment;
+import shakestudios.traintimer.Fragments.PlatformFragment;
 import shakestudios.traintimer.Fragments.PurpleLineFragment;
 import shakestudios.traintimer.Fragments.StationListFragment;
+import shakestudios.traintimer.Fragments.Station_detail_fragment;
 import shakestudios.traintimer.Fragments.TimingsFragment;
 import shakestudios.traintimer.Fragments.TwoWheelParkingFragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
+import shakestudios.traintimer.Fragments.faqFragment;
+import shakestudios.traintimer.Fragments.faq_expand;
 import shakestudios.traintimer.Fragments.newsFragment;
 import shakestudios.traintimer.Fragments.rechargeFragment;
 import shakestudios.traintimer.Stations.GreenStationFragment;
@@ -46,7 +51,7 @@ public class navigationAcivity extends AppCompatActivity
         , PurpleLineFragment.OnFragmentInteractionListener, PurpleStationFragments.OnFragmentInteractionListener, TimingsFragment.OnFragmentInteractionListener
         , FaresFragment.OnFragmentInteractionListener, ViewFaresFragment.OnFragmentInteractionListener, main_fragment.OnFragmentInteractionListener, About.OnFragmentInteractionListener
         , ParkingFragment.OnFragmentInteractionListener, RouteFragment.OnFragmentInteractionListener, newsFragment.OnFragmentInteractionListener, CarParkingFragment.OnFragmentInteractionListener
-        , TwoWheelParkingFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener, StationListFragment.OnFragmentInteractionListener, rechargeFragment.OnFragmentInteractionListener {
+        , Faq_category.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener, TwoWheelParkingFragment.OnFragmentInteractionListener, Station_detail_fragment.OnFragmentInteractionListener, faqFragment.OnFragmentInteractionListener, faq_expand.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener, StationListFragment.OnFragmentInteractionListener, rechargeFragment.OnFragmentInteractionListener {
 
     NavigationView navigationView = null;
     Toolbar toolbar = null;
@@ -55,6 +60,8 @@ public class navigationAcivity extends AppCompatActivity
   */
 
     private boolean doubleBackToExitPressedOnce = false;
+
+    //  protected DrawerLayout drawer;
 
     @Override
 
@@ -66,11 +73,11 @@ public class navigationAcivity extends AppCompatActivity
 
         askforRating();
         main_fragment fragment = new main_fragment();
-        String backStateName= fragment.getClass().getName();
+        String backStateName = fragment.getClass().getName();
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.event_frame, fragment);
-      //  fragmentTransaction.addToBackStack(null);
+        //  fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -259,8 +266,9 @@ public class navigationAcivity extends AppCompatActivity
             intent.setData(data);
             startActivity(intent);
         } else if (id == R.id.faq) {
-            ParkingFragment fragment = new ParkingFragment();
+            Faq_category fragment = new Faq_category();
             replaceFragment(fragment);
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

@@ -35,6 +35,10 @@
         <activity android:name=".Activities.Station_Detail"
             android:parentActivityName="navigationAcivity" >
             ></activity>
+
+        <activity android:name=".ListAdapter.ExpList3"
+            android:parentActivityName="navigationAcivity" >
+            ></activity>
     </application>
 
 </manifest>

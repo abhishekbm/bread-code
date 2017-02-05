@@ -21,6 +21,7 @@
     <string name="action_websearch">Web search</string>
     <string name="app_not_available">Sorry, there\'s no web browser available</string>
 
+    <string name="main_no_items">No items</string>
     <string name="banner_home_footer">ca-app-pub-3940256099942544/6300978111</string>
 
     <string name="TimingsBeta"> Timings<sup><small>BETA</small></sup></string>

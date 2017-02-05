@@ -11,23 +11,24 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import java.util.ArrayList;
+import java.util.List;
 
+import shakestudios.traintimer.ListAdapter.ImageAdapter;
 import shakestudios.traintimer.R;
+import shakestudios.traintimer.ValueObjects.FaresVO;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link faqFragment.OnFragmentInteractionListener} interface
+ * {@link Station_detail_fragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link faqFragment#newInstance} factory method to
+ * Use the {@link Station_detail_fragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class faqFragment extends Fragment {
+public class Station_detail_fragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +40,7 @@ public class faqFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public faqFragment() {
+    public Station_detail_fragment() {
         // Required empty public constructor
     }
 
@@ -49,11 +50,11 @@ public class faqFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment faqFragment.
+     * @return A new instance of fragment Station_detail_fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static faqFragment newInstance(String param1, String param2) {
-        faqFragment fragment = new faqFragment();
+    public static Station_detail_fragment newInstance(String param1, String param2) {
+        Station_detail_fragment fragment = new Station_detail_fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -73,31 +74,64 @@ public class faqFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        View rootView = inflater.inflate(R.layout.fragment_station_detail_fragment, container, false);
+
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_faq, container, false);
+        ListView detailList = (ListView) rootView.findViewById(R.id.stationDetailList);
         final Bundle bundle = this.getArguments();
-        String category = bundle.getString("Category");
-        ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        ArrayList list = new ArrayList();
-        if (category.equalsIgnoreCase("Recharge"))
-        {Toast.makeText(getContext(), category+" in faqFragment", Toast.LENGTH_SHORT).show();
-
-
-            list.add("test");
+        String station = bundle.getString("station");
+        this.getActivity().setTitle(station);
+        FaresVO vo = new FaresVO();
+        final List<String> details = vo.getStationDetails(this.getContext());
+        ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
+        for (int i = 0; i < details.size(); i++) {
+            //adapter1.add(details.get(i));
         }
 
+        adapter1.add("Platforms");
+        adapter1.add("Parking");
+        adapter1.add("Lifts and escalators");
+        adapter1.add("ATM");
+        String[] strings = new String[4];
+        for (int j = 0; j < adapter1.getCount(); j++) {
+            String obj = adapter1.getItem(j);
+            strings[j] = obj;
+        }
 
+        boolean[] dflags = {true, true, true, false};
+        TextView fromTo = (TextView) rootView.findViewById(R.id.fromTo);
+        TextView elevation = (TextView) rootView.findViewById(R.id.elevation);
+        elevation.setText(details.get(3));
+        fromTo.setText(details.get(9));
 
-        ListAdapter adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        //  detailList.setAdapter(adapter1);
+        detailList.setAdapter(new ImageAdapter(this.getActivity(), R.layout.image_adapter, R.id.text1, R.id.image1, strings, dflags));
+
+        detailList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                faq_expand fragment = new faq_expand();
-                fragment.setArguments(bundle);
-                replaceFragment(fragment);
+
+                String string = ((TextView) view.findViewById(R.id.text1)).getText().toString();
+                if (string.equalsIgnoreCase("Parking")) {
+                    ParkingManagerFragment fragment = new ParkingManagerFragment();
+                    fragment.setArguments(bundle);
+                    replaceFragment(fragment);
+                } else if (string.equalsIgnoreCase("Platforms")) {
+
+                    Bundle bundle = new Bundle();
+                    bundle.putString("platform_1", "Platform 1:           " + details.get(0).toString());
+                    bundle.putString("platform_2", "Platform 2:           " + details.get(1).toString());
+                    PlatformFragment fragment = new PlatformFragment();
+                    fragment.setArguments(bundle);
+                    replaceFragment(fragment);
+                    //  Toast.makeText(getApplicationContext(), details.get(0).toString()+details.get(1).toString(), Toast.LENGTH_SHORT).show();
+
+                }
             }
         });
+        //stationName.setText(station);
+
         return rootView;
     }
 
@@ -105,7 +139,7 @@ public class faqFragment extends Fragment {
         String backStateName = fragment.getClass().getName();
         String fragmentTag = backStateName;
 
-        FragmentManager manager = this.getFragmentManager();
+        FragmentManager manager = getFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
 
         if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
@@ -115,6 +149,7 @@ public class faqFragment extends Fragment {
             ft.commit();
         }
     }
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

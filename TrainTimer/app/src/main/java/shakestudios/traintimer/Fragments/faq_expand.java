@@ -4,15 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
-import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -22,12 +17,12 @@ import shakestudios.traintimer.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link faqFragment.OnFragmentInteractionListener} interface
+ * {@link faq_expand.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link faqFragment#newInstance} factory method to
+ * Use the {@link faq_expand#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class faqFragment extends Fragment {
+public class faq_expand extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -39,7 +34,7 @@ public class faqFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public faqFragment() {
+    public faq_expand() {
         // Required empty public constructor
     }
 
@@ -49,11 +44,11 @@ public class faqFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment faqFragment.
+     * @return A new instance of fragment faq_expand.
      */
     // TODO: Rename and change types and number of parameters
-    public static faqFragment newInstance(String param1, String param2) {
-        faqFragment fragment = new faqFragment();
+    public static faq_expand newInstance(String param1, String param2) {
+        faq_expand fragment = new faq_expand();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -74,46 +69,21 @@ public class faqFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View rootView = inflater.inflate(R.layout.fragment_faq, container, false);
-        final Bundle bundle = this.getArguments();
+        View rootView = inflater.inflate(R.layout.fragment_faq_expand, container, false);
+        Bundle bundle = this.getArguments();
         String category = bundle.getString("Category");
-        ListView listView = (ListView) rootView.findViewById(R.id.listView);
+        TextView question = (TextView) rootView.findViewById(R.id.ques);
+        TextView Answer = (TextView) rootView.findViewById(R.id.ques);
         ArrayList list = new ArrayList();
         if (category.equalsIgnoreCase("Recharge"))
-        {Toast.makeText(getContext(), category+" in faqFragment", Toast.LENGTH_SHORT).show();
+        {
+            Toast.makeText(getContext(), category+" in faqFragment", Toast.LENGTH_SHORT).show();
 
 
             list.add("test");
         }
 
-
-
-        ListAdapter adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, list);
-        listView.setAdapter(adapter);
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                faq_expand fragment = new faq_expand();
-                fragment.setArguments(bundle);
-                replaceFragment(fragment);
-            }
-        });
         return rootView;
-    }
-
-    private void replaceFragment(Fragment fragment) {
-        String backStateName = fragment.getClass().getName();
-        String fragmentTag = backStateName;
-
-        FragmentManager manager = this.getFragmentManager();
-        boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
-
-        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
-            FragmentTransaction ft = manager.beginTransaction();
-            ft.replace(R.id.event_frame, fragment, fragmentTag);
-            ft.addToBackStack(backStateName);
-            ft.commit();
-        }
     }
 
     // TODO: Rename method, update argument and hook method into UI event

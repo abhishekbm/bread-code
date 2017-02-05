@@ -7,6 +7,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
+import android.widget.TextView;
 
 import shakestudios.traintimer.R;
 
@@ -67,7 +69,21 @@ public class CarParkingFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.tablayout, container, false);
         Bundle bundle = this.getArguments();
         String station = bundle.getString("station");
+        TableLayout layout = (TableLayout) rootView.findViewById(R.id.tableLayout1);
 
+        TextView textView1 = (TextView) rootView.findViewById(R.id.textView1);
+        TextView textView2 = (TextView) rootView.findViewById(R.id.textView2);
+        TextView textView3 = (TextView) rootView.findViewById(R.id.textView3);
+        TextView textView4 = (TextView) rootView.findViewById(R.id.textView4);
+        TextView textView5 = (TextView) rootView.findViewById(R.id.textView5);
+        TextView textView6 = (TextView) rootView.findViewById(R.id.textView6);
+
+        textView1.setText("First four Hours: ");
+        textView2.setText("30 ");
+        textView3.setText("For every subsequent hour after 4 hours: ");
+        textView4.setText(" +10");
+        textView5.setText("All day");
+        textView6.setText(" 60");
         return rootView;
     }
 

@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,7 +30,7 @@ public class FareRecyclerAdapter extends RecyclerView.Adapter<FareRecyclerAdapte
 
         final View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.farecardlayout, parent, false);
-        LinearLayout linearlayout = (LinearLayout) view.findViewById(R.id.farelinear);
+        RelativeLayout linearlayout = (RelativeLayout) view.findViewById(R.id.farelinear);
         RelativeLayout layout = (RelativeLayout) linearlayout.findViewById(R.id.layoutlinear);
         layout.setOnClickListener(new View.OnClickListener() {
             @Override
