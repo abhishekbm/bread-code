@@ -28,6 +28,7 @@
                 android:paddingLeft="5dp"
                 android:layout_span="1"
                 android:text="Column 1"
+                android:textColor="@color/Black"
                 android:textStyle="bold"
                 android:textSize="15dp" />
 
@@ -36,6 +37,7 @@
                 android:layout_column="23"
                 android:textStyle="bold"
                 android:text="Column 2"
+                android:textColor="@color/Black"
                 android:textSize="15dp" />
 
         </TableRow>
@@ -57,6 +59,7 @@
                 android:paddingBottom="25dp"
                 android:paddingLeft="5dp"
                 android:text="Column 1"
+                android:textColor="@color/Black"
                 android:textSize="15dp"
                  />
 
@@ -64,6 +67,7 @@
                 android:id="@+id/textView4"
                 android:layout_column="23"
                 android:textStyle="bold"
+                android:textColor="@color/Black"
                 android:text="Column 2"
                 android:textSize="15dp" />
 
@@ -86,6 +90,7 @@
                 android:paddingLeft="5dp"
                 android:textStyle="bold"
                 android:text="Column 1"
+                android:textColor="@color/Black"
                 android:textSize="15dp" />
 
             <TextView
@@ -94,6 +99,7 @@
                 android:layout_span="1"
                 android:text="Column 2"
                 android:textStyle="bold"
+                android:textColor="@color/Black"
                 android:textSize="15dp" />
 
         </TableRow>

@@ -4,7 +4,7 @@
     <color name="Purple">#800080</color>
     <color name="Green">#008b00</color>
     <color name="Black">#000000</color>
-
+    <color name="Red">#FF0000</color>
     <color name="colorPrimary">#7e1164</color>
     <color name="colorPrimaryDark">#870471</color><!--
     <color name="textColorPrimary">#FFFFFF</color>-->

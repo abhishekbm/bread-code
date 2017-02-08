@@ -1,6 +1,6 @@
-                                                                                                                                   package shakestudios.traintimer.Fragments;
+package shakestudios.traintimer.Fragments;
 
-                                                                                                                                   import android.content.Context;
+import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import shakestudios.traintimer.R;
 
@@ -77,24 +76,17 @@ public class Faq_category extends Fragment {
         array.add("Recharge");
         array.add("Stations");
         view.setAdapter(array);
-final Bundle bundle = new Bundle();
+        final Bundle bundle = new Bundle();
 
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String string =array.getItem(position).toString();
-            bundle.putString("Category",array.getItem(position).toString());
-                if (string.equalsIgnoreCase("Recharge")) {
-                    faqFragment fragment = new faqFragment();
-                    Toast.makeText(getContext(), string, Toast.LENGTH_SHORT).show();
+                String string = array.getItem(position).toString();
+                bundle.putString("Category", array.getItem(position).toString());
+                faqFragment fragment = new faqFragment();
+                fragment.setArguments(bundle);
+                replaceFragment(fragment);
 
-                    fragment.setArguments(bundle);
-                    replaceFragment(fragment);
-                } else if (string.equalsIgnoreCase("Platforms")) {
-
-                    //  Toast.makeText(getApplicationContext(), details.get(0).toString()+details.get(1).toString(), Toast.LENGTH_SHORT).show();
-
-                }
             }
         });
         return rootView;
@@ -115,6 +107,7 @@ final Bundle bundle = new Bundle();
             ft.commit();
         }
     }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {

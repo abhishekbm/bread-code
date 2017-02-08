@@ -190,15 +190,14 @@ public class FaresVO {
          System.out.print(getFares(from, to, "purple"));
      }
  */
-    public List<String> getStationDetails(Context context) {
-        String station =null;
+    public List<String> getStationDetails(Context context, String stationDet) {
+        String station = null;
         try {
-             station = AssetJSONFile("stationDetail.json", context);
+            station = AssetJSONFile("stationDetail.json", context);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // station = "{\n\t\"stations\": [{\n\t\t\"station\": \"baiyappanahalli\",\n\t\t\"elevated\": \"yes\",\n\t\t\"platforms\": [{\n\t\t\t\"platform_1\": \"Towards Mysore Road\",\n\t\t\t\"platform_2\": \"Towards baiyappanahalli\"\n\t\t}],\n\t\t\"line\": \"purple\",\n\t\t\"lift_escalator\": \"yes\",\n\t\t\"Parking\": \"Paid\",\n\t\t\"Origin\": \"Baiyappanahalli\",\n\t\t\"Destination\": \"Mysore Road\"\n\n\t}]\n}";
-                List<String> details = new LinkedList<String>();
+        List<String> details = new LinkedList<String>();
         try {
             JSONObject jsonobject = new JSONObject(station);
             JSONArray stationArray = jsonobject.getJSONArray("stations");
@@ -206,17 +205,20 @@ public class FaresVO {
                 JSONObject stationObject = stationArray.getJSONObject(i);
                 String stationDetail = stationObject.getString("station");
 
-                JSONArray platform = stationObject.getJSONArray("platforms");
-                details.add(platform.getJSONObject(0).getString("platform_1"));
-                details.add(platform.getJSONObject(0).getString("platform_2"));
-                details.add(stationObject.getString("station"));
-                details.add(stationObject.getString("station_elevation"));
-                details.add(stationObject.getString("line"));
-                details.add(stationObject.getString("lift_escalator"));
-                details.add(stationObject.getString("Parking"));
-                details.add(stationObject.getString("Origin"));
-                details.add(stationObject.getString("Destination"));
-                details.add(stationObject.getString("Line_detail"));
+                if (stationDet.equalsIgnoreCase(stationDetail)) {
+                    JSONArray platform = stationObject.getJSONArray("platforms");
+                    details.add(platform.getJSONObject(0).getString("platform_1"));
+                    details.add(platform.getJSONObject(0).getString("platform_2"));
+                    details.add(stationObject.getString("station"));
+                    details.add(stationObject.getString("station_elevation"));
+                    details.add(stationObject.getString("line"));
+                    details.add(stationObject.getString("lift_escalator"));
+                    details.add(stationObject.getString("Parking"));
+                    details.add(stationObject.getString("Origin"));
+                    details.add(stationObject.getString("Destination"));
+                    details.add(stationObject.getString("Line_detail"));
+                }
+
 
             }
 

@@ -110,20 +110,12 @@ public class navigationAcivity extends AppCompatActivity
                         navigationAcivity.this);
                 alert.setTitle("Rate the application");
                 alert.setIcon(R.mipmap.ic_launcher); //app icon here
-                alert.setMessage("Thanks for using the app. Please take a moment to rate it and let us know your review");
+                alert.setMessage("Thanks for using our app. Please take a moment to rate it and let us know your review");
 
-                alert.setPositiveButton("Cancel",
+                alert.setPositiveButton("Rate it",
                         new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog,
                                                 int whichButton) {
-                                //Do nothing
-                            }
-                        });
-
-                alert.setNegativeButton("Rate it",
-                        new DialogInterface.OnClickListener() {
-
-                            public void onClick(DialogInterface dialog, int which) {
 
                                 final String appName = getApplicationContext().getPackageName();
                                 try {
@@ -137,6 +129,14 @@ public class navigationAcivity extends AppCompatActivity
                                                     + appName)));
                                 }
 
+                            }
+                        });
+
+                alert.setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+
+                            public void onClick(DialogInterface dialog, int which) {
+                                //Do nothing
                             }
                         });
                 alert.show();

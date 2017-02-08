@@ -1,12 +1,14 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -106,8 +108,21 @@ public class About extends Fragment {
         adapter.add("The developer is not responsible for any loss or damage of any sort.");
         adapter.add("Suggestions are welcome.");
         adapter.add("Mail us at: abhishek_bm@yahoo.com");
-        adapter.add("Version: 1.0.0");
+        adapter.add("Version: 2.0.0");
         text.setAdapter(adapter);
+        text.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = adapter.getItem(position);
+                if(item.equalsIgnoreCase("Mail us at: abhishek_bm@yahoo.com")){
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setType("message/rfc822");
+                    Uri data = Uri.parse("mailto:abhishek_bm@yahoo.com?subject=" + "Suggestions for My Metro" + "&body=" + "");
+                    intent.setData(data);
+                    startActivity(intent);
+                }
+            }
+        });
         return rootViw;
     }
 

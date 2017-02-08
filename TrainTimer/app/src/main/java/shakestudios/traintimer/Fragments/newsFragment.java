@@ -1,6 +1,9 @@
 package shakestudios.traintimer.Fragments;
 
+import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -12,7 +15,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import shakestudios.traintimer.R;
@@ -79,19 +81,18 @@ public class newsFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_news, container, false);
 
-        ProgressBar bar = (ProgressBar) view.findViewById(R.id.pB1);
+
         if (CheckNetwork.isInternetAvailable(getContext())) //returns true if internet available
         {
 
 
             WebView webView = (WebView) view.findViewById(R.id.webview);
-            webView.setWebViewClient(new myWebViewClient(bar));
+            webView.setWebViewClient(new myWebViewClient(getActivity(), "Loading ... The Metro Rail Guy for the news!!"));
             webView.getSettings().setJavaScriptEnabled(true);
             String newUA = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0";
             webView.getSettings().setUserAgentString(newUA);
             webView.loadUrl("http://themetrorailguy.com/category/bangalore/");
         } else {
-            bar.setVisibility(View.GONE);
             Toast.makeText(getContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
 
             runnable = new Runnable() {
@@ -174,11 +175,14 @@ public class newsFragment extends Fragment {
 
 class myWebViewClient extends WebViewClient {
 
-    private ProgressBar progressBar;
+    private boolean isRedirected = false;
+    ProgressDialog progressDialog;
+    Activity activity1;
+    String loadingText;
 
-    public myWebViewClient(ProgressBar progressBar) {
-        this.progressBar = progressBar;
-        progressBar.setVisibility(View.VISIBLE);
+    public myWebViewClient(Activity activity, String loading) {
+        activity1 = activity;
+        loadingText = loading;
     }
 
     @Override
@@ -189,10 +193,40 @@ class myWebViewClient extends WebViewClient {
     }
 
     @Override
+    public void onPageStarted(WebView view, String url, Bitmap favicon) {
+        super.onPageStarted(view, url, favicon);
+        isRedirected = false;
+    }
+
+    @Override
+    public void onLoadResource(WebView view, String url) {
+        if (!isRedirected) {
+            if (progressDialog == null) {
+                progressDialog = new ProgressDialog(activity1);
+                progressDialog.setMessage(loadingText);
+                progressDialog.show();
+            }
+        }
+
+    }
+
+    @Override
     public void onPageFinished(WebView view, String url) {
         // TODO Auto-generated method stub
-        super.onPageFinished(view, url);
-        progressBar.setVisibility(View.GONE);
+        try {
+            isRedirected = true;
+
+            if (progressDialog.isShowing()) {
+                progressDialog.dismiss();
+                progressDialog = null;
+            }
+
+
+        } catch (Exception exception) {
+            exception.printStackTrace();
+        }
     }
 
 }
+
+

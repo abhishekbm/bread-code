@@ -13,6 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import shakestudios.traintimer.R;
 
 /**
@@ -79,7 +82,7 @@ public class ParkingFragment extends Fragment {
         // preparing list data
 
 
-        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
+        ArrayList<String> adapter = new ArrayList<String>();
         adapter.add("Byappanhalli");
         adapter.add("Swami Vivekananda Road");
         adapter.add("Indiranagar");
@@ -90,7 +93,10 @@ public class ParkingFragment extends Fragment {
         adapter.add("Vidhana Soudha");
         adapter.add("Sir M. Visveshwaraya");
         // setting list adapter
-        expListView.setAdapter(adapter);
+
+        Collections.sort(adapter);
+        ArrayAdapter array1 = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1, adapter);
+        expListView.setAdapter(array1);
         expListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -98,7 +104,7 @@ public class ParkingFragment extends Fragment {
                 String station = (String) expListView.getItemAtPosition(position);
                 expListView.setVisibility(View.GONE);
                 Bundle bundle = new Bundle();
-                bundle.putString("station",station);
+                bundle.putString("station", station);
                 fragment.setArguments(bundle);
                 replaceFragment(fragment);
             }
@@ -121,12 +127,14 @@ public class ParkingFragment extends Fragment {
             ft.commit();
         }
     }
+
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
             mListener.onFragmentInteraction(uri);
         }
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

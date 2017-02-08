@@ -83,7 +83,7 @@ public class Station_detail_fragment extends Fragment {
         String station = bundle.getString("station");
         this.getActivity().setTitle(station);
         FaresVO vo = new FaresVO();
-        final List<String> details = vo.getStationDetails(this.getContext());
+        final List<String> details = vo.getStationDetails(this.getContext(),station);
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this.getContext(), R.layout.support_simple_spinner_dropdown_item);
         for (int i = 0; i < details.size(); i++) {
             //adapter1.add(details.get(i));

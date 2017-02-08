@@ -1,6 +1,7 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,10 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Collections;
 
 import shakestudios.traintimer.R;
 
@@ -72,7 +77,11 @@ public class StationListFragment extends Fragment {
         final View rootView = inflater.inflate(R.layout.fragment_station_list, container, false);
         getActivity().setTitle("Stations");
         ListView view = (ListView) rootView.findViewById(R.id.stationList);
-        ArrayAdapter array = new ArrayAdapter(rootView.getContext(), android.R.layout.simple_list_item_1);
+        TextView textView = (TextView) rootView.findViewById(R.id.station_header);
+        textView.setText("Select a station to view facilities");
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
+
+        ArrayList array = new ArrayList();
         array.add("Byappanhalli");
         array.add("Swami Vivekananda Road");
         array.add("Indiranagar");
@@ -115,17 +124,20 @@ public class StationListFragment extends Fragment {
         array.add("Banashankari");
         array.add("Jayaprakash Nagar");
         array.add("Puttenahalli");
-        view.setAdapter(array);
+        Collections.sort(array);
+        ArrayAdapter array1 = new ArrayAdapter<String>(rootView.getContext(),
+                android.R.layout.simple_list_item_1, array);
+        view.setAdapter(array1);
         view.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               String stationName= (String)parent.getItemAtPosition(position);
+                String stationName = (String) parent.getItemAtPosition(position);
 
                 Station_detail_fragment fragment = new Station_detail_fragment();
 
                 Bundle bundle = new Bundle();
-                bundle.putString("station",stationName);
-               fragment.setArguments(bundle);
+                bundle.putString("station", stationName);
+                fragment.setArguments(bundle);
                 replaceFragment(fragment);
 
             }
@@ -150,6 +162,7 @@ public class StationListFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
     private void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         String fragmentTag = backStateName;
@@ -165,6 +178,7 @@ public class StationListFragment extends Fragment {
         }
 
     }
+
     @Override
     public void onDetach() {
         super.onDetach();

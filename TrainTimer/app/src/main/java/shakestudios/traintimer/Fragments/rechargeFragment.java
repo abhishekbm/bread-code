@@ -1,5 +1,6 @@
 package shakestudios.traintimer.Fragments;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
@@ -8,6 +9,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.text.Html;
 import android.view.KeyEvent;
@@ -17,10 +20,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.CheckBox;
-import android.widget.ProgressBar;
 
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.Util.CheckNetwork;
+import shakestudios.traintimer.main_fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -48,6 +51,7 @@ public class rechargeFragment extends Fragment {
 
     public CheckBox check;
     WebView webView;
+
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -66,6 +70,8 @@ public class rechargeFragment extends Fragment {
         return fragment;
     }
 
+     AlertDialog dialog1 = null;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,32 +80,33 @@ public class rechargeFragment extends Fragment {
             mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
-    private Handler handler = new Handler(){
+
+    private Handler handler = new Handler() {
         @Override
         public void handleMessage(Message message) {
             switch (message.what) {
-                case 1:{
+                case 1: {
                     webViewGoBack();
-                }break;
+                }
+                break;
             }
         }
     };
 
-    private void webViewGoBack(){
+    private void webViewGoBack() {
         webView.goBack();
     }
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       final View rootview = inflater.inflate(R.layout.fragment_recharge, container, false);
-
-        AlertDialog.Builder adb = new AlertDialog.Builder(this.getContext());
+        final View rootview = inflater.inflate(R.layout.fragment_recharge, container, false);
+        final AlertDialog.Builder adb = new AlertDialog.Builder(this.getContext());
         LayoutInflater adbInflater =
                 LayoutInflater.from(this.getContext());
         View eulaLayout = adbInflater.inflate(R.layout.dialoglayout, null);
         final CheckBox check = (CheckBox) eulaLayout.findViewById(R.id.skip);
-        final ProgressBar bar = (ProgressBar) rootview.findViewById(R.id.pB1);
         adb.setView(eulaLayout);
         adb.setTitle("Warning");
         adb.setMessage(Html.fromHtml("You are leaving the app and are being directed to a Government site for recharge. Please Read FAQ's before proceeding"));
@@ -119,10 +126,10 @@ public class rechargeFragment extends Fragment {
 
 
                     webView = (WebView) rootview.findViewById(R.id.webview);
-                    webView.setWebViewClient(new myWebViewClient(bar));
+                    webView.setWebViewClient(new myWebViewClient(getActivity(), "Loading..."));
                     webView.requestFocus(View.FOCUS_DOWN);
                     webView.canGoBackOrForward(10);
-                    webView.setOnKeyListener(new View.OnKeyListener(){
+                    webView.setOnKeyListener(new View.OnKeyListener() {
 
                         public boolean onKey(View v, int keyCode, KeyEvent event) {
                             if (keyCode == KeyEvent.KEYCODE_BACK
@@ -143,6 +150,8 @@ public class rechargeFragment extends Fragment {
                     webView.getSettings().setUserAgentString(newUA);
                     webView.loadUrl("https://www.mobile.karnataka.gov.in/goken/login.aspx");
                 }
+
+
                 return;
             }
         });
@@ -157,25 +166,45 @@ public class rechargeFragment extends Fragment {
                 editor.putString("noshow", checkBoxResult);
                 // Commit the edits!
                 editor.commit();
+                dialog.cancel();
+                getFragmentManager().popBackStackImmediate();
                 return;
             }
         });
         SharedPreferences settings = getActivity().getSharedPreferences(PREFS_NAME, 0);
+        String noshow = settings.getString("noshow", "NOT checked");
+        adb.setOnKeyListener(new Dialog.OnKeyListener() {
 
-        String noshow = settings.getString ("noshow", "NOT checked");
+            @Override
+            public boolean onKey(DialogInterface arg0, int keyCode,
+                                 KeyEvent event) {
+                // TODO Auto-generated method stub
+                if (keyCode == KeyEvent.KEYCODE_BACK) {
+                    dialog1.cancel();
+                    FragmentManager fragmentManager = getFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    main_fragment fragment2 = new main_fragment();
+                    fragmentTransaction.replace(R.id.event_frame, fragment2, "fragment2");
+                    fragmentTransaction.commit();
+
+                }
+                return true;
+            }
+        });
+        dialog1 = adb.create();
         if (noshow != "checked") {
-            adb.show();
+            dialog1.show();
         }
 
 
         return rootview;
     }
 
-    public  boolean canGoBack(){
+    public boolean canGoBack() {
         return webView.canGoBack();
     }
 
-    public  void goBack(){
+    public void goBack() {
         webView.goBack();
     }
 

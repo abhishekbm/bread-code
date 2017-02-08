@@ -13,9 +13,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import shakestudios.traintimer.R;
 
@@ -42,6 +42,8 @@ public class faqFragment extends Fragment {
     public faqFragment() {
         // Required empty public constructor
     }
+
+    HashMap<String, Integer> map;
 
     /**
      * Use this factory method to create a new instance of
@@ -78,21 +80,34 @@ public class faqFragment extends Fragment {
         final Bundle bundle = this.getArguments();
         String category = bundle.getString("Category");
         ListView listView = (ListView) rootView.findViewById(R.id.listView);
-        ArrayList list = new ArrayList();
-        if (category.equalsIgnoreCase("Recharge"))
-        {Toast.makeText(getContext(), category+" in faqFragment", Toast.LENGTH_SHORT).show();
+        initilizehashmap();
+        final ArrayList list = new ArrayList();
+        if (category.equalsIgnoreCase("Recharge")) {
 
+            this.getActivity().setTitle("Recharge FAQ's");
+            list.add("Which website am I visiting ?");
+            list.add("Where can I get username and password ?");
+            list.add("How do I know if my card is recharged ?");
+            list.add("Whom do I contact if the transaction fails while recharging ?");
+        } else if (category.equalsIgnoreCase("Stations")) {
+            this.getActivity().setTitle("Station FAQ's");
+            list.add("What facilities are available at a station ?");
+            list.add("What should I do if I want to leave a station after buying a ticket ?");
+            list.add("What should I do if I find a suspicious item at the station ?");
+            list.add("When do metro stations open and close ?");
 
-            list.add("test");
+        } else {
+
         }
-
-
-
         ListAdapter adapter = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1, list);
         listView.setAdapter(adapter);
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                String item = list.get(position).toString();
+                int itemId = getidforBundle(item);
+                bundle.putInt("ItemId", itemId);
+                bundle.putString("question", item);
                 faq_expand fragment = new faq_expand();
                 fragment.setArguments(bundle);
                 replaceFragment(fragment);
@@ -101,14 +116,39 @@ public class faqFragment extends Fragment {
         return rootView;
     }
 
+
+    private void initilizehashmap() {
+
+        map = new HashMap();
+
+        map.put("Which website am I visiting ?", 1);
+        map.put("Where can I get username and password ?", 2);
+        map.put("How do I know if my card is recharged ?", 3);
+        map.put("Whom do I contact if the transaction fails while recharging ?", 4);
+        map.put("What facilities are available at a station ?",5);
+        map.put("What should I do if I want to leave a station after buying a ticket ?",6);
+        map.put("What should I do if I find a suspicious item at the station ?",7);
+        map.put("When do metro stations open and close ?",8);
+
+
+    }
+
+    private int getidforBundle(String item) {
+        int itemId = map.get(item);
+        return itemId;
+    }
+
     private void replaceFragment(Fragment fragment) {
         String backStateName = fragment.getClass().getName();
         String fragmentTag = backStateName;
 
+
         FragmentManager manager = this.getFragmentManager();
         boolean fragmentPopped = manager.popBackStackImmediate(backStateName, 0);
 
-        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
+        if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null)
+
+        { //fragment not in back stack, create it.
             FragmentTransaction ft = manager.beginTransaction();
             ft.replace(R.id.event_frame, fragment, fragmentTag);
             ft.addToBackStack(backStateName);

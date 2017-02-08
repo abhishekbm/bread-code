@@ -16,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import shakestudios.traintimer.Fragments.CarParkingFragment;
@@ -27,7 +28,7 @@ import shakestudios.traintimer.ListAdapter.ImageAdapter;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.ValueObjects.FaresVO;
 
-public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, TwoWheelParkingFragment.OnFragmentInteractionListener,CarParkingFragment.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener,ParkingManagerFragment.OnFragmentInteractionListener {
+public class Station_Detail extends AppCompatActivity implements ParkingFragment.OnFragmentInteractionListener, TwoWheelParkingFragment.OnFragmentInteractionListener, CarParkingFragment.OnFragmentInteractionListener, PlatformFragment.OnFragmentInteractionListener, ParkingManagerFragment.OnFragmentInteractionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,10 +47,11 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
         String station = bundle.getString("station");
         this.setTitle(station);
         FaresVO vo = new FaresVO();
-        final List<String> details = vo.getStationDetails(getApplicationContext());
+        final List<String> details = new ArrayList<>();
+        // vo.getStationDetails(getApplicationContext());
         ArrayAdapter<String> adapter1 = new ArrayAdapter<String>(this, R.layout.support_simple_spinner_dropdown_item);
         for (int i = 0; i < details.size(); i++) {
-              //adapter1.add(details.get(i));
+            //adapter1.add(details.get(i));
         }
 
         adapter1.add("Platforms");
@@ -62,7 +64,7 @@ public class Station_Detail extends AppCompatActivity implements ParkingFragment
             strings[j] = obj;
         }
 
-        boolean[] dflags = {true, true, true,false};
+        boolean[] dflags = {true, true, true, false};
         TextView fromTo = (TextView) findViewById(R.id.fromTo);
         TextView elevation = (TextView) findViewById(R.id.elevation);
         elevation.setText(details.get(3));

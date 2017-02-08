@@ -1,11 +1,14 @@
 package shakestudios.traintimer.Stations;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,13 +19,14 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import shakestudios.traintimer.Activities.Station_Detail;
+import shakestudios.traintimer.Fragments.Station_detail_fragment;
 import shakestudios.traintimer.R;
 
 /**
@@ -84,7 +88,7 @@ public class RouteFragment extends Fragment {
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+    public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View rootView = inflater.inflate(R.layout.fragment_route, container, false);
@@ -94,7 +98,6 @@ public class RouteFragment extends Fragment {
 
         final Button route = (Button) rootView.findViewById(R.id.routeButton);
         getActivity().setTitle("Trip Planner");
-        final ListView stationsView = (ListView) rootView.findViewById(R.id.routeStation);
         routeStations = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
 
 
@@ -113,6 +116,8 @@ public class RouteFragment extends Fragment {
                 in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
             }
         });
+        final TextView stationNumber = (TextView) rootView.findViewById(R.id.numberofStations);
+        final TextView showStations = (TextView) rootView.findViewById(R.id.showStations);
 
         initilizeList(origin, desti, rootView);
 
@@ -121,7 +126,6 @@ public class RouteFragment extends Fragment {
                                      @Override
                                      public void onClick(View v) {
 
-                                         stationsView.setAdapter(null);
                                          routeStations.clear();
                                          String from = origin.getText().toString();
                                          String to = desti.getText().toString();
@@ -142,7 +146,6 @@ public class RouteFragment extends Fragment {
 
                                                          }
                                                          adapter = setlineFLag(routeStations, line_change);
-                                                         stationsView.setAdapter(adapter);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
                                                          for (int i = indexTo; i <= indexFrom; i++) {
@@ -153,7 +156,6 @@ public class RouteFragment extends Fragment {
                                                          Collections.reverse(list);
                                                          routeStations.addAll(list);
                                                          adapter = setlineFLag(routeStations, line_change);
-                                                         stationsView.setAdapter(adapter);
 
                                                      }
                                                  } else {
@@ -189,7 +191,6 @@ public class RouteFragment extends Fragment {
                                                      }
 
                                                      adapter = setlineFLag(routeStations, line_change);
-                                                     stationsView.setAdapter(adapter);
                                                  }
 
                                              } else {
@@ -202,7 +203,6 @@ public class RouteFragment extends Fragment {
 
                                                          }
                                                          adapter = setlineFLag(routeStations, line_change);
-                                                         stationsView.setAdapter(adapter);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
                                                          for (int i = indexTo; i <= indexFrom; i++) {
@@ -248,34 +248,51 @@ public class RouteFragment extends Fragment {
                                                      }
 
                                                      adapter = setlineFLag(routeStations, line_change);
-                                                     stationsView.setAdapter(adapter);
+
                                                  }
                                              }
+                                             stationNumber.setText("Stations to destination: " + adapter.getCount());
+                                             showStations.setText(Html.fromHtml("<a>Show Stations</a>"));
+                                             showStations.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                                                     View convertView = (View) inflater.inflate(R.layout.stationdialog, null);
+                                                     alertDialog.setView(convertView);
+                                                     alertDialog.setTitle("Stations");
+                                                     ListView lv = (ListView) convertView.findViewById(R.id.listView1);
+                                                     lv.setAdapter(adapter);
+                                                     final AlertDialog alert = alertDialog.show();
+
+                                                     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                                                         @Override
+                                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                                                             LinkedHashMap<String, String> map = (LinkedHashMap<String, String>) parent.getItemAtPosition(position);
+                                                             String station = map.get("name");
+                                                             Station_detail_fragment fragment = new Station_detail_fragment();
+                                                             Bundle bundle = new Bundle();
+                                                             bundle.putString("station", station);
+                                                             fragment.setArguments(bundle);
+
+
+                                                             FragmentManager fragmentManager = getFragmentManager();
+                                                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                                                             fragmentTransaction.replace(R.id.event_frame, fragment);
+                                                             fragmentTransaction.addToBackStack(null);
+                                                             fragmentTransaction.commit();
+                                                             alert.dismiss();
+                                                         }
+                                                     });
+
+
+                                                 }
+                                             });
+
                                          }
                                      }
                                  }
-        );
 
-        stationsView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                LinkedHashMap<String, String> map = (LinkedHashMap<String, String>) parent.getItemAtPosition(position);
-                String station = map.get("name");
-                //StationDetail fragment = new StationDetail();
-                Bundle bundle = new Bundle();
-                bundle.putString("station", station);
-                //   fragment.setArguments(bundle);
-                //
-                Intent i = new Intent(getActivity(), Station_Detail.class);
-                i.putExtras(bundle);
-                startActivity(i);
-               /* FragmentManager fragmentManager = getFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.event_frame, fragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();*/
-            }
-        });
+        );
 
 
         return rootView;
