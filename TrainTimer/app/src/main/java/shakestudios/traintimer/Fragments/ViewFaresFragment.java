@@ -176,9 +176,7 @@ public class ViewFaresFragment extends Fragment {
 
 
         }
-        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.HORIZONTAL, false);
-        recyclerView.setLayoutManager(mLayoutManager);
+        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription,bundle);
         recyclerView.setAdapter(adapter);
         return rootView;
     }
@@ -387,8 +385,8 @@ public class ViewFaresFragment extends Fragment {
 
 
     private void displayFinalFares(List<String> finalFare, View rootView) {
-        headings= new String[]{"Card Fare","Coin Fare"};//,"Number of stations to Destination ","Doors open towards"};
-        dataDescription = new String[]{finalFare.get(0),finalFare.get(1)};//,finalFare.get(3),finalFare.get(2)};
+        headings= new String[]{"Card Fare","Coin Fare","Plan this Trip"};//,"Number of stations to Destination ","Doors open towards"};
+        dataDescription = new String[]{finalFare.get(0),finalFare.get(1),"Get details for this journey"};//,finalFare.get(3),finalFare.get(2)};
     }
     private void displayFinalFares1(List<String> finalFare, View rootView) {
         headings= new String[]{"Coin Fare"};//,"Coin Fare","Number of stations to Destination ","Doors open towards"};

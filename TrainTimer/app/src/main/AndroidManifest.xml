@@ -3,8 +3,9 @@
     package="shakestudios.traintimer">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -32,13 +33,12 @@
         <activity
             android:name="com.google.android.gms.ads.AdActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize" />
-        <activity android:name=".Activities.Station_Detail"
-            android:parentActivityName="navigationAcivity" >
-            ></activity>
+        <activity
+            android:name=".Activities.Station_Detail"
+            android:parentActivityName="navigationAcivity">
+            >
+        </activity>
 
-        <activity android:name=".ListAdapter.ExpList3"
-            android:parentActivityName="navigationAcivity" >
-            ></activity>
     </application>
 
 </manifest>

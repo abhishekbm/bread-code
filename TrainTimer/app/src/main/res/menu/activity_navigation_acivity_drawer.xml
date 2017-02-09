@@ -13,7 +13,7 @@
                 <item
                     android:id="@+id/Timings"
                     android:icon="@mipmap/ic_schedule_black_24dp"
-                    android:title="@string/TimingsBeta" />
+                    android:title="Trip Planner" />
                 <item
                     android:id="@+id/Fares"
                     android:icon="@mipmap/ic_currency_inr_black_24dp"

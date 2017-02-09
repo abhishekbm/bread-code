@@ -94,8 +94,8 @@ public class main_fragment extends Fragment {
         getActivity().setTitle("My Metro");
 
 
-        String[] dataArray = new String[]{"Fares", "Trip Planner", "Stations","Recharge", "Parking", "News"};
-        String[] dataDescription = new String[]{"Find the fare between 2 stations", "Plan a Journey and get the details", "Know what facilities are there in each station","Recharge your metro card", "Know which stations have parking facility", "Get all the latest news about Namma Metro"};
+        String[] dataArray = new String[]{"Fares", "Trip Planner", "Stations", "Recharge", "Parking", "News"};
+        String[] dataDescription = new String[]{"Find the fare between 2 stations", "Plan a Journey and get the details", "Know what facilities are there in each station", "Recharge your metro card", "Know which stations have parking facility", "Get all the latest news about Namma Metro"};
         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());

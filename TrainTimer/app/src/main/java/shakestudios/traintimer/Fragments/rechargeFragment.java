@@ -155,7 +155,6 @@ public class rechargeFragment extends Fragment {
                 return;
             }
         });
-
         adb.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which) {
                 String checkBoxResult = "NOT checked";
@@ -191,6 +190,7 @@ public class rechargeFragment extends Fragment {
                 return true;
             }
         });
+
         dialog1 = adb.create();
         if (noshow != "checked") {
             dialog1.show();

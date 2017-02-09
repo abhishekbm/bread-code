@@ -5,10 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AlertDialog;
-import android.text.Html;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,17 +15,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
-import android.widget.ListView;
 import android.widget.SimpleAdapter;
-import android.widget.TextView;
 
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 
-import shakestudios.traintimer.Fragments.Station_detail_fragment;
 import shakestudios.traintimer.R;
+import shakestudios.traintimer.Util.RouteAdapater;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -52,7 +48,10 @@ public class RouteFragment extends Fragment {
     SimpleAdapter adapter;
     private LinkedHashMap<Integer, String> stationsGreen = new LinkedHashMap<Integer, String>();
     boolean line_change = false;
-
+    String[] headings, dataDescription;
+    private RecyclerView recyclerView;
+    private RecyclerView.Adapter adapter1;
+    private RecyclerView.LayoutManager layoutManager;
     private ArrayAdapter<String> routeStations;
     private OnFragmentInteractionListener mListener;
 
@@ -87,6 +86,8 @@ public class RouteFragment extends Fragment {
         }
     }
 
+    String bundleFrom = null, bundleTo = null;
+
     @Override
     public View onCreateView(final LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -95,11 +96,24 @@ public class RouteFragment extends Fragment {
 
         final AutoCompleteTextView origin = (AutoCompleteTextView) rootView.findViewById(R.id.textView5);
         final AutoCompleteTextView desti = (AutoCompleteTextView) rootView.findViewById(R.id.textView6);
-
         final Button route = (Button) rootView.findViewById(R.id.routeButton);
         getActivity().setTitle("Trip Planner");
         routeStations = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
 
+        initilizeList(origin, desti, rootView);
+
+        initializeStationList(greenLine, purpleLine);
+        final Bundle bundle = new Bundle();
+
+        Bundle bundle1 = this.getArguments();
+        boolean performClick = false;
+        if (bundle1 != null) {
+            bundleFrom = bundle1.getString("from");
+            bundleTo = bundle1.getString("to");
+            origin.setText(bundleFrom);
+            desti.setText(bundleTo);
+            performClick = true;
+        }
 
         origin.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -116,19 +130,27 @@ public class RouteFragment extends Fragment {
                 in.hideSoftInputFromWindow(getActivity().getCurrentFocus().getApplicationWindowToken(), 0);
             }
         });
-        final TextView stationNumber = (TextView) rootView.findViewById(R.id.numberofStations);
+      /*  final TextView stationNumber = (TextView) rootView.findViewById(R.id.numberofStations);
         final TextView showStations = (TextView) rootView.findViewById(R.id.showStations);
+*/
 
-        initilizeList(origin, desti, rootView);
-
-        initializeStationList(greenLine, purpleLine);
         route.setOnClickListener(new View.OnClickListener() {
                                      @Override
                                      public void onClick(View v) {
 
                                          routeStations.clear();
-                                         String from = origin.getText().toString();
-                                         String to = desti.getText().toString();
+                                         bundle.putString("from", origin.getText().toString());
+                                         bundle.putString("to", desti.getText().toString());
+                                         String from = null, to = null;
+                                         if ((bundleFrom != null) && (bundleTo != null)) {
+                                             from = bundleFrom;
+                                             to = bundleTo;
+                                         } else {
+
+                                             from = origin.getText().toString();
+                                             to = desti.getText().toString();
+                                         }
+
 
                                          if (from.equalsIgnoreCase(to)) {
                                              Snackbar.make(v, "Origin and Destination can't be same", Snackbar.LENGTH_SHORT)
@@ -251,7 +273,9 @@ public class RouteFragment extends Fragment {
 
                                                  }
                                              }
-                                             stationNumber.setText("Stations to destination: " + adapter.getCount());
+
+                                             String stations = "Stations to destination: " + adapter.getCount();
+                                           /*  stationNumber.setText("Stations to destination: " + adapter.getCount());
                                              showStations.setText(Html.fromHtml("<a>Show Stations</a>"));
                                              showStations.setOnClickListener(new View.OnClickListener() {
                                                  @Override
@@ -286,14 +310,46 @@ public class RouteFragment extends Fragment {
 
 
                                                  }
-                                             });
+                                             });*/
+
+                                            /* TextView routeMap = (TextView) rootView.findViewById(R.id.routemap);
+                                             routeMap.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
+                                             routeMap.setText(Html.fromHtml("<a>Take me to the station</a>"));
+
+                                             routeMap.setOnClickListener(new View.OnClickListener() {
+                                                 @Override
+                                                 public void onClick(View v) {
+                                                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
+                                                     View convertView = (View) inflater.inflate(R.layout.stationdialog, null);
+                                                     alertDialog.setView(convertView);
+                                                     alertDialog.setTitle("Boo, We can't have everything can we?");
+                                                     alertDialog.setMessage("We are continuously improving our app to get you to the station. For now you are lost!!! ");
+                                                     final AlertDialog alert = alertDialog.show();
+
+
+                                                 }
+                                             });*/
+                                             String[] dataArray = new String[]{stations, "Take me to the station", "Get the fares"};
+                                             String[] dataDescription = new String[]{"Show Stations", "Show route", "Find the fares for this Journey"};
+
+                                             recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+                                             recyclerView.setHasFixedSize(true);
+                                             layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                                             recyclerView.setLayoutManager(layoutManager);
+                                             adapter1 = new RouteAdapater(dataArray, getActivity(), dataDescription, adapter, bundle);
+                                             recyclerView.setAdapter(adapter1);
+
 
                                          }
+
+
                                      }
                                  }
 
         );
-
+        if (performClick) {
+            route.performClick();
+        }
 
         return rootView;
     }

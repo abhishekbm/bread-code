@@ -110,11 +110,11 @@
         android:layout_marginTop="170dp" />-->
 
     <android.support.v7.widget.RecyclerView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="56dp"
         android:id="@+id/recycler_view"
-        android:scrollbars="horizontal"
+        android:scrollbars="vertical"
         android:layout_gravity="center">
 
     </android.support.v7.widget.RecyclerView>
@@ -124,7 +124,7 @@
         android:layout_width="match_parent"
         android:layout_height="66dp"
         android:background="@android:color/transparent"
-        android:layout_marginTop="95dp"
+        android:layout_marginTop="125dp"
         android:clickable="false"
         android:inputType="none"
         android:textSize="20dp"

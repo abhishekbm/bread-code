@@ -1,5 +1,6 @@
 package shakestudios.traintimer.Util;
 
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -9,31 +10,31 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
 import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
-import shakestudios.traintimer.Fragments.FaresFragment;
-import shakestudios.traintimer.Fragments.ParkingFragment;
-import shakestudios.traintimer.Fragments.StationListFragment;
-import shakestudios.traintimer.Fragments.TimingsFragment;
-import shakestudios.traintimer.Fragments.newsFragment;
-import shakestudios.traintimer.Fragments.rechargeFragment;
+import shakestudios.traintimer.Fragments.ViewFaresFragment;
 import shakestudios.traintimer.R;
-import shakestudios.traintimer.Stations.RouteFragment;
 
 /**
- * Created by abhishek on 2/12/2016.
+ * Created by abbm on 2/12/2016.
  */
-public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHolder> {
+public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder> {
     private String[] dataSource, dataDescription;
     TextView heading, description;
     FragmentActivity activity;
     ViewGroup parent1;
+    SimpleAdapter stationNames1;
+    Bundle bundle1;
 
-    public RecyclerAdapter(String[] dataArgs, FragmentActivity context, String[] description) {
+    public RouteAdapater(String[] dataArgs, FragmentActivity context, String[] description, SimpleAdapter stationNames, Bundle bundle) {
         dataSource = dataArgs;
         dataDescription = description;
         activity = context;
+        stationNames1 = stationNames;
+        bundle1 = bundle;
     }
 
     @Override
@@ -41,7 +42,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
         // create a new view
 
         final View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.list, parent, false);
+                .inflate(R.layout.routelist, parent, false);
         parent1 = parent;
         RelativeLayout layout = (RelativeLayout) view.findViewById(R.id.layoutlinear);
         layout.setOnClickListener(new View.OnClickListener() {
@@ -50,7 +51,7 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
                 heading = (TextView) v.findViewById(R.id.heading);
                 description = (TextView) v.findViewById(R.id.description);
-                handleClickEvent(heading.getText().toString(), view,parent1);
+                handleClickEvent(heading.getText().toString(), view, parent1);
             }
         });
         ViewHolder viewHolder = new ViewHolder(view);
@@ -59,32 +60,15 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
-    private void handleClickEvent(String text, View view,ViewGroup parent) {
-        if ("Fares".equalsIgnoreCase(text)) {
-            FaresFragment fragment = new FaresFragment();
-            replaceFragment(fragment);
-        } else if ("Timings".equalsIgnoreCase(text)) {
-            TimingsFragment fragment = new TimingsFragment();
-            replaceFragment(fragment);
-        } else if ("Trip Planner".equalsIgnoreCase(text)) {
-            RouteFragment fragment = new RouteFragment();
-            replaceFragment(fragment);
-        } else if ("Parking".equalsIgnoreCase(text)) {
-            ParkingFragment fragment = new ParkingFragment();
-            replaceFragment(fragment);
-        } else if ("Stations".equalsIgnoreCase(text)) {
+    @Override
+    public void onBindViewHolder(RouteAdapater.ViewHolder holder, int position) {
+        holder.heading.setText(dataSource[position]);
+        holder.description.setText(dataDescription[position]);
+    }
 
-            StationListFragment fragment = new StationListFragment();
-            replaceFragment(fragment);
+    private void handleClickEvent(String text, View view, ViewGroup parent) {
 
-
-        } else if ("News".equalsIgnoreCase(text)) {
-            newsFragment fragment = new newsFragment();
-            replaceFragment(fragment);
-        } else if ("Recharge".equalsIgnoreCase(text)) {
-            rechargeFragment fragment = new rechargeFragment();
-            replaceFragment(fragment);
-        } else if ("Take me to the station".equalsIgnoreCase(text)) {
+        if ("Take me to the station".equalsIgnoreCase(text)) {
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
 
             final View convertView = LayoutInflater.from(parent.getContext())
@@ -92,8 +76,24 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
             alertDialog.setView(convertView);
             alertDialog.setTitle("Boo, We can't have everything can we?");
-            alertDialog.setMessage("We are continuously improving our app to get you to the station. For now you are lost!!! ");
+            alertDialog.setMessage("We are continuously improving our app to get you to the station. For now you are lost !!! ");
             final AlertDialog alert = alertDialog.show();
+        } else if (text.contains("Stations to destination:")) {
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+            View convertView = (View) LayoutInflater.from(parent.getContext()).
+                    inflate(R.layout.stationdialog, null);
+            alertDialog.setView(convertView);
+            alertDialog.setTitle("Stations");
+            ListView lv = (ListView) convertView.findViewById(R.id.listView1);
+            lv.setAdapter(stationNames1);
+            final AlertDialog alert = alertDialog.show();
+
+        }
+        else  if ("Get the fares".equalsIgnoreCase(text)) {
+            ViewFaresFragment fragment = new ViewFaresFragment();
+            fragment.setArguments(bundle1);
+            replaceFragment(fragment);
+
         }
 
     }
@@ -114,16 +114,12 @@ public class RecyclerAdapter extends RecyclerView.Adapter<RecyclerAdapter.ViewHo
 
     }
 
-    @Override
-    public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.heading.setText(dataSource[position]);
-        holder.description.setText(dataDescription[position]);
-    }
 
     @Override
     public int getItemCount() {
         return dataSource.length;
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         protected TextView heading, description;

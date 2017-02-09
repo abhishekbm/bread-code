@@ -122,7 +122,7 @@ public class ParkingFragment extends Fragment {
 
         if (!fragmentPopped && manager.findFragmentByTag(fragmentTag) == null) { //fragment not in back stack, create it.
             FragmentTransaction ft = manager.beginTransaction();
-            ft.replace(R.id.parkfrag, fragment, fragmentTag);
+            ft.replace(R.id.event_frame, fragment, fragmentTag);
             ft.addToBackStack(backStateName);
             ft.commit();
         }
