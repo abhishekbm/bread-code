@@ -75,8 +75,8 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
                     .inflate(R.layout.stationdialog, null);
 
             alertDialog.setView(convertView);
-            alertDialog.setTitle("Boo, We can't have everything can we?");
-            alertDialog.setMessage("We are continuously improving our app to get you to the station. For now you are lost !!! ");
+            alertDialog.setTitle("Boo, We can't have everything, can we?");
+            alertDialog.setMessage("We are continuously improving our app to get you to the station. For now, you are lost !!! ");
             final AlertDialog alert = alertDialog.show();
         } else if (text.contains("Stations to destination:")) {
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);

@@ -271,6 +271,374 @@
       "Origin":"Byappanhalli",
       "Destination":"Mysore Road",
       "Line_detail":"Mysore Road - Byappanhalli"
+    },
+    {
+      "station":"Nagasandra",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Dasarahalli",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Jalahalli",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Peenya Industry",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Peenya",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Yeshwanthpur Industry",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Yeshwanthpur",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Sandal Soap Factory",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Mahalakshmi",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Rajajinagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Kuvempu Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Srirampura",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Sampige Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Chickpet",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Krishna Rajendra Market",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"National College",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Lalbagh",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Southend Circle",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Jayanagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Rashtreeya Vidyalaya Road",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Banashankari",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Jayaprakash Nagar",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
+    },
+    {
+      "station":"Puttenahalli",
+      "station_elevation":"Elevated",
+      "platforms":[
+        {
+          "platform_1":"Towards Puttenahalli",
+          "platform_2":"Towards Nagasandra"
+        }
+      ],
+      "line":"green",
+      "lift_escalator":"yes",
+      "Parking":"Paid",
+      "Origin":"Nagasandra",
+      "Destination":"Puttenahalli",
+      "Line_detail":"Nagasandra - Puttenahalli"
     }
   ]
 }

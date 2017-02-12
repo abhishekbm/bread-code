@@ -91,7 +91,6 @@ public class StationListFragment extends Fragment {
         array.add("Cubbon Park");
         array.add("Vidhana Soudha");
         array.add("Sir M. Visveshwaraya");
-        array.add("Majestic (Inter Change)");
         array.add("City Railway Station");
         array.add("Magadi Road");
         array.add("Hosahalli");

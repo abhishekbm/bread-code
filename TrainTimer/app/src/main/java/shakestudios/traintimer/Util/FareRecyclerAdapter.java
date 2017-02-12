@@ -57,7 +57,6 @@ public class FareRecyclerAdapter extends RecyclerView.Adapter<FareRecyclerAdapte
     private void handleClickEvent(String text, View view) {
         if ("Plan this Trip".equalsIgnoreCase(text)) {
             RouteFragment fragment = new RouteFragment();
-            Bundle bundle = new Bundle();
             fragment.setArguments(bundle1);
             replaceFragment(fragment);
 

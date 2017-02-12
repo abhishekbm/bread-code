@@ -275,60 +275,7 @@ public class RouteFragment extends Fragment {
                                              }
 
                                              String stations = "Stations to destination: " + adapter.getCount();
-                                           /*  stationNumber.setText("Stations to destination: " + adapter.getCount());
-                                             showStations.setText(Html.fromHtml("<a>Show Stations</a>"));
-                                             showStations.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View v) {
-                                                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-                                                     View convertView = (View) inflater.inflate(R.layout.stationdialog, null);
-                                                     alertDialog.setView(convertView);
-                                                     alertDialog.setTitle("Stations");
-                                                     ListView lv = (ListView) convertView.findViewById(R.id.listView1);
-                                                     lv.setAdapter(adapter);
-                                                     final AlertDialog alert = alertDialog.show();
 
-                                                     lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                                                         @Override
-                                                         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                                                             LinkedHashMap<String, String> map = (LinkedHashMap<String, String>) parent.getItemAtPosition(position);
-                                                             String station = map.get("name");
-                                                             Station_detail_fragment fragment = new Station_detail_fragment();
-                                                             Bundle bundle = new Bundle();
-                                                             bundle.putString("station", station);
-                                                             fragment.setArguments(bundle);
-
-
-                                                             FragmentManager fragmentManager = getFragmentManager();
-                                                             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                                                             fragmentTransaction.replace(R.id.event_frame, fragment);
-                                                             fragmentTransaction.addToBackStack(null);
-                                                             fragmentTransaction.commit();
-                                                             alert.dismiss();
-                                                         }
-                                                     });
-
-
-                                                 }
-                                             });*/
-
-                                            /* TextView routeMap = (TextView) rootView.findViewById(R.id.routemap);
-                                             routeMap.setPaintFlags(Paint.UNDERLINE_TEXT_FLAG);
-                                             routeMap.setText(Html.fromHtml("<a>Take me to the station</a>"));
-
-                                             routeMap.setOnClickListener(new View.OnClickListener() {
-                                                 @Override
-                                                 public void onClick(View v) {
-                                                     final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-                                                     View convertView = (View) inflater.inflate(R.layout.stationdialog, null);
-                                                     alertDialog.setView(convertView);
-                                                     alertDialog.setTitle("Boo, We can't have everything can we?");
-                                                     alertDialog.setMessage("We are continuously improving our app to get you to the station. For now you are lost!!! ");
-                                                     final AlertDialog alert = alertDialog.show();
-
-
-                                                 }
-                                             });*/
                                              String[] dataArray = new String[]{stations, "Take me to the station", "Get the fares"};
                                              String[] dataDescription = new String[]{"Show Stations", "Show route", "Find the fares for this Journey"};
 

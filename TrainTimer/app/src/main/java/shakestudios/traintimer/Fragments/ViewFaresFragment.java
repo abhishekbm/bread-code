@@ -46,7 +46,7 @@ public class ViewFaresFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    String[] headings,dataDescription;
+    String[] headings, dataDescription;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
@@ -176,7 +176,7 @@ public class ViewFaresFragment extends Fragment {
 
 
         }
-        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription,bundle);
+        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription, bundle);
         recyclerView.setAdapter(adapter);
         return rootView;
     }
@@ -239,8 +239,8 @@ public class ViewFaresFragment extends Fragment {
     private void initilizeList(AutoCompleteTextView origin, AutoCompleteTextView desti, View rootView) {
 
 
-        origin.setText("Origin: "+from);
-        desti.setText("Destination: "+to);
+        origin.setText("Origin: " + from);
+        desti.setText("Destination: " + to);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
         adapter.add("Byappanhalli");
         adapter.add("Swami Vivekananda Road");
@@ -385,13 +385,10 @@ public class ViewFaresFragment extends Fragment {
 
 
     private void displayFinalFares(List<String> finalFare, View rootView) {
-        headings= new String[]{"Card Fare","Coin Fare","Plan this Trip"};//,"Number of stations to Destination ","Doors open towards"};
-        dataDescription = new String[]{finalFare.get(0),finalFare.get(1),"Get details for this journey"};//,finalFare.get(3),finalFare.get(2)};
+        headings = new String[]{"Card Fare", "Coin Fare", "Plan this Trip"};//,"Number of stations to Destination ","Doors open towards"};
+        dataDescription = new String[]{finalFare.get(0), finalFare.get(1), "Get details for this journey"};//,finalFare.get(3),finalFare.get(2)};
     }
-    private void displayFinalFares1(List<String> finalFare, View rootView) {
-        headings= new String[]{"Coin Fare"};//,"Coin Fare","Number of stations to Destination ","Doors open towards"};
-        dataDescription = new String[]{finalFare.get(1)};//,finalFare.get(1),finalFare.get(3),finalFare.get(2)};
-    }
+
     private List<String> getFinalFare(List<String> fareTillMajestic, List<String> farefromMajestic) {
 
         List<String> finalList = new LinkedList<String>();
