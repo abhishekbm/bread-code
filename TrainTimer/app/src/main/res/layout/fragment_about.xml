@@ -6,7 +6,7 @@
     android:background="#F5F5F7"
     tools:context="shakestudios.traintimer.Fragments.About">
 
-    <!-- TODO: Update blank fragment layout --><![CDATA[
+   <!-- &lt;!&ndash; TODO: Update blank fragment layout &ndash;&gt;<![CDATA[
 
 
         android:id="@+id/lst"
@@ -25,7 +25,7 @@
             android:layout_gravity="bottom"
             ads:adSize="BANNER"
             ads:adUnitId="ca-app-pub-3940256099942544/6300978111"></com.google.android.gms.ads.AdView>
-
+-->
     <ListView
         android:id="@+id/About"
         android:layout_width="match_parent"

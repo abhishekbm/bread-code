@@ -1,6 +1,7 @@
 package shakestudios.traintimer.Stations;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -16,7 +17,9 @@ import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.SimpleAdapter;
+import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -34,21 +37,14 @@ import shakestudios.traintimer.Util.RouteAdapater;
  * create an instance of this fragment.
  */
 public class RouteFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private static List<String> stations = new ArrayList<>();
     private static LinkedHashMap<String, String> purpleLine = new LinkedHashMap<String, String>();
     private static LinkedHashMap<String, String> greenLine = new LinkedHashMap<String, String>();
     private LinkedHashMap<Integer, String> stationsPurple = new LinkedHashMap<Integer, String>();
     SimpleAdapter adapter;
     private LinkedHashMap<Integer, String> stationsGreen = new LinkedHashMap<Integer, String>();
     boolean line_change = false;
-    String[] headings, dataDescription;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter1;
     private RecyclerView.LayoutManager layoutManager;
@@ -70,20 +66,12 @@ public class RouteFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static RouteFragment newInstance(String param1, String param2) {
         RouteFragment fragment = new RouteFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     String bundleFrom = null, bundleTo = null;
@@ -99,10 +87,14 @@ public class RouteFragment extends Fragment {
         final Button route = (Button) rootView.findViewById(R.id.routeButton);
         getActivity().setTitle("Trip Planner");
         routeStations = new ArrayAdapter<String>(this.getContext(), android.R.layout.simple_list_item_1);
-
+        TextView textView = (TextView) rootView.findViewById(R.id.station_header);
+        textView.setText("Select stations to plan a trip");
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
         initilizeList(origin, desti, rootView);
-
+        stationList();
         initializeStationList(greenLine, purpleLine);
+        origin.setThreshold(0);
+        desti.setThreshold(0);
         final Bundle bundle = new Bundle();
 
         Bundle bundle1 = this.getArguments();
@@ -151,12 +143,16 @@ public class RouteFragment extends Fragment {
                                              to = desti.getText().toString();
                                          }
 
-
                                          if (from.equalsIgnoreCase(to)) {
                                              Snackbar.make(v, "Origin and Destination can't be same", Snackbar.LENGTH_SHORT)
                                                      .setAction("Action", null).show();
+                                         } else if (!(stations.contains(from) && stations.contains(to))) {
+                                             Snackbar.make(v, "Please choose valid stations from the drop down !!", Snackbar.LENGTH_SHORT)
+                                                     .setAction("Action", null).show();
+
                                          } else {
                                              int indexFrom, indexTo;
+
                                              if (purpleLine.containsKey(from)) {
                                                  indexFrom = Integer.valueOf(purpleLine.get(from));
                                                  if (purpleLine.containsKey(to)) {
@@ -167,6 +163,7 @@ public class RouteFragment extends Fragment {
                                                              routeStations.add(stationsPurple.get(i));
 
                                                          }
+                                                         line_change = false;
                                                          adapter = setlineFLag(routeStations, line_change);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
@@ -177,6 +174,7 @@ public class RouteFragment extends Fragment {
                                                          }
                                                          Collections.reverse(list);
                                                          routeStations.addAll(list);
+                                                         line_change = false;
                                                          adapter = setlineFLag(routeStations, line_change);
 
                                                      }
@@ -221,20 +219,20 @@ public class RouteFragment extends Fragment {
                                                      indexTo = Integer.valueOf(greenLine.get(to));
                                                      if (indexFrom < indexTo) {
                                                          for (int i = indexFrom; i <= indexTo; i++) {
-                                                             routeStations.add(stationsPurple.get(i));
+                                                             routeStations.add(stationsGreen.get(i));
 
                                                          }
                                                          adapter = setlineFLag(routeStations, line_change);
                                                      } else {
                                                          List<String> list = new LinkedList<String>();
                                                          for (int i = indexTo; i <= indexFrom; i++) {
-                                                             list.add(stationsPurple.get(i));
+                                                             list.add(stationsGreen.get(i));
 
 
                                                          }
                                                          Collections.reverse(list);
                                                          routeStations.addAll(list);
-
+                                                         adapter = setlineFLag(routeStations, line_change);
 
                                                      }
                                                  } else {
@@ -288,13 +286,16 @@ public class RouteFragment extends Fragment {
 
 
                                          }
-
-
                                      }
+
+
                                  }
 
+
         );
-        if (performClick) {
+        if (performClick)
+
+        {
             route.performClick();
         }
 
@@ -306,27 +307,43 @@ public class RouteFragment extends Fragment {
         int[] to = {R.id.textView, R.id.imageView};
         LinkedList<LinkedHashMap<String, String>> aList = new LinkedList<LinkedHashMap<String, String>>();
 
-
+        boolean flag = true;
         for (int i = 0; i < routeStations.getCount(); i++) {
 
             String station = routeStations.getItem(i);
-            if (purpleLine.containsKey(station)) {
+            if (purpleLine.containsKey(routeStations.getItem(0)) && flag) {
                 if (lineChange && station.equalsIgnoreCase("Majestic (Inter Change)")) {
-                    LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
+                    LinkedHashMap<String, String> map = new LinkedHashMap<>();
                     map.put("name", station);
-                    map.put("image", Integer.toString(R.drawable.purple_green));
+                    map.put("image", Integer.toString(R.drawable.green_purple));
                     aList.add(map);
+                    flag = false;
                 } else {
-                    LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
+                    LinkedHashMap<String, String> map = new LinkedHashMap<>();
                     map.put("name", station);
                     map.put("image", Integer.toString(R.drawable.purple));
                     aList.add(map);
                 }
             } else {
-                LinkedHashMap<String, String> map = new LinkedHashMap<>();//create a hashmap to store the data in key value pair
-                map.put("name", station);
-                map.put("image", Integer.toString(R.drawable.green));
-                aList.add(map);
+                if (lineChange && station.equalsIgnoreCase("Majestic (Inter Change)") && flag) {
+                    LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                    map.put("name", station);
+                    map.put("image", Integer.toString(R.drawable.purple_green));
+                    aList.add(map);
+                    flag = false;
+                } else {
+                    if (purpleLine.containsKey(routeStations.getItem(i))) {
+                        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                        map.put("name", station);
+                        map.put("image", Integer.toString(R.drawable.purple));
+                        aList.add(map);
+                    } else {
+                        LinkedHashMap<String, String> map = new LinkedHashMap<>();
+                        map.put("name", station);
+                        map.put("image", Integer.toString(R.drawable.green));
+                        aList.add(map);
+                    }
+                }
             }
 
         }
@@ -481,6 +498,52 @@ public class RouteFragment extends Fragment {
         greenLine.put("Banashankari", "2");
         greenLine.put("Jayaprakash Nagar", "1");
         greenLine.put("Puttenahalli", "0");
+    }
+
+    private void stationList() {
+        stations.add("Byappanhalli");
+        stations.add("Swami Vivekananda Road");
+        stations.add("Indiranagar");
+        stations.add("Halasuru");
+        stations.add("Trinity");
+        stations.add("Mahatma Gandhi Road");
+        stations.add("Cubbon Park");
+        stations.add("Vidhana Soudha");
+        stations.add("Sir M. Visveshwaraya");
+        stations.add("Majestic (Inter Change)");
+        stations.add("City Railway Station");
+        stations.add("Magadi Road");
+        stations.add("Hosahalli");
+        stations.add("Vijayanagar");
+        stations.add("Attiguppe");
+        stations.add("Deepanjali Nagar");
+        stations.add("Mysore Road");
+
+        stations.add("Nagasandra");
+        stations.add("Dasarahalli");
+        stations.add("Jalahalli");
+        stations.add("Peenya Industry");
+        stations.add("Peenya");
+        stations.add("Yeshwanthpur Industry");
+        stations.add("Yeshwanthpur");
+        stations.add("Sandal Soap Factory");
+        stations.add("Mahalakshmi");
+        stations.add("Rajajinagar");
+        stations.add("Kuvempu Road");
+        stations.add("Srirampura");
+        stations.add("Sampige Road");
+        stations.add("Majestic (Inter Change)");
+        stations.add("Chickpet");
+        stations.add("Krishna Rajendra Market");
+        stations.add("National College");
+        stations.add("Lalbagh");
+        stations.add("Southend Circle");
+        stations.add("Jayanagar");
+        stations.add("Rashtreeya Vidyalaya Road");
+        stations.add("Banashankari");
+        stations.add("Jayaprakash Nagar");
+        stations.add("Puttenahalli");
+
     }
 
     // TODO: Rename method, update argument and hook method into UI event

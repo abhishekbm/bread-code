@@ -10,11 +10,15 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import java.util.LinkedHashMap;
+
+import shakestudios.traintimer.Fragments.Station_detail_fragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
 import shakestudios.traintimer.R;
 
@@ -86,7 +90,28 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
             alertDialog.setTitle("Stations");
             ListView lv = (ListView) convertView.findViewById(R.id.listView1);
             lv.setAdapter(stationNames1);
+
             final AlertDialog alert = alertDialog.show();
+
+            lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    LinkedHashMap<String, String> map = (LinkedHashMap<String, String>) parent.getItemAtPosition(position);
+                    String station = map.get("name");
+                    Station_detail_fragment fragment = new Station_detail_fragment();
+                    Bundle bundle = new Bundle();
+                    bundle.putString("station", station);
+                    fragment.setArguments(bundle);
+
+
+                    FragmentManager fragmentManager = activity.getSupportFragmentManager();
+                    FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                    fragmentTransaction.replace(R.id.event_frame, fragment);
+                    fragmentTransaction.addToBackStack(null);
+                    fragmentTransaction.commit();
+                    alert.dismiss();
+                }
+            });
 
         }
         else  if ("Get the fares".equalsIgnoreCase(text)) {

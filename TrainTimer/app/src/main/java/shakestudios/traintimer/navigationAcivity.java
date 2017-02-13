@@ -73,7 +73,6 @@ public class navigationAcivity extends AppCompatActivity
 
         askforRating();
         main_fragment fragment = new main_fragment();
-        String backStateName = fragment.getClass().getName();
         FragmentTransaction fragmentTransaction =
                 getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.event_frame, fragment);

@@ -1,6 +1,7 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
@@ -15,6 +16,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,15 +36,6 @@ public class FaresFragment extends Fragment {
 
     String from, to, line;
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
     private static List<String> stations= new ArrayList<>();
@@ -61,20 +54,12 @@ public class FaresFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static FaresFragment newInstance(String param1, String param2) {
         FaresFragment fragment = new FaresFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
 
@@ -89,8 +74,11 @@ public class FaresFragment extends Fragment {
         final AutoCompleteTextView desti = (AutoCompleteTextView) rootView.findViewById(R.id.textView6);
         stationList();
         origin.setVisibility(View.VISIBLE);
-        origin.setThreshold(1);
-        desti.setThreshold(1);
+        origin.setThreshold(0);
+        desti.setThreshold(0);
+        TextView textView = (TextView) rootView.findViewById(R.id.station_header);
+        textView.setText("Select stations to view the fares");
+        textView.setTypeface(Typeface.DEFAULT_BOLD);
 
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
         adapter.add("Byappanhalli");
@@ -185,7 +173,7 @@ public class FaresFragment extends Fragment {
                     set = true;
                 }
 
-                else if(!stations.contains(from)&&!stations.contains(to)){
+                else if(!(stations.contains(from) &&stations.contains(to))){
                     Snackbar.make(arg0, "Please choose valid stations", Snackbar.LENGTH_SHORT)
                             .setAction("Action", null).show();
                     set = true;
@@ -226,7 +214,7 @@ public class FaresFragment extends Fragment {
         stations.add("Cubbon Park");
         stations.add("Vidhana Soudha");
         stations.add("Sir M. Visveshwaraya");
-        stations.add("Majestic");
+        stations.add("Majestic (Inter Change)");
         stations.add("City Railway Station");
         stations.add("Magadi Road");
         stations.add("Hosahalli");
@@ -248,7 +236,7 @@ public class FaresFragment extends Fragment {
         stations.add("Kuvempu Road");
         stations.add("Srirampura");
         stations.add("Sampige Road");
-        stations.add("Majestic");
+        stations.add("Majestic (Inter Change)");
         stations.add("Chickpet");
         stations.add("Krishna Rajendra Market");
         stations.add("National College");

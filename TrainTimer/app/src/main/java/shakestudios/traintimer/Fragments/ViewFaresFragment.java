@@ -1,11 +1,13 @@
 package shakestudios.traintimer.Fragments;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -16,6 +18,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -23,6 +26,7 @@ import java.util.List;
 import shakestudios.traintimer.R;
 import shakestudios.traintimer.Util.FareRecyclerAdapter;
 import shakestudios.traintimer.ValueObjects.FaresVO;
+import shakestudios.traintimer.main_fragment;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -33,24 +37,19 @@ import shakestudios.traintimer.ValueObjects.FaresVO;
  * create an instance of this fragment.
  */
 public class ViewFaresFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+
 
     private static LinkedHashMap<String, String> purpleLine = new LinkedHashMap<String, String>();
     private static LinkedHashMap<String, String> greenLine = new LinkedHashMap<String, String>();
     private LinkedHashMap<Integer, String> stationsPurple = new LinkedHashMap<Integer, String>();
     private LinkedHashMap<Integer, String> stationsGreen = new LinkedHashMap<Integer, String>();
     String from, to, line;
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+
     String[] headings, dataDescription;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private RecyclerView.LayoutManager layoutManager;
-
+    ArrayList<String> exclusionList = new ArrayList<>();
     FaresVO fares = new FaresVO();
     private OnFragmentInteractionListener mListener;
 
@@ -69,20 +68,14 @@ public class ViewFaresFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static ViewFaresFragment newInstance(String param1, String param2) {
         ViewFaresFragment fragment = new ViewFaresFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -129,56 +122,97 @@ public class ViewFaresFragment extends Fragment {
 
         initializeStationList(greenLine, purpleLine);
 
-        if (purpleLine.containsKey(from)) {
-            if (purpleLine.containsKey(to)) {
+        exclusionListPopulate(); // added  for stations not operational right now
+        if (exclusionList.contains(to) || exclusionList.contains(from)) {
 
-                finalFare = fares.getFares(from, to, "purple", this.getContext());
+            origin.setVisibility(View.GONE);
+            desti.setVisibility(View.GONE);
+            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
 
-                displayFinalFares(finalFare, rootView);
+            final View convertView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.stationdialog, null);
 
-            } else {
+            alertDialog.setView(convertView);
+            alertDialog.setTitle("Snap, Trains aren't plying on this route yet");
+            alertDialog.setMessage("Our government is doing its best to start this route. Sit tight.");
 
+            alertDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
 
-                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
-                List<String> farefromMajestic = null;
-                if (purpleLine.containsKey(to)) {
-                    farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
-                } else {
-                    farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
+                public void onCancel(DialogInterface dialog) {
+                    removebackStackFragments();
+                    main_fragment fragment = new main_fragment();
+                    replaceFragment(fragment);
                 }
-                finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
+            });
 
-                displayFinalFares(finalFare, rootView);
-            }
-
+            final AlertDialog alert = alertDialog.show();
         } else {
+            if (purpleLine.containsKey(from)) {
+                if (purpleLine.containsKey(to)) {
 
-            if (greenLine.containsKey(to)) {
-                finalFare = fares.getFares(from, to, "green", this.getContext());
-                displayFinalFares(finalFare, rootView);
+                    finalFare = fares.getFares(from, to, "purple", this.getContext());
+
+                    displayFinalFares(finalFare, rootView);
+
+                } else {
+
+
+                    List<String> fareTillMajestic = fares.getFares(from, "Majestic", "purple", this.getContext());
+                    List<String> farefromMajestic = null;
+                    if (purpleLine.containsKey(to)) {
+                        farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
+                    } else {
+                        farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
+                    }
+                    finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
+
+                    displayFinalFares(finalFare, rootView);
+                }
 
             } else {
 
-                List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
-                List<String> farefromMajestic = null;
-                if (purpleLine.containsKey(to)) {
-                    farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
+                if (greenLine.containsKey(to)) {
+                    finalFare = fares.getFares(from, to, "green", this.getContext());
+                    displayFinalFares(finalFare, rootView);
+
                 } else {
-                    farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
+
+                    List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
+                    List<String> farefromMajestic = null;
+                    if (purpleLine.containsKey(to)) {
+                        farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
+                    } else {
+                        farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
+                    }
+
+
+                    finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
+
+                    displayFinalFares(finalFare, rootView);
+
                 }
 
 
-                finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
-
-                displayFinalFares(finalFare, rootView);
-
             }
-
+            adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription, bundle);
+            recyclerView.setAdapter(adapter);
 
         }
-        adapter = new FareRecyclerAdapter(headings, this.getActivity(), dataDescription, bundle);
-        recyclerView.setAdapter(adapter);
         return rootView;
+    }
+
+    private void exclusionListPopulate() {
+
+        exclusionList.add("Chickpet");
+        exclusionList.add("Krishna Rajendra Market");
+        exclusionList.add("National College");
+        exclusionList.add("Lalbagh");
+        exclusionList.add("Southend Circle");
+        exclusionList.add("Jayanagar");
+        exclusionList.add("Rashtreeya Vidyalaya Road");
+        exclusionList.add("Banashankari");
+        exclusionList.add("Jayaprakash Nagar");
+        exclusionList.add("Puttenahalli");
     }
 
     private void replaceFragment(Fragment fragment) {
@@ -400,4 +434,18 @@ public class ViewFaresFragment extends Fragment {
         return finalList;
     }
 
+
+    private void removebackStackFragments() {
+
+        FragmentManager fm = getFragmentManager();
+        List<Fragment> listfrag = fm.getFragments();
+
+        for (int i = 0; i < listfrag.size(); i++) {
+            if (listfrag.get(i) instanceof main_fragment) {
+
+            } else {
+                fm.popBackStack();
+            }
+        }
+    }
 }

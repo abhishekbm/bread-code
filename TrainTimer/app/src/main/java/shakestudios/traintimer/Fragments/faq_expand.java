@@ -27,14 +27,6 @@ import shakestudios.traintimer.R;
  * create an instance of this fragment.
  */
 public class faq_expand extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
 
     private OnFragmentInteractionListener mListener;
     HashMap<Integer, String> map;
@@ -54,20 +46,14 @@ public class faq_expand extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static faq_expand newInstance(String param1, String param2) {
         faq_expand fragment = new faq_expand();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
     @Override
@@ -102,8 +88,8 @@ public class faq_expand extends Fragment {
     private void initilizehashmap() {
         map = new HashMap();
 
-        map.put(1, "A government website. Developed and maintained by the Government of Karnataka ");
-        map.put(2, "Registering in the website an OTP is sent to your mobile phone. Please note that the password is always a number and no alphabets can be used in the password.");
+        map.put(1, "A government website called Karnataka Mobile One. Developed and maintained by the Government of Karnataka for the e- Services provided by them. ");
+        map.put(2, "Registering in the website an OTP is sent to your mobile phone. Please note that the password is always a number and no alphabets can be used in the password. Also while logging in via the app, to enter details please use the numbeic keys as alphabets will not be validated and displayed in the site.");
         map.put(3, "The card is recharged when you visit the station and swipe your card at the entry booth the next time. BMRCL would updated the balance stored in the card at the time of next entry.");
         map.put(4, "If there are any issues please use the help from within the website and register a complaint. Alternatively you can tweet to the CPRO using the following twitter Handle. <a href='https://twitter.com/cpronammametro/'> @cpronammametro </a>. They would help in resolving recharge issues.");
         map.put(5,
@@ -115,7 +101,7 @@ public class faq_expand extends Fragment {
 
         map.put(6, "Go back to the counter and exchange the token back to cash. Or if you have swiped the metro card. Just exit the same station within 10 minutes after swiping in, else a nominal fee of 50 would be deducted from your card as the metro station premises is a paid area.");
         map.put(7, "Report it to the security guard and bring it to the notice of the station master. Never attempt to check the back. Please be aware that all staions are CCTV enabled.");
-        map.put(8, "All metro stations are opened from 5 45 AM in the morning to 9 55 PM in the evening. Last train leaves teh terminal staions on both sides of either lines at 10 PM and reaches their respective destinations.");
+        map.put(8, "All metro stations are opened from 5:45 AM in the morning to 9:55 PM in the evening. Last train leaves the terminal stations on both sides of either lines at 10 PM and reaches their respective destinations. However, during certain times where the general public gather, like cricket matches and other occasions, the metro services are extended up to 1 AM. Public notices are issued a day in advance in all leading news papers. ");
 
     }
 

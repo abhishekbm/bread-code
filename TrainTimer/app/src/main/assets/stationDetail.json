@@ -482,7 +482,7 @@
     },
     {
       "station":"Chickpet",
-      "station_elevation":"Elevated",
+      "station_elevation":"Under Ground",
       "platforms":[
         {
           "platform_1":"Towards Puttenahalli",
@@ -498,7 +498,7 @@
     },
     {
       "station":"Krishna Rajendra Market",
-      "station_elevation":"Elevated",
+      "station_elevation":"Under Ground",
       "platforms":[
         {
           "platform_1":"Towards Puttenahalli",

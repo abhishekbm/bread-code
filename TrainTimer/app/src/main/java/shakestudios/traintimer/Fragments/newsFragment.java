@@ -30,17 +30,13 @@ import shakestudios.traintimer.main_fragment;
  * create an instance of this fragment.
  */
 public class newsFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     Handler handler = new Handler();
     Runnable runnable;
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-
+    WebView webView;
     private OnFragmentInteractionListener mListener;
 
     public newsFragment() {
@@ -58,20 +54,14 @@ public class newsFragment extends Fragment {
     // TODO: Rename and change types and number of parameters
     public static newsFragment newInstance(String param1, String param2) {
         newsFragment fragment = new newsFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
+
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+
     }
 
 
@@ -86,7 +76,7 @@ public class newsFragment extends Fragment {
         {
 
 
-            WebView webView = (WebView) view.findViewById(R.id.webview);
+            webView = (WebView) view.findViewById(R.id.webview);
             webView.setWebViewClient(new myWebViewClient(getActivity(), "Loading ... The Metro Rail Guy for the news!!"));
             webView.getSettings().setJavaScriptEnabled(true);
             String newUA = "Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.4) Gecko/20100101 Firefox/4.0";
@@ -167,8 +157,24 @@ public class newsFragment extends Fragment {
 
 
     @Override
+    public void onPause() {
+        super.onPause();
+        webView.onPause();
+        webView.pauseTimers();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        webView.resumeTimers();
+        webView.onResume();
+    }
+
+
+    @Override
     public void onDestroy() {
-        handler.removeCallbacks(runnable);
+        webView.destroy();
+        webView = null;
         super.onDestroy();
     }
 }
@@ -184,6 +190,7 @@ class myWebViewClient extends WebViewClient {
         activity1 = activity;
         loadingText = loading;
     }
+
 
     @Override
     public boolean shouldOverrideUrlLoading(WebView view, String url) {
