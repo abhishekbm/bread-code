@@ -52,6 +52,8 @@ public class FaresVO {
                 JSONObject obj = array.getJSONObject(i);
                 String station = obj.getString("station");
                 if (from.equalsIgnoreCase(station)) {
+
+
                     JSONArray coinArray = obj.getJSONArray("cost");
                     for (int j = 0; j < coinArray.length(); j++) {
                         JSONObject coinObject = coinArray.getJSONObject(j);
@@ -90,7 +92,7 @@ public class FaresVO {
             adapter.add("Cubbon Park");
             adapter.add("Vidhana Soudha");
             adapter.add("Sir M. Visveshwaraya");
-            adapter.add("Majestic");
+            adapter.add("Majestic (Inter Change)");
             adapter.add("City Railway Station");
             adapter.add("Magadi Road");
             adapter.add("Hosahalli");
@@ -140,12 +142,12 @@ public class FaresVO {
             adapter1.add("Yeshwanthpur Industry");
             adapter1.add("Yeshwanthpur");
             adapter1.add("Yesvantpur railway station");
-            adapter1.add("Sandal Soap Factory");
+            adapter1.add("Sandal Soap Factory (Orion Mall)");
             adapter1.add("Mahalakshmi");
             adapter1.add("Rajajinagar");
             adapter1.add("Kuvempu Road");
             adapter1.add("Srirampura");
-            adapter1.add("Sampige Road");
+            adapter1.add("Mantri Square (Sampige Road)");
 
 
             int i = 0, k = 0;
@@ -228,5 +230,23 @@ public class FaresVO {
         return details;
     }
 
+    public String getLatLong(Context context, String stationName) {
+
+        String Json = null;
+        String latlong = null;
+        try {
+            Json = AssetJSONFile("location.json", context);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            JSONObject jsonobject = new JSONObject(Json);
+            latlong = jsonobject.getString(stationName);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return latlong;
+    }
 
 }

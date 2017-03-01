@@ -95,6 +95,7 @@ public class RouteFragment extends Fragment {
         initializeStationList(greenLine, purpleLine);
         origin.setThreshold(0);
         desti.setThreshold(0);
+
         final Bundle bundle = new Bundle();
 
         Bundle bundle1 = this.getArguments();
@@ -384,13 +385,12 @@ public class RouteFragment extends Fragment {
         adapter.add("Peenya");
         adapter.add("Yeshwanthpur Industry");
         adapter.add("Yeshwanthpur");
-        adapter.add("Sandal Soap Factory");
+        adapter.add("Sandal Soap Factory (Orion Mall)");
         adapter.add("Mahalakshmi");
         adapter.add("Rajajinagar");
         adapter.add("Kuvempu Road");
         adapter.add("Srirampura");
-        adapter.add("Sampige Road");
-        adapter.add("Majestic (Inter Change)");
+        adapter.add("Mantri Square (Sampige Road)");
         adapter.add("Chickpet");
         adapter.add("Krishna Rajendra Market");
         adapter.add("National College");
@@ -432,12 +432,12 @@ public class RouteFragment extends Fragment {
         stationsGreen.put(19, "Peenya");
         stationsGreen.put(18, "Yeshwanthpur Industry");
         stationsGreen.put(17, "Yeshwanthpur");
-        stationsGreen.put(16, "Sandal Soap Factory");
+        stationsGreen.put(16, "Sandal Soap Factory (Orion Mall)");
         stationsGreen.put(15, "Mahalakshmi");
         stationsGreen.put(14, "Rajajinagar");
         stationsGreen.put(13, "Kuvempu Road");
         stationsGreen.put(12, "Srirampura");
-        stationsGreen.put(11, "Sampige Road");
+        stationsGreen.put(11, "Mantri Square (Sampige Road)");
         stationsGreen.put(10, "Majestic (Inter Change)");
         stationsGreen.put(9, "Chickpet");
         stationsGreen.put(8, "Krishna Rajendra Market");
@@ -481,12 +481,12 @@ public class RouteFragment extends Fragment {
         greenLine.put("Peenya", "19");
         greenLine.put("Yeshwanthpur Industry", "18");
         greenLine.put("Yeshwanthpur", "17");
-        greenLine.put("Sandal Soap Factory", "16");
+        greenLine.put("Sandal Soap Factory (Orion Mall)", "16");
         greenLine.put("Mahalakshmi", "15");
         greenLine.put("Rajajinagar", "14");
         greenLine.put("Kuvempu Road", "13");
         greenLine.put("Srirampura", "12");
-        greenLine.put("Sampige Road", "11");
+        greenLine.put("Mantri Square (Sampige Road)", "11");
         greenLine.put("Majestic (Inter Change)", "10");
         greenLine.put("Chickpet", "9");
         greenLine.put("Krishna Rajendra Market", "8");
@@ -526,12 +526,12 @@ public class RouteFragment extends Fragment {
         stations.add("Peenya");
         stations.add("Yeshwanthpur Industry");
         stations.add("Yeshwanthpur");
-        stations.add("Sandal Soap Factory");
+        stations.add("Sandal Soap Factory (Orion Mall)");
         stations.add("Mahalakshmi");
         stations.add("Rajajinagar");
         stations.add("Kuvempu Road");
         stations.add("Srirampura");
-        stations.add("Sampige Road");
+        stations.add("Mantri Square (Sampige Road)");
         stations.add("Majestic (Inter Change)");
         stations.add("Chickpet");
         stations.add("Krishna Rajendra Market");

@@ -29,7 +29,7 @@
     }, {
       "coin_price": "22",
       "card_price": "18.70",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "24",
       "card_price": "20.40",
@@ -97,7 +97,7 @@
     }, {
       "coin_price": "19",
       "card_price": "16.15",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "22",
       "card_price": "18.70",
@@ -165,7 +165,7 @@
     }, {
       "coin_price": "17",
       "card_price": "14.45",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "19",
       "card_price": "16.15",
@@ -233,7 +233,7 @@
     }, {
       "coin_price": "16",
       "card_price": "13.60",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "17",
       "card_price": "14.45",
@@ -301,7 +301,7 @@
     }, {
       "coin_price": "14",
       "card_price": "11.90",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "16",
       "card_price": "13.60",
@@ -369,7 +369,7 @@
     }, {
       "coin_price": "13",
       "card_price": "11.05",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "14",
       "card_price": "11.90",
@@ -437,7 +437,7 @@
     }, {
       "coin_price": "10",
       "card_price": "8.50",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "13",
       "card_price": "11.05",
@@ -476,7 +476,7 @@
       "station": "Byappanhalli"
     }]
   }, {
-    "station": "Majestic",
+    "station": "Majestic (Inter Change)",
     "doors":"left",
     "cost": [{
       "coin_price": "19",
@@ -506,7 +506,11 @@
       "coin_price": "22",
       "card_price": "18.70",
       "station": "Mysore Road"
-    }, {
+    },  {
+      "coin_price": "0",
+      "card_price": "0",
+      "station": "Majestic (Inter Change)"
+    },{
       "coin_price": "10",
       "card_price": "8.50",
       "station": "Sir M. Visveshwaraya"
@@ -538,7 +542,7 @@
       "coin_price": "24",
       "card_price": "20.40",
       "station": "Swami Vivekananda Road"
-    }, {
+    } , {
       "coin_price": "26",
       "card_price": "22.10",
       "station": "Byappanhalli"
@@ -573,7 +577,7 @@
     }, {
       "coin_price": "10",
       "card_price": "8.50",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "24",
       "card_price": "20.40",
@@ -641,7 +645,7 @@
     }, {
       "coin_price": "13",
       "card_price": "11.05",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "10",
       "card_price": "8.50	",
@@ -709,7 +713,7 @@
     }, {
       "coin_price": "14",
       "card_price": "11.90",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "13",
       "card_price": "11.05",
@@ -777,7 +781,7 @@
     }, {
       "coin_price": "16",
       "card_price": "13.60",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "14",
       "card_price": "11.90",
@@ -845,7 +849,7 @@
     }, {
       "coin_price": "17",
       "card_price": "14.45",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "16",
       "card_price": "13.60",
@@ -913,7 +917,7 @@
     }, {
       "coin_price": "19",
       "card_price": "16.15",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "17",
       "card_price": "14.45",
@@ -981,7 +985,7 @@
     }, {
       "coin_price": "22",
       "card_price": "18.70",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "19",
       "card_price": "16.15",
@@ -1049,7 +1053,7 @@
     }, {
       "coin_price": "24",
       "card_price": "20.40",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "22",
       "card_price": "18.70",
@@ -1117,7 +1121,7 @@
     }, {
       "coin_price": "26",
       "card_price": "22.10",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }, {
       "coin_price": "24",
       "card_price": "20.40",

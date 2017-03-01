@@ -29,7 +29,7 @@
     }, {
       "coin_price": "21",
       "card_price": "17.85",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "23",
       "card_price": "19.55",
@@ -49,11 +49,11 @@
     }, {
       "coin_price": "30",
       "card_price": "25.50",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Dasarahalli",
@@ -85,7 +85,7 @@
     }, {
       "coin_price": "19",
       "card_price": "16.15",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "21",
       "card_price": "17.85",
@@ -105,11 +105,11 @@
     }, {
       "coin_price": "27",
       "card_price": "22.95",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Jalahalli",
@@ -141,7 +141,7 @@
     }, {
       "coin_price": "17",
       "card_price": "14.45",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "19",
       "card_price": "16.15",
@@ -161,11 +161,11 @@
     }, {
       "coin_price": "25",
       "card_price": "21.25",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Peenya Industry",
@@ -197,7 +197,7 @@
     }, {
       "coin_price": "16",
       "card_price": "13.60",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "17",
       "card_price": "14.45",
@@ -217,11 +217,11 @@
     }, {
       "coin_price": "23",
       "card_price": "19.55",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Peenya",
@@ -253,7 +253,7 @@
     }, {
       "coin_price": "14",
       "card_price": "11.90",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "16",
       "card_price": "13.60",
@@ -273,11 +273,11 @@
     }, {
       "coin_price": "23",
       "card_price": "19.55",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Yeshwanthpur Industry",
@@ -309,7 +309,7 @@
     }, {
       "coin_price": "13",
       "card_price": "11.05",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "14",
       "card_price": "11.90",
@@ -329,11 +329,11 @@
     }, {
       "coin_price": "21",
       "card_price": "17.85",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Yeshwanthpur",
@@ -365,7 +365,7 @@
     }, {
       "coin_price": "10",
       "card_price": "8.50",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "13",
       "card_price": "11.05",
@@ -385,14 +385,14 @@
     }, {
       "coin_price": "19",
       "card_price": "16.15",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
-    "station": "Sandal Soap Factory",
+    "station": "Sandal Soap Factory (Orion Mall)",
     "doors": "left",
     "cost": [{
       "coin_price": "19",
@@ -441,11 +441,11 @@
     }, {
       "coin_price": "17",
       "card_price": "14.45",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Mahalakshmi",
@@ -477,7 +477,7 @@
     }, {
       "coin_price": "10",
       "card_price": "8.50",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "23",
       "card_price": "19.55",
@@ -497,11 +497,11 @@
     }, {
       "coin_price": "16",
       "card_price": "13.60",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Rajajinagar",
@@ -533,7 +533,7 @@
     }, {
       "coin_price": "13",
       "card_price": "11.05",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "10",
       "card_price": "8.50",
@@ -553,11 +553,11 @@
     }, {
       "coin_price": "14",
       "card_price": "11.90",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Kuvempu Road",
@@ -589,7 +589,7 @@
     }, {
       "coin_price": "14",
       "card_price": "11.90",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "13",
       "card_price": "11.05",
@@ -609,11 +609,11 @@
     }, {
       "coin_price": "13",
       "card_price": "11.05",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
     "station": "Srirampura",
@@ -645,7 +645,7 @@
     }, {
       "coin_price": "16",
       "card_price": "13.60",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "14",
       "card_price": "11.90",
@@ -665,14 +665,14 @@
     }, {
       "coin_price": "10",
       "card_price": "8.50",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   }, {
-    "station": "Sampige Road",
+    "station": "Mantri Square (Sampige Road)",
     "doors": "left",
 
     "cost": [{
@@ -702,7 +702,7 @@
     }, {
       "coin_price": "17",
       "card_price": "14.45",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "16",
       "card_price": "13.60",
@@ -726,10 +726,10 @@
     },{
       "coin_price": "1",
       "card_price": "1",
-      "station": "Majestic"
+      "station": "Majestic (Inter Change)"
     }]
   },{
-    "station": "Majestic",
+    "station": "Majestic (Inter Change)",
     "doors": "left",
     "cost": [{
       "coin_price": "1",
@@ -762,7 +762,7 @@
     }, {
       "coin_price": "1",
       "card_price": "11",
-      "station": "Sandal Soap Factory"
+      "station": "Sandal Soap Factory (Orion Mall)"
     }, {
       "coin_price": "1",
       "card_price": "1",
@@ -782,11 +782,11 @@
     }, {
       "coin_price": "1",
       "card_price": "1",
-      "station": "Sampige Road"
+      "station": "Mantri Square (Sampige Road)"
     },{
-      "coin_price": "1",
-      "card_price": "1",
-      "station": "Majestic"
+      "coin_price": "0",
+      "card_price": "0",
+      "station": "Majestic (Inter Change)"
     }]
   }]
 }

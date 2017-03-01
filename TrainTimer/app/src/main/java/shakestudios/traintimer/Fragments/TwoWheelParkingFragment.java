@@ -93,13 +93,6 @@ public class TwoWheelParkingFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
-
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
-    }
-
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated

@@ -92,12 +92,12 @@ public class StationListFragment extends Fragment {
         array.add("Peenya");
         array.add("Yeshwanthpur Industry");
         array.add("Yeshwanthpur");
-        array.add("Sandal Soap Factory");
+        array.add("Sandal Soap Factory (Orion Mall)");
         array.add("Mahalakshmi");
         array.add("Rajajinagar");
         array.add("Kuvempu Road");
         array.add("Srirampura");
-        array.add("Sampige Road");
+        array.add("Mantri Square (Sampige Road)");
         array.add("Majestic (Inter Change)");
         array.add("Chickpet");
         array.add("Krishna Rajendra Market");

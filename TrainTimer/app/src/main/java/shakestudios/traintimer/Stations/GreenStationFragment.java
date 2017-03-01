@@ -174,7 +174,7 @@ public class GreenStationFragment extends Fragment {
         adapter1.add("Yeshwanthpur Industry");
         adapter1.add("Yeshwanthpur");
         adapter1.add("Yesvantpur railway station");
-        adapter1.add("Sandal Soap Factory");
+        adapter1.add("Sandal Soap Factory (Orion Mall)");
         adapter1.add("Mahalakshmi");
         adapter1.add("Rajajinagar");
         adapter1.add("Kuvempu Road");

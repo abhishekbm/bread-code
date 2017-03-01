@@ -1,5 +1,8 @@
 package shakestudios.traintimer.Util;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -21,6 +24,7 @@ import java.util.LinkedHashMap;
 import shakestudios.traintimer.Fragments.Station_detail_fragment;
 import shakestudios.traintimer.Fragments.ViewFaresFragment;
 import shakestudios.traintimer.R;
+import shakestudios.traintimer.ValueObjects.FaresVO;
 
 /**
  * Created by abbm on 2/12/2016.
@@ -32,11 +36,13 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
     ViewGroup parent1;
     SimpleAdapter stationNames1;
     Bundle bundle1;
+    Context context1;
 
     public RouteAdapater(String[] dataArgs, FragmentActivity context, String[] description, SimpleAdapter stationNames, Bundle bundle) {
         dataSource = dataArgs;
         dataDescription = description;
         activity = context;
+        context1 =activity.getApplicationContext();
         stationNames1 = stationNames;
         bundle1 = bundle;
     }
@@ -73,7 +79,7 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
     private void handleClickEvent(String text, View view, ViewGroup parent) {
 
         if ("Take me to the station".equalsIgnoreCase(text)) {
-            final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
+           /* final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
 
             final View convertView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.stationdialog, null);
@@ -81,7 +87,15 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
             alertDialog.setView(convertView);
             alertDialog.setTitle("Boo, We can't have everything, can we?");
             alertDialog.setMessage("We are continuously improving our app to get you to the station. For now, you are lost !!! ");
-            final AlertDialog alert = alertDialog.show();
+            final AlertDialog alert = alertDialog.show();*/
+
+            String from =bundle1.getString("from");
+            FaresVO vo = new FaresVO();
+            String fromLatLong =  vo.getLatLong(context1,from);
+            Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                    Uri.parse("http://maps.google.com/maps?daddr=" + fromLatLong));
+            activity.startActivity(intent);
+
         } else if (text.contains("Stations to destination:")) {
             final AlertDialog.Builder alertDialog = new AlertDialog.Builder(activity);
             View convertView = (View) LayoutInflater.from(parent.getContext()).
@@ -113,8 +127,7 @@ public class RouteAdapater extends RecyclerView.Adapter<RouteAdapater.ViewHolder
                 }
             });
 
-        }
-        else  if ("Get the fares".equalsIgnoreCase(text)) {
+        } else if ("Get the fares".equalsIgnoreCase(text)) {
             ViewFaresFragment fragment = new ViewFaresFragment();
             fragment.setArguments(bundle1);
             replaceFragment(fragment);

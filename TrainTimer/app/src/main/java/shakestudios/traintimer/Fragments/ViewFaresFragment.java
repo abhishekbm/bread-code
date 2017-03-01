@@ -157,13 +157,9 @@ public class ViewFaresFragment extends Fragment {
                 } else {
 
 
-                    List<String> fareTillMajestic = fares.getFares(from, "Majestic", "purple", this.getContext());
+                    List<String> fareTillMajestic = fares.getFares(from, "Majestic (Inter Change)", "purple", this.getContext());
                     List<String> farefromMajestic = null;
-                    if (purpleLine.containsKey(to)) {
-                        farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
-                    } else {
-                        farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
-                    }
+                    farefromMajestic = fares.getFares("Majestic (Inter Change)", to, "green", this.getContext());
                     finalFare = getFinalFare(fareTillMajestic, farefromMajestic);
 
                     displayFinalFares(finalFare, rootView);
@@ -177,12 +173,12 @@ public class ViewFaresFragment extends Fragment {
 
                 } else {
 
-                    List<String> fareTillMajestic = fares.getFares(from, "Majestic", "green", this.getContext());
+                    List<String> fareTillMajestic = fares.getFares(from, "Majestic (Inter Change)", "green", this.getContext());
                     List<String> farefromMajestic = null;
                     if (purpleLine.containsKey(to)) {
-                        farefromMajestic = fares.getFares("Majestic", to, "purple", this.getContext());
+                        farefromMajestic = fares.getFares("Majestic (Inter Change)", to, "purple", this.getContext());
                     } else {
-                        farefromMajestic = fares.getFares("Majestic", to, "green", this.getContext());
+                        farefromMajestic = fares.getFares("Majestic (Inter Change)", to, "green", this.getContext());
                     }
 
 
@@ -285,7 +281,6 @@ public class ViewFaresFragment extends Fragment {
         adapter.add("Cubbon Park");
         adapter.add("Vidhana Soudha");
         adapter.add("Sir M. Visveshwaraya");
-        adapter.add("Majestic");
         adapter.add("City Railway Station");
         adapter.add("Magadi Road");
         adapter.add("Hosahalli");
@@ -301,13 +296,13 @@ public class ViewFaresFragment extends Fragment {
         adapter.add("Peenya");
         adapter.add("Yeshwanthpur Industry");
         adapter.add("Yeshwanthpur");
-        adapter.add("Sandal Soap Factory");
+        adapter.add("Sandal Soap Factory (Orion Mall)");
         adapter.add("Mahalakshmi");
         adapter.add("Rajajinagar");
         adapter.add("Kuvempu Road");
         adapter.add("Srirampura");
-        adapter.add("Sampige Road");
-        adapter.add("Majestic");
+        adapter.add("Mantri Square (Sampige Road)");
+        adapter.add("Majestic (Inter Change)");
         adapter.add("Chickpet");
         adapter.add("Krishna Rajendra Market");
         adapter.add("National College");
@@ -332,7 +327,7 @@ public class ViewFaresFragment extends Fragment {
         stationsPurple.put(10, "Cubbon Park");
         stationsPurple.put(9, "Vidhana Soudha");
         stationsPurple.put(8, "Sir M. Visveshwaraya");
-        stationsPurple.put(7, "Majestic");
+        stationsPurple.put(7, "Majestic (Inter Change)");
         stationsPurple.put(6, "City Railway Station");
         stationsPurple.put(5, "Magadi Road");
         stationsPurple.put(4, "Hosahalli");
@@ -349,13 +344,13 @@ public class ViewFaresFragment extends Fragment {
         stationsGreen.put(19, "Peenya");
         stationsGreen.put(18, "Yeshwanthpur Industry");
         stationsGreen.put(17, "Yeshwanthpur");
-        stationsGreen.put(16, "Sandal Soap Factory");
+        stationsGreen.put(16, "Sandal Soap Factory (Orion Mall)");
         stationsGreen.put(15, "Mahalakshmi");
         stationsGreen.put(14, "Rajajinagar");
         stationsGreen.put(13, "Kuvempu Road");
         stationsGreen.put(12, "Srirampura");
-        stationsGreen.put(11, "Sampige Road");
-        stationsGreen.put(10, "Majestic");
+        stationsGreen.put(11, "Mantri Square (Sampige Road)");
+        stationsGreen.put(10, "Majestic (Inter Change)");
         stationsGreen.put(9, "Chickpet");
         stationsGreen.put(8, "Krishna Rajendra Market");
         stationsGreen.put(7, "National College");
@@ -381,7 +376,7 @@ public class ViewFaresFragment extends Fragment {
         purpleLine.put("Cubbon Park", "10");
         purpleLine.put("Vidhana Soudha", "9");
         purpleLine.put("Sir M. Visveshwaraya", "8");
-        purpleLine.put("Majestic", "7");
+        purpleLine.put("Majestic (Inter Change)", "7");
         purpleLine.put("City Railway Station", "6");
         purpleLine.put("Magadi Road", "5");
         purpleLine.put("Hosahalli", "4");
@@ -398,13 +393,13 @@ public class ViewFaresFragment extends Fragment {
         greenLine.put("Peenya", "19");
         greenLine.put("Yeshwanthpur Industry", "18");
         greenLine.put("Yeshwanthpur", "17");
-        greenLine.put("Sandal Soap Factory", "16");
+        greenLine.put("Sandal Soap Factory (Orion Mall)", "16");
         greenLine.put("Mahalakshmi", "15");
         greenLine.put("Rajajinagar", "14");
         greenLine.put("Kuvempu Road", "13");
         greenLine.put("Srirampura", "12");
-        greenLine.put("Sampige Road", "11");
-        greenLine.put("Majestic", "10");
+        greenLine.put("Mantri Square (Sampige Road)", "11");
+        greenLine.put("Majestic (Inter Change)", "10");
         greenLine.put("Chickpet", "9");
         greenLine.put("Krishna Rajendra Market", "8");
         greenLine.put("National College", "7");
@@ -419,7 +414,7 @@ public class ViewFaresFragment extends Fragment {
 
 
     private void displayFinalFares(List<String> finalFare, View rootView) {
-        headings = new String[]{"Card Fare", "Coin Fare", "Plan this Trip"};//,"Number of stations to Destination ","Doors open towards"};
+        headings = new String[]{"Token Fare", "Varshik Card", "Plan this Trip"};//,"Number of stations to Destination ","Doors open towards"};
         dataDescription = new String[]{finalFare.get(0), finalFare.get(1), "Get details for this journey"};//,finalFare.get(3),finalFare.get(2)};
     }
 

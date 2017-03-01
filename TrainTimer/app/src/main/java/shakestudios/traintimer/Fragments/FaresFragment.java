@@ -79,7 +79,8 @@ public class FaresFragment extends Fragment {
         TextView textView = (TextView) rootView.findViewById(R.id.station_header);
         textView.setText("Select stations to view the fares");
         textView.setTypeface(Typeface.DEFAULT_BOLD);
-
+        desti.setSelected(true);
+        origin.setSelected(true);
         final ArrayAdapter<String> adapter = new ArrayAdapter<String>(rootView.getContext(), android.R.layout.simple_list_item_1);
         adapter.add("Byappanhalli");
         adapter.add("Swami Vivekananda Road");
@@ -90,7 +91,7 @@ public class FaresFragment extends Fragment {
         adapter.add("Cubbon Park");
         adapter.add("Vidhana Soudha");
         adapter.add("Sir M. Visveshwaraya");
-        adapter.add("Majestic");
+        adapter.add("Majestic (Inter Change)");
         adapter.add("City Railway Station");
         adapter.add("Magadi Road");
         adapter.add("Hosahalli");
@@ -106,13 +107,12 @@ public class FaresFragment extends Fragment {
         adapter.add("Peenya");
         adapter.add("Yeshwanthpur Industry");
         adapter.add("Yeshwanthpur");
-        adapter.add("Sandal Soap Factory");
+        adapter.add("Sandal Soap Factory (Orion Mall)");
         adapter.add("Mahalakshmi");
         adapter.add("Rajajinagar");
         adapter.add("Kuvempu Road");
         adapter.add("Srirampura");
-        adapter.add("Sampige Road");
-        adapter.add("Majestic");
+        adapter.add("Mantri Square (Sampige Road)");
         adapter.add("Chickpet");
         adapter.add("Krishna Rajendra Market");
         adapter.add("National College");
@@ -230,12 +230,12 @@ public class FaresFragment extends Fragment {
         stations.add("Peenya");
         stations.add("Yeshwanthpur Industry");
         stations.add("Yeshwanthpur");
-        stations.add("Sandal Soap Factory");
+        stations.add("Sandal Soap Factory (Orion Mall)");
         stations.add("Mahalakshmi");
         stations.add("Rajajinagar");
         stations.add("Kuvempu Road");
         stations.add("Srirampura");
-        stations.add("Sampige Road");
+        stations.add("Mantri Square (Sampige Road)");
         stations.add("Majestic (Inter Change)");
         stations.add("Chickpet");
         stations.add("Krishna Rajendra Market");
