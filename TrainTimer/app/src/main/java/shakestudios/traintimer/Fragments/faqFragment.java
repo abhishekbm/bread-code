@@ -75,6 +75,7 @@ public class faqFragment extends Fragment {
             list.add("Where can I get username and password ?");
             list.add("How do I know if my card is recharged ?");
             list.add("Whom do I contact if the transaction fails while recharging ?");
+            list.add("How do I navigate and Recharge my Smart Card after logging in?");
         } else if (category.equalsIgnoreCase("Stations")) {
             this.getActivity().setTitle("Station FAQ's");
             list.add("What facilities are available at a station ?");
@@ -111,10 +112,11 @@ public class faqFragment extends Fragment {
         map.put("Where can I get username and password ?", 2);
         map.put("How do I know if my card is recharged ?", 3);
         map.put("Whom do I contact if the transaction fails while recharging ?", 4);
-        map.put("What facilities are available at a station ?",5);
-        map.put("What should I do if I want to leave a station after buying a ticket ?",6);
-        map.put("What should I do if I find a suspicious item at the station ?",7);
-        map.put("When do metro stations open and close ?",8);
+        map.put("What facilities are available at a station ?", 5);
+        map.put("What should I do if I want to leave a station after buying a ticket ?", 6);
+        map.put("What should I do if I find a suspicious item at the station ?", 7);
+        map.put("When do metro stations open and close ?", 8);
+        map.put("How do I navigate and Recharge my Smart Card after logging in?", 9);
 
 
     }

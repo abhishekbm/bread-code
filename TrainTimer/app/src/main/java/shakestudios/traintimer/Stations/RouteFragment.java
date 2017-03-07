@@ -136,8 +136,13 @@ public class RouteFragment extends Fragment {
                                          bundle.putString("to", desti.getText().toString());
                                          String from = null, to = null;
                                          if ((bundleFrom != null) && (bundleTo != null)) {
-                                             from = bundleFrom;
-                                             to = bundleTo;
+                                             if (!bundleFrom.equalsIgnoreCase(origin.getText().toString()) || !bundleTo.equalsIgnoreCase(desti.getText().toString())) {
+                                                 from = origin.getText().toString();
+                                                 to = desti.getText().toString();
+                                             } else {
+                                                 from = bundleFrom;
+                                                 to = bundleTo;
+                                             }
                                          } else {
 
                                              from = origin.getText().toString();
@@ -287,6 +292,17 @@ public class RouteFragment extends Fragment {
 
 
                                          }
+                                         String stations = "Stations to destination: " + adapter.getCount();
+
+                                         String[] dataArray = new String[]{stations, "Take me to the station", "Get the fares"};
+                                         String[] dataDescription = new String[]{"Show Stations", "Show route", "Find the fares for this Journey"};
+
+                                         recyclerView = (RecyclerView) rootView.findViewById(R.id.recycler_view);
+                                         recyclerView.setHasFixedSize(true);
+                                         layoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+                                         recyclerView.setLayoutManager(layoutManager);
+                                         adapter1 = new RouteAdapater(dataArray, getActivity(), dataDescription, adapter, bundle);
+                                         recyclerView.setAdapter(adapter1);
                                      }
 
 

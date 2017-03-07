@@ -63,6 +63,7 @@ public class navigationAcivity extends AppCompatActivity
 
     //  protected DrawerLayout drawer;
 
+
     @Override
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +71,7 @@ public class navigationAcivity extends AppCompatActivity
         setContentView(R.layout.activity_navigation_acivity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+       this.getApplicationContext().getAssets();
         askforRating();
         main_fragment fragment = new main_fragment();
         FragmentTransaction fragmentTransaction =
@@ -100,8 +101,11 @@ public class navigationAcivity extends AppCompatActivity
             // Get the value for the run counter
             int counter = app_preferences.getInt("counter", 0);
 
+            int runEvery = app_preferences.getInt("runEvery", 3);
+
             // Do every x times
-            int RunEvery = 10;
+            int RunEvery = 3;
+            RunEvery=runEvery;
             if (counter != 0 && counter % RunEvery == 0) {
                 //   Toast.makeText(this, "This app has been started " + counter + " times.", Toast.LENGTH_SHORT).show();
 
@@ -130,7 +134,7 @@ public class navigationAcivity extends AppCompatActivity
 
                             }
                         });
-
+                RunEvery=runEvery;
                 alert.setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
 
@@ -138,6 +142,7 @@ public class navigationAcivity extends AppCompatActivity
                                 //Do nothing
                             }
                         });
+                alert.setCancelable(false);
                 alert.show();
 
             }
@@ -145,6 +150,7 @@ public class navigationAcivity extends AppCompatActivity
             // Increment the counter
             SharedPreferences.Editor editor = app_preferences.edit();
             editor.putInt("counter", ++counter);
+            editor.putInt("runEvery",6);
             editor.commit(); // Very important
 
         } catch (Exception e) {

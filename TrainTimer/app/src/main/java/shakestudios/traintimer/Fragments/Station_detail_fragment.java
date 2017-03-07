@@ -85,7 +85,7 @@ public class Station_detail_fragment extends Fragment {
             strings[j] = obj;
         }
 
-        boolean[] dflags = {true, true, true, false};
+        boolean[] dflags = {true, true, false, false};
         TextView fromTo = (TextView) rootView.findViewById(R.id.fromTo);
         TextView elevation = (TextView) rootView.findViewById(R.id.elevation);
         elevation.setText(details.get(3));

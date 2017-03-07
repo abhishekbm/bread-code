@@ -89,7 +89,7 @@ public class faq_expand extends Fragment {
         map = new HashMap();
 
         map.put(1, "A government website called Karnataka Mobile One. Developed and maintained by the Government of Karnataka for the e- Services provided by them. ");
-        map.put(2, "Registering in the website an OTP is sent to your mobile phone. Please note that the password is always a number and no alphabets can be used in the password. Also while logging in via the app, to enter details please use the numbeic keys as alphabets will not be validated and displayed in the site.");
+        map.put(2, "Registering in the website an OTP is sent to your mobile phone. Please note that the password is always a number and no alphabets can be used in the password. Also while logging in via the app, to enter details please use the numeric keys as alphabets will not be validated and displayed in the site.");
         map.put(3, "The card is recharged when you visit the station and swipe your card at the entry booth the next time. BMRCL would updated the balance stored in the card at the time of next entry.");
         map.put(4, "If there are any issues please use the help from within the website and register a complaint. Alternatively you can tweet to the CPRO using the following twitter Handle. <a href='https://twitter.com/cpronammametro/'> @cpronammametro </a>. They would help in resolving recharge issues.");
         map.put(5,
@@ -100,10 +100,15 @@ public class faq_expand extends Fragment {
                         "    &#8226; All stations have a stolen goods reporting center. You can fill out a form and track the item. If found the lost item will be given back after through questioning.");
 
         map.put(6, "Go back to the counter and exchange the token back to cash. Or if you have swiped the metro card. Just exit the same station within 10 minutes after swiping in, else a nominal fee of 50 would be deducted from your card as the metro station premises is a paid area.");
-        map.put(7, "Report it to the security guard and bring it to the notice of the station master. Never attempt to check the back. Please be aware that all staions are CCTV enabled.");
+        map.put(7, "Report it to the security guard and bring it to the notice of the station master. Never attempt to check the back. Please be aware that all stations are CCTV enabled.");
         map.put(8, "All metro stations are opened from 5:45 AM in the morning to 9:55 PM in the evening. Last train leaves the terminal stations on both sides of either lines at 10 PM and reaches their respective destinations. However, during certain times where the general public gather, like cricket matches and other occasions, the metro services are extended up to 1 AM. Public notices are issued a day in advance in all leading news papers. ");
-
-    }
+        map.put(9,  "    &#8226; In order to get to the recharge screen First log in<br> <br>" +
+                "    &#8226; Select Transport from the next screen.<br> <br>" +
+                "    &#8226; Next choose BMRCL in the next screen and then click on the smart card top up. <br> <br>" +
+                "    &#8226; Enter your phone number and metro card number which is present on the back of the Smart card.<br> <br>" +
+                "    &#8226; You would be redirected to your bank account to pay the recharge amount.<br> <br>"+
+        "    &#8226; The the physical card would be updated with the balance only when you tap it at the metro entry gates the next time. BMRCL would have updated its records with the amount after a successful payment..<br> <br>" );
+     }
 
     private String getidforBundle(int item) {
         String itemString = map.get(item);
