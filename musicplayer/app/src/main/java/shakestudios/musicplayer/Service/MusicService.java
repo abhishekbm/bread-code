@@ -15,9 +15,11 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Random;
+import java.util.Collections;
+import java.util.Comparator;
 
 import shakestudios.musicplayer.MainScreenActivity;
+import shakestudios.musicplayer.POJO.MusicController;
 import shakestudios.musicplayer.POJO.Song;
 import shakestudios.musicplayer.R;
 
@@ -25,10 +27,9 @@ import shakestudios.musicplayer.R;
  * Created by abbm on 3/9/2017.
  */
 public class MusicService extends Service implements MediaPlayer.OnErrorListener,
-        MediaPlayer.OnCompletionListener
+        MediaPlayer.OnCompletionListener, MediaPlayer.OnPreparedListener
 
 {
-
     //media player
     private MediaPlayer player;
     //song list
@@ -39,23 +40,34 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     private final IBinder musicBind = new MusicBinder();
     //title of current song
     private String songTitle = "";
+
+    private String artist;
     //notification id
     private static final int NOTIFY_ID = 1;
     //shuffle flag and random
-    private boolean shuffle = false;
-    private Random rand;
+    private boolean shuffle = true;
+
+    MusicController controller;
+    long currSong;
 
     public void onCreate() {
         //create the service
         super.onCreate();
         //initialize position
         songPosn = 0;
-        //random
-        rand = new Random();
         //create player
         player = new MediaPlayer();
         //initialize
         initMusicPlayer();
+    }
+
+    public MediaPlayer getPlayer() {
+        if (player == null) {
+
+            initMusicPlayer();
+        }
+
+        return player;
     }
 
     public void initMusicPlayer() {
@@ -64,31 +76,7 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
         player.setWakeMode(getApplicationContext(),
                 PowerManager.PARTIAL_WAKE_LOCK);
         //set listeners
-        player.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                if (mp == player) {
-                    player.start();
-                    Intent notIntent = new Intent(getBaseContext(), MainScreenActivity.class);
-                    notIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    PendingIntent pendInt = PendingIntent.getActivity(getBaseContext(), 0,
-                            notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
-
-                    Notification.Builder builder = new Notification.Builder(getApplicationContext());
-
-                    builder.setContentIntent(pendInt)
-                            .setSmallIcon(R.drawable.play)
-                            .setTicker(songTitle)
-                            .setOngoing(true)
-                            .setContentTitle("Playing")
-                            .setContentText(songTitle);
-                    Notification not = builder.build();
-                    Intent onPreparedIntent = new Intent("MEDIA_PLAYER_PREPARED");
-                    LocalBroadcastManager.getInstance(getBaseContext()).sendBroadcast(onPreparedIntent);
-                    startForeground(NOTIFY_ID, not);
-                }
-            }
-        });
+        player.setOnPreparedListener(this);
         player.setOnCompletionListener(this);
         player.setOnErrorListener(this);
     }
@@ -96,6 +84,42 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     //pass song list
     public void setList(ArrayList<Song> theSongs) {
         songs = theSongs;
+    }
+
+    public void setController(MusicController contorl) {
+        controller = contorl;
+    }
+
+    @Override
+    public void onPrepared(MediaPlayer mp) {
+
+        player.start();
+        controller.show();
+        Intent notIntent = new Intent(getApplicationContext(), MainScreenActivity.class);
+        notIntent.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+        notIntent.setAction(Intent.ACTION_MAIN);
+        notIntent.addCategory(Intent.CATEGORY_LAUNCHER);
+        notIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        PendingIntent pendInt = PendingIntent.getActivity(getApplicationContext(), 0,
+                notIntent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+        Notification.Builder builder = new Notification.Builder(getApplicationContext());
+
+        String message = songTitle + "\n" + artist;
+        builder.setContentIntent(pendInt)
+                .setSmallIcon(R.drawable.play)
+                .setTicker(songTitle)
+                .setOngoing(true)
+                .setContentTitle("Playing")
+                .setStyle(new Notification.BigTextStyle()
+                        .bigText(message))
+                .setContentText(message);
+
+        Notification not = builder.build();
+        not.flags = Notification.FLAG_ONGOING_EVENT | Notification.FLAG_NO_CLEAR;
+        Intent onPreparedIntent = new Intent("MEDIA_PLAYER_PREPARED");
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(onPreparedIntent);
+        startForeground(NOTIFY_ID, not);
     }
 
     //binder
@@ -108,6 +132,8 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     //activity will bind to service
     @Override
     public IBinder onBind(Intent intent) {
+
+        Log.e("this is in ", "bind");
         return musicBind;
     }
 
@@ -116,6 +142,7 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     public boolean onUnbind(Intent intent) {
         player.stop();
         player.release();
+        player = null;
         return false;
     }
 
@@ -127,8 +154,10 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
         Song playSong = songs.get(songPosn);
         //get title
         songTitle = playSong.getTitle();
+
+        artist = playSong.getArtist();
         //get id
-        long currSong = playSong.getID();
+        currSong = playSong.getID();
         //set uri
         Uri trackUri = ContentUris.withAppendedId(
                 android.provider.MediaStore.Audio.Media.EXTERNAL_CONTENT_URI,
@@ -198,17 +227,16 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
 
     //skip to next
     public void playNext() {
-        if (shuffle) {
-            int newSong = songPosn;
-            while (newSong == songPosn) {
-                newSong = rand.nextInt(songs.size());
-            }
-            songPosn = newSong;
-        } else {
-            songPosn++;
-            if (songPosn >= songs.size()) songPosn = 0;
-        }
+
+        songPosn++;
+        if (songPosn >= songs.size())
+            songPosn = 0;
+
         playSong();
+    }
+
+    public int currentSongPosition() {
+        return songPosn;
     }
 
     @Override
@@ -217,8 +245,38 @@ public class MusicService extends Service implements MediaPlayer.OnErrorListener
     }
 
     //toggle shuffle
-    public void setShuffle() {
-        if (shuffle) shuffle = false;
-        else shuffle = true;
+    public ArrayList<Song> setShuffle() {
+        if (shuffle) {
+            shuffle = false;
+            String currSongName = songs.get(songPosn).getTitle();
+            Collections.shuffle(songs);
+            for (int i = 0; i < songs.size(); i++) {
+                if (songs.get(i).getTitle().equalsIgnoreCase(currSongName)) {
+                    songPosn = i;
+                    break;
+                }
+
+            }
+
+        } else {
+            shuffle = true;
+            String currSongName = songs.get(songPosn).getTitle();
+            Collections.sort(songs, new Comparator<Song>() {
+                public int compare(Song a, Song b) {
+                    return a.getTitle().compareTo(b.getTitle());
+                }
+            });
+            for (int i = 0; i < songs.size(); i++) {
+                if (songs.get(i).getTitle().equalsIgnoreCase(currSongName)) {
+                    songPosn = i;
+                    break;
+                }
+
+            }
+
+        }
+        return songs;
     }
+
+
 }
