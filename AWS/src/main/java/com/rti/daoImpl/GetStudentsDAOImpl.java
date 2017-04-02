@@ -16,7 +16,15 @@ public class GetStudentsDAOImpl implements GetStudentsDAO {
 	private JpaTemplate jpatemplate;
 	
 	
-
+	@Transactional
+	public Account createAccount(Account account) {
+		List<Account> accountList = jpatemplate.findByNamedQuery(
+				"Account.findbyEmail", account.getEmailAddress());
+		if (accountList == null) {
+			jpatemplate.persist(account);
+		}
+		return null;
+	}
 
 	public List<JSONObject> getStudents() {
 		List<JSONObject> list1 = new ArrayList<JSONObject>();

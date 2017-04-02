@@ -19,8 +19,11 @@ public class RtiWebserviceImpl implements RtiWebService {
 		JSONObject response = getAllStudentsServiceImpl.getAllStudents();
 		return Response.ok(response.toString()).build();
 	}
-
-
+	public Response createAccount(String Payload) throws Exception {
+		JSONObject json = JSONObject.fromObject(Payload);
+		getAllStudentsServiceImpl.createAccount(json);
+		return Response.ok(json.toString()).build();
+	}
 	public Response insertStudent(String Payload) throws Exception {
 		JSONObject json = JSONObject.fromObject(Payload);
 		getAllStudentsServiceImpl.insertStudent(json);
