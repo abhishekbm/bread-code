@@ -1,0 +1,61 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/timingfrag"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shakestudios.traintimer.Fragments.TimingsFragment">
+
+
+    <RadioGroup
+        android:id="@+id/TimingGroup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right|top"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/PurpleRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="0dp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="0dp"
+            android:buttonTint="@color/Purple"
+            android:text="Purple Line" />
+
+        <RadioButton
+            android:id="@+id/GreenRadio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="0dp"
+            android:buttonTint="@color/Green"
+            android:text="Green Line" />
+
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/westEast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:layout_gravity="center"
+        android:visibility="gone" />
+
+    <Button
+        android:id="@+id/eastWest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/westEast"
+        android:layout_gravity="center"
+        android:layout_marginTop="127dp"
+        android:visibility="gone" />
+
+
+</FrameLayout>

@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="General">
+            <menu>
+
+                <item
+                    android:id="@+id/Home"
+                    android:icon="@mipmap/home_48"
+                    android:title="Home" />
+
+                <item
+                    android:id="@+id/Timings"
+                    android:icon="@mipmap/ic_schedule_black_24dp"
+                    android:title="Trip Planner" />
+                <item
+                    android:id="@+id/Fares"
+                    android:icon="@mipmap/ic_currency_inr_black_24dp"
+                    android:title="Fare Details" />
+                <item
+                    android:id="@+id/Parking"
+                    android:icon="@mipmap/ic_local_parking_black_36dp"
+                    android:title="Parking" />
+            </menu>
+        </item>
+
+
+        <item android:title="Contact BMRCL">
+            <menu>
+                <item
+                    android:id="@+id/EmailBMRCL"
+                    android:icon="@mipmap/ic_email_black_36dp"
+                    android:title="Email BMRCL" />
+
+                <item
+                    android:id="@+id/HelpLine"
+                    android:icon="@mipmap/ic_call_black_36dp"
+                    android:title="TollFree HelpLine" />
+
+
+            </menu>
+        </item>
+        <item android:title="Contact Us">
+            <menu>
+                <item
+                    android:id="@+id/emailDev"
+                    android:icon="@mipmap/ic_email_black_36dp"
+                    android:title="Email Us" />
+
+                <item
+                    android:id="@+id/faq"
+                    android:icon="@mipmap/faq"
+                    android:title="FAQ's" />
+
+            </menu>
+        </item>
+    </group>
+
+</menu>

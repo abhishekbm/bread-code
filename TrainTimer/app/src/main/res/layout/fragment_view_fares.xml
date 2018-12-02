@@ -1,0 +1,138 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="shakestudios.traintimer.Fragments.ViewFaresFragment">
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/textView3"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center|bottom|left"
+        android:layout_marginBottom="210dp"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/textView4"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="0dp"
+        android:layout_gravity="left|center_vertical"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/noOfStations"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="left|top"
+        android:layout_marginBottom="50dp"
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="10dp" />-->
+
+
+    <AutoCompleteTextView
+        android:id="@+id/origin"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="65dp"
+        android:clickable="false"
+        android:inputType="none"
+        android:enabled="false"
+        android:textSize="20dp"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textColor="@color/Black"
+        >
+    </AutoCompleteTextView>
+
+    <!--<TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/timeTaken"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="80dp"
+        android:layout_gravity="left|bottom"
+        android:layout_marginBottom="150dp"
+        android:gravity="left"
+        android:layout_marginLeft="10dp" />
+
+    <TextView
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/coinfare"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="right|center_vertical"
+        android:gravity="left"/>
+
+    <TextView
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/cardfare"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="2dp"
+        android:layout_gravity="center_vertical|bottom|right"
+        android:layout_marginBottom="210dp" />
+
+    <TextView
+        android:layout_width="104dp"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearance"
+        android:text="Small Text"
+        android:id="@+id/staioninfo"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:layout_gravity="right|top"
+        android:gravity="left"
+        android:layout_marginTop="170dp" />-->
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:id="@+id/recycler_view"
+        android:scrollbars="vertical"
+        android:layout_gravity="center">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <AutoCompleteTextView
+        android:id="@+id/desti"
+        android:layout_width="match_parent"
+        android:layout_height="66dp"
+        android:background="@android:color/transparent"
+        android:layout_marginTop="125dp"
+        android:clickable="false"
+        android:inputType="none"
+        android:textSize="20dp"
+        android:enabled="false"
+        android:focusable="false"
+        android:focusableInTouchMode="false"
+        android:gravity="center"
+        android:textColor="@color/Black"
+        android:layout_gravity="center_horizontal|top">
+    </AutoCompleteTextView>
+</FrameLayout>

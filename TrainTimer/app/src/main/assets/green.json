@@ -1,0 +1,792 @@
+{
+  "fares": [{
+    "station": "Nagasandra",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Peenya"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "10",
+      "card_price": "16.15",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "27",
+      "card_price": "22.95",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Dasarahalli",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Peenya"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "27",
+      "card_price": "22.95",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Jalahalli",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Peenya"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Peenya Industry",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Peenya"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Peenya",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Yeshwanthpur Industry",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Peenya"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Yeshwanthpur",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Peenya"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Sandal Soap Factory (Orion Mall)",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Peenya"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Mahalakshmi",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Peenya"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Rajajinagar",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Peenya"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Kuvempu Road",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Peenya"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Srirampura",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Peenya"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "27",
+      "card_price": "22.95",
+      "station": "Nagasandra"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  }, {
+    "station": "Mantri Square (Sampige Road)",
+    "doors": "left",
+
+    "cost": [{
+      "coin_price": "27",
+      "card_price": "22.95",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "25",
+      "card_price": "21.25",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "23",
+      "card_price": "19.55",
+      "station": "Peenya"
+    }, {
+      "coin_price": "21",
+      "card_price": "17.85",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "19",
+      "card_price": "16.15",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "17",
+      "card_price": "14.45",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "16",
+      "card_price": "13.60",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "14",
+      "card_price": "11.90",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "13",
+      "card_price": "11.05",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "10",
+      "card_price": "8.50",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "30",
+      "card_price": "25.50",
+      "station": "Nagasandra"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Majestic (Inter Change)"
+    }]
+  },{
+    "station": "Majestic (Inter Change)",
+    "doors": "left",
+    "cost": [{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Nagasandra"
+    },{
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Dasarahalli"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Jalahalli"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Peenya Industry"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Peenya"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Yeshwanthpur Industry"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Yeshwanthpur"
+    }, {
+      "coin_price": "1",
+      "card_price": "11",
+      "station": "Sandal Soap Factory (Orion Mall)"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Mahalakshmi"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Rajajinagar"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Kuvempu Road"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Srirampura"
+    }, {
+      "coin_price": "1",
+      "card_price": "1",
+      "station": "Mantri Square (Sampige Road)"
+    },{
+      "coin_price": "0",
+      "card_price": "0",
+      "station": "Majestic (Inter Change)"
+    }]
+  }]
+}

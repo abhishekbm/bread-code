@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:title="General">
+            <menu>
+
+                <item
+                    android:id="@+id/NowPlaying"
+                    android:title="Now Playing" />
+
+                <item
+                    android:id="@+id/Artists"
+                    android:title="Artists" />
+                <item
+                    android:id="@+id/Fares"
+                    android:title="Fare Details" />
+                <item
+                    android:id="@+id/Parking"
+                    android:title="Parking" />
+            </menu>
+        </item>
+
+
+        <item android:title="Contact BMRCL">
+            <menu>
+                <item
+                    android:id="@+id/EmailBMRCL"
+                    android:title="Email BMRCL" />
+
+                <item
+                    android:id="@+id/HelpLine"
+                    android:title="TollFree HelpLine" />
+
+
+            </menu>
+        </item>
+        <item android:title="Contact Us">
+            <menu>
+                <item
+                    android:id="@+id/emailDev"
+
+                    android:title="Email Us" />
+
+                <item
+                    android:id="@+id/faq"
+                    android:title="FAQ's" />
+
+            </menu>
+        </item>
+    </group>
+
+</menu>
